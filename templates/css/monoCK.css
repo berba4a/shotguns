@@ -1,0 +1,425 @@
+.clr {clear:both;}
+
+/**
+** global styles
+**/
+
+/* container style */
+div#maximenuCK_mainmenu ul.maximenuCK {
+    background :  url(../images/navigation_background.png) top left repeat-x;
+    height : 37px;
+    padding : 0;
+    margin : 0 0 1.5em;;
+    border-bottom: 2px #999999 solid;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK li.maximenuCK {
+    background : none;
+    list-style : none;
+    border : none;
+}
+
+/* link image style */
+div#maximenuCK_mainmenu ul.maximenuCK li.maximenuCK>a img {
+    margin : 3px;
+    border : none;
+}
+
+/* img style without link (in separator) */
+div#maximenuCK_mainmenu ul.maximenuCK li.maximenuCK img {
+    border : none;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK li a.maximenuCK,
+div#maximenuCK_mainmenu ul.maximenuCK li span.separator {
+    text-decoration : none;
+    text-indent : 2px;
+    height : 27px;
+    outline : none;
+    background : none;
+    border : none;
+    padding : 0;
+    cursor : pointer;
+    color : #EEEEEE;
+}
+
+/* separator item */
+div#maximenuCK_mainmenu ul.maximenuCK li span.separator {
+
+}
+
+/**
+** active items
+**/
+
+/* current item title and description */
+div#maximenuCK_mainmenu ul.maximenuCK li.current>a span {
+    color : #EEEEEE;
+}
+
+/* current item title when mouseover */
+div#maximenuCK_mainmenu ul.maximenuCK li.current>a:hover span.titreCK {
+	color: #DDDDDD;
+}
+
+/* current item description when mouseover */
+div#maximenuCK_mainmenu ul.maximenuCK li.current>a:hover span.descCK {
+
+}
+
+/* active parent title */
+div#maximenuCK_mainmenu ul.maximenuCK li.active>a span.titreCK {
+    color : #EEEEEE;
+}
+
+/* active parent description */
+div#maximenuCK_mainmenu ul.maximenuCK li.active>a span.descCK {
+
+}
+
+/**
+** first level items
+**/
+
+div#maximenuCK_mainmenu ul.maximenuCK li.level0 {
+    padding : 0 10px;
+    background : url(../images/separator.png) top right no-repeat;
+}
+
+/* first level item title */
+div#maximenuCK_mainmenu ul.maximenuCK li.level0>a span.titreCK,
+div#maximenuCK_mainmenu ul.maximenuCK li.level0>span.separator span.titreCK {
+    color : #EEEEEE;
+}
+
+/* first level item description */
+div#maximenuCK_mainmenu ul.maximenuCK li.level0>a span.descCK {
+    color : #EEEEEE;
+}
+
+/* first level item link */
+div#maximenuCK_mainmenu ul.maximenuCK li.parent.level0>a,
+div#maximenuCK_mainmenu ul.maximenuCK li.parent.level0>span {
+    background : url(../images/maxi_arrow0.png) bottom right no-repeat;
+}
+
+/* parent style level 0 */
+div#maximenuCK_mainmenu ul.maximenuCK li.parent.level0 li.parent {
+    background : url(../images/maxi_arrow1.png) center right no-repeat;
+}
+
+/**
+** items title and descriptions
+**/
+
+/* item title */
+div#maximenuCK_mainmenu span.titreCK {
+    color : #EEEEEE;
+    /*display : block;*/
+    text-transform : none;
+    font-weight : bold;
+    font-size : 12px;
+    line-height : 28px;
+    text-decoration : none;
+    min-height : 17px;
+    float : none !important;
+    float : left;
+}
+
+/* item description */
+div#maximenuCK_mainmenu span.descCK {
+    color : #c0c0c0;
+    display : block;
+    text-transform : none;
+    font-size : 10px;
+    text-decoration : none;
+    height : 12px;
+    line-height : 12px;
+    float : none !important;
+    float : left;
+}
+
+/* item title when mouseover */
+div#maximenuCK_mainmenu ul.maximenuCK  a:hover span.titreCK {
+    color : #DDDDDD;
+}
+
+/**
+** child items
+**/
+
+/* child item title */
+div#maximenuCK_mainmenu ul.maximenuCK2  a.maximenuCK {
+    width : 160px;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 li a.maximenuCK,
+div#maximenuCK_mainmenu ul.maximenuCK2 li span.separator {
+    text-decoration : none;
+    border-bottom : 1px solid #505050;
+    width : 150px;
+    margin : 0 auto;
+    padding : 3px 0 3px 0;
+}
+
+/* child item block */
+div#maximenuCK_mainmenu ul.maximenuCK ul.maximenuCK2 {
+    background : #429d4e;
+    margin : 3px 0 0 0;
+    padding : 0;
+    border : none;
+    width : 180px; /* important for Chrome and Safari compatibility */
+    position: static;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 li.maximenuCK {
+    width : 180px;
+    padding : 2px 0 0 0;
+    border : none;
+    margin : 0;
+    background : none;
+}
+
+/* child item container  */
+div#maximenuCK_mainmenu ul.maximenuCK li div.floatCK {
+    background : #429d4e;
+    border : 1px solid #707070;
+}
+
+/**
+** module style
+**/
+
+div#maximenuCK_mainmenu div.maximenuCK_mod {
+    width : 170px;
+    padding : 0;
+    overflow : hidden;
+    color : #DDDDDD;
+    white-space : normal;
+}
+
+div#maximenuCK_mainmenu div.maximenuCK_mod div.moduletable {
+    border : none;
+    background : none;
+}
+
+div#maximenuCK_mainmenu div.maximenuCK_mod  fieldset{
+    width : 160px;
+    padding : 0;
+    margin : 0 auto;
+    overflow : hidden;
+    background : #429d4e;
+    border : none;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod a {
+    border : none;
+    margin : 0;
+    padding : 0;
+    display : inline;
+    background : #429d4e;
+    color : #888;
+    font-weight : normal;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod a:hover {
+    color : #FFF;
+}
+
+/* module title */
+div#maximenuCK_mainmenu ul.maximenuCK div.maximenuCK_mod h3 {
+    font-size : 14px;
+    width : 170px;
+    color : #aaa;
+    font-size : 14px;
+    font-weight : normal;
+    background : #444;
+    margin : 5px 0 0 0;
+    padding : 3px 0 3px 0;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod ul {
+    margin : 0;
+    padding : 0;
+    width : 170px;
+    background : none;
+    border : none;
+    text-align : left;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod li {
+    margin : 0 0 0 15px;
+    padding : 0;
+    width : 155px;
+    background : none;
+    border : none;
+    text-align : left;
+    font-size : 11px;
+    float : none;
+    display : block;
+    line-height : 20px;
+    white-space : normal;
+}
+
+/* login module */
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod #form-login ul {
+    left : 0;
+    margin : 0;
+    padding : 0;
+    width : 170px;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK2 div.maximenuCK_mod #form-login ul li {
+    margin : 2px 0;
+    padding : 0 5px;
+    height : 20px;
+    background : #429d4e;
+}
+
+
+/**
+** columns width & child position
+**/
+
+/* child blocks position (from level2 to n) */
+div#maximenuCK_mainmenu ul.maximenuCK li.maximenuCK div.floatCK div.floatCK {
+    margin : -30px 0 0 180px;
+}
+
+/* margin for overflown elements that rolls to the left */
+div#maximenuCK_mainmenu ul.maximenuCK li.maximenuCK div.floatCK div.floatCK.fixRight  {
+    margin-right : 180px;
+}
+
+/* default width */
+div#maximenuCK_mainmenu ul.maximenuCK li div.floatCK {
+    width : 180px;
+}
+
+/* 2 cols width */
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols2 {
+    width : 360px;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols2>div.maximenuCK2 {
+    width : 50%;
+}
+
+/* 3 cols width */
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols3 {
+    width : 540px;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols3>div.maximenuCK2 {
+    width : 33%;
+}
+
+/* 4 cols width */
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols4 {
+    width : 720px;
+}
+
+div#maximenuCK_mainmenu ul.maximenuCK li div.cols4>div.maximenuCK2 {
+    width : 25%;
+}
+
+
+
+/**
+** fancy parameters
+**/
+
+div#maximenuCK_mainmenu .maxiFancybackground {
+    list-style : none;
+}
+
+div#maximenuCK_mainmenu .maxiFancybackground .maxiFancycenter {
+    /*background: url('../images/fancy_bg.png') repeat-x top left;*/
+    background-color: #429d4e;
+    height : 34px;
+}
+
+div#maximenuCK_mainmenu .maxiFancybackground .maxiFancyleft {
+
+}
+
+div#maximenuCK_mainmenu .maxiFancybackground .maxiFancyright {
+
+}
+
+/**
+** rounded style
+**/
+
+/* global container */
+div#maximenuCK_mainmenu div.maxiRoundedleft {
+
+}
+
+div#maximenuCK_mainmenu div.maxiRoundedcenter {
+
+}
+
+div#maximenuCK_mainmenu div.maxiRoundedright {
+
+}
+
+/* child container */
+div#maximenuCK_mainmenu div.maxidrop-top {
+
+}
+
+div#maximenuCK_mainmenu div.maxidrop-main {
+
+}
+
+div#maximenuCK_mainmenu div.maxidrop-bottom {
+
+}
+
+
+/* bouton to close on click */
+div#maximenuCK_mainmenu span.maxiclose {
+    color: #fff;
+}
+
+
+/*** compatibility layer for native template Beez20 and Beez5 ***/
+#header
+{
+    overflow:visible !important;
+	z-index:1000 !important;
+}
+
+#header ul.menu li a:link,
+#header ul.menu li a:visited
+{
+	display: block !important;
+}
+
+div#maximenuCK_mainmenu ul.menu li ul li ul li ul
+{
+	border:none !important;
+	padding-top:0px !important;
+	padding-bottom:0px !important;
+	background:transparent !important;
+}
+
+div#maximenuCK_mainmenu ul.menu li ul li ul
+{
+	border:0 !important;
+	background:transparent !important;
+	padding-bottom:0;
+}
+
+#header ul.menu li.maximenuCK.active a:link,
+#header ul.menu li.maximenuCK.active a:visited
+{
+border-right:none !important;
+background:transparent !important;
+}
+
+#header ul.menu
+{
+margin-top:0px !important;
+}

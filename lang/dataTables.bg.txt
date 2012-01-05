@@ -1,0 +1,17 @@
+{
+  "sProcessing":   "Обработка на резултатите...",
+  "sLengthMenu":   "<span>Резултати на страница _MENU_",
+  "sZeroRecords":  "Няма намерени резултати",
+  "sInfo":         "Резултати от _START_ до _END_ от филтрирани _TOTAL_",
+  "sInfoEmpty":    "Показване на резултати от 0 до 0 от общо 0",
+  "sInfoFiltered": "(общо _MAX_ резултата)",
+  "sInfoPostFix":  "",
+  "sSearch":       "Търсене във всички колони:",
+  "sUrl":          "",
+  "oPaginate": {
+    "sFirst":    "Първа",
+    "sPrevious": "Предишна",
+    "sNext":     "Следваща",
+    "sLast":     "Последна"
+  }
+}

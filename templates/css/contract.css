@@ -1,0 +1,141 @@
+@media print {
+  .no-print {
+    display:none;
+  }
+  
+  .print {
+  	font-size: 100px;
+  }
+  
+  #section_to_print, #main_content, #middle, #tt_test, #section_to_print * {
+    visibility:visible;
+  }
+  
+  #section_to_print {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+
+
+table#inv-main{
+	background-color:#ffffff;
+	border:1px solid black;
+	font-family:arial, verdana;
+	font-size:12px;
+	width:800px;
+	margin-bottom:0px !important;
+}
+table#inv-main td {
+	padding:0px;
+	background-color: #FFFFFF !important;
+	vertical-align: top;
+	text-align:left;
+}
+
+table#inv-main table{
+	margin-bottom:0px !important;
+}
+
+table.inv-client {
+	padding:10px;
+	width:100%;
+}
+
+table.inv-client td{
+	padding:3px;
+	
+}
+
+td#inv-upright{
+	width:347px;
+	border:1px solid black;
+	vertical-align:top;
+}
+td#inv-upmiddle{
+	width:76px;
+	border:1px solid black;
+}
+td#inv-upleft{
+	width:347px;
+	border:1px solid black;
+	vertical-align:top;
+}
+
+table#inv-vat td{
+	width:10px;
+	border:1px solid black;
+}
+
+span.small{
+	font-size:9px;
+}
+
+table#inv-tbl-2 td{
+	padding:5px;
+}
+
+table#inv-tbl-3 td{
+	padding:5px;
+	border:1px solid black;
+	text-align:center;
+}
+
+table#inv-tbl-5 {
+	padding:5px;
+	border:1px solid black;
+}
+
+table#inv-tbl-5 td{
+	padding:15px;
+	
+}
+table#inv-tbl-6 {
+	height:100%;
+}
+table#inv-tbl-6 td{
+	padding:10px;
+	border:1px solid black;
+}
+
+table#inv-tbl-8 {
+	border:0px solid black;
+}
+table#inv-tbl-8 td{
+	padding-left:3px;
+}
+
+table#inv-tbl-9 {
+	border-left:1px solid black;
+}
+table#inv-tbl-9 td{
+	padding:10px 3px 0px 3px;
+}
+
+table#contract_form{
+	width:800px;
+}
+
+table#contract_form td{
+	background-color:#ffffff;
+	border:0px;
+	font-family:times new roman, arial;
+	font-size:16px;
+	line-height:1.2;
+}
+
+.bolditalic {
+	font-weight:bold;
+	font-style:italic;
+}
+.boldunder{
+	font-weight:bold;
+	text-decoration:underline;
+}
+ol.contract_ol li{
+	padding:5px;
+}
+
+caption, td {text-align:justify;font-weight:normal;float:none !important;}
+th {text-align:justify;font-weight:bold;float:none !important;}
