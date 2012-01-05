@@ -15,7 +15,7 @@
     					<legend  class="addingLegend">1.Данни на обявата:</legend>
 						<ul class="addingMenu">
 	<li><span class="redStar">*</span>Категория:<br />
-	<select class="aField" id="type_id" name="type_id">
+	<select class="aField" id="type_id" name="type_id" onchange="javascript: getPistolMarks();">
 		{foreach $pistol_types as $pistol_type}
 			<option value="{$pistol_type->id}">{$pistol_type->type}</option>
 		{/foreach}
@@ -42,18 +42,18 @@
 
 	<li><span class="redStar">*</span>Цена:<br /><input class="aField" type="text" id="price"  name="price"/></li>
 
-	<li><span class="redStar">*</span>Местоположение:<br /><select class="aField" id="location" name="location">
-  <option>Област София</option>
-  <option>Област Пловдив</option>
-  <option>Област Стара Загора</option>
-  <option>Област Хасково</option>
-   <option>Област Варна</option>
-</select>
+	<li><span class="redStar">*</span>Местоположение:<br />
+	<select class="aField" id="city_id" name="city_id">
+		{foreach $cities as $city}
+			<option value="{$city->id}">{$city->city}</option>
+		{/foreach}
+	</select>
 </li>
-	<li><span class="redStar">*</span>Употреба:<br /><select class="aField" id="owned" name="owned">
-  <option>Ново</option>
-  <option>Старо</option>
-  </select>
+	<li><span class="redStar">*</span>Употреба:<br />
+	<select class="aField" id="is_old" name="is_old">
+		<option value="0">Ново</option>
+		<option value="1">Старо</option>
+	</select>
 	</li>
 <li><span>Описание на продукта:</span><br />
 <TEXTAREA class="aField" NAME="Description" COLS=30 ROWS=8></TEXTAREA><br />

@@ -4,6 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 	<title>Hunt Site</title>
 	<link href="{$smarty.const.WWW}templates/css/main.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/main.js"></script>
 </head>
 <body>
 <div class="mainHead">
