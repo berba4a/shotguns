@@ -396,13 +396,29 @@ create table pistol_marks (
 --insert into pistol_marks (type_id, mark) values (2, 'Марка 2-1');
 --insert into pistol_marks (type_id, mark) values (3, 'Марка 3-1');
 
+create table pistol_calibers (
+  id int not null primary key auto_increment,
+  mark_id varchar(100) not null comment 'Марка пистолет',
+  caliber varchar(100) not null comment 'Калибър на пистолета',
+  constraint fk_pistolet_marks_mark foreign key (mark_id) references pistol_marks(id)
+) comment 'Калибри на пистолети';
+--insert into pistol_calibers (mark_id, caliber) values (1, 'Калибър 1-1');
+--insert into pistol_calibers (mark_id, caliber) values (1, 'Калибър 1-2');
+--insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-1');
+--insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-2');
+--insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-3');
+--insert into pistol_calibers (mark_id, caliber) values (3, 'Калибър 3-1');
+--insert into pistol_calibers (mark_id, caliber) values (4, 'Калибър 4-1');
+--insert into pistol_calibers (mark_id, caliber) values (4, 'Калибър 4-2');
+--insert into pistol_calibers (mark_id, caliber) values (5, 'Калибър 5-1');
+
 create table pistols (
   id int not null primary key auto_increment,
   user_id int not null comment 'Собственик',
   is_old bool not null comment 'Стара/Нова',
   type_id int not null comment 'Тип пистолет',
   mark_id int not null comment 'Марка',
-  caliber varchar(20) not null comment 'Калибър',
+  caliber_id varchar(20) not null comment 'Калибър',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
   description text comment 'Описание',

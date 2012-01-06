@@ -1,3 +1,8 @@
+<script>
+	$(document).ready(function() {
+		getPistolMarks();
+	});
+</script>
 <div class="mainMenuBand">Публикуване на обява в катеория <b>ПИСТОЛЕТИ</b></div>
 	<div class="mainField">
 		<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol.gif" /></div>
@@ -22,21 +27,23 @@
 	</select>
 </li>
 
-    <li><span class="redStar">*</span>Марка:<br /><select class="aField" id="marka" name="marka">
-  <option>Байкал</option>
-  <option>Glock</option>
-  <option>Colt</option>
-  <option>TT</option>
-   <option>Берета</option>
+    <li><span class="redStar">*</span>Марка:<br />
+    <select class="aField" id="mark_id" name="mark_id" onchange="javascript: getPistolCalibers();">
+		<option>Байкал</option>
+		<option>Glock</option>
+		<option>Colt</option>
+		<option>TT</option>
+		<option>Берета</option>
 	</select>
    </li>
 
-    <li><span class="redStar">*</span>Калибър:<br /><select class="aField" id="calibre" name="calibre">
-  <option>Калнбър1</option>
-  <option>Калнбър2</option>
-  <option>Калнбър3</option>
-  <option>Калнбър4</option>
-   <option>Калнбър5</option>
+    <li><span class="redStar">*</span>Калибър:<br />
+    <select class="aField" id="caliber_id" name="caliber_id">
+		<option>Калнбър1</option>
+		<option>Калнбър2</option>
+		<option>Калнбър3</option>
+		<option>Калнбър4</option>
+		<option>Калнбър5</option>
 	</select>
 	</li>
 
