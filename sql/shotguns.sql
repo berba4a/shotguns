@@ -261,10 +261,16 @@ insert into cities (city) values ('Ямбол');
 
 create table users (
   id int not null primary key auto_increment,
-  real_name varchar(100) not null,
-  phone varchar(100) not null,
+  username varchar(50) not null,
+  password varchar(50) not null,
+  real_name varchar(100),
+  phone varchar(100),
   email varchar(100) not null,
-  city_id int not null,
+  is_real_email bool not null default 0,
+  is_active bool not null default 1,
+  is_dealer bool not null,
+  city_id int,
+  website varchar(100),
   constraint fk_users_city foreign key (city_id) references cities(id)
 );
 
@@ -428,6 +434,13 @@ create table pistols (
   constraint fk_pistols_makr foreign key (mark_id) references pistol_marks(id),
   constraint fk_pistols_type foreign key (type_id) references pistol_types(id),
   constraint fk_pistols_city foreign key (city_id) references cities(id)
+);
+
+create table pistol_images (
+  id int not null primary key auto_increment,
+  pistol_id int not null,
+  image varchar(100),
+  constraint fk_pistol_images_pistol foreign key (pistol_id) references pistols(id)
 );
 
 ------------------------------------------------------------------------------------------------

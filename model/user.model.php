@@ -10,7 +10,7 @@
 		
 		function __construct($primary_key_value = false) {
 			$this->table = 'users';
-			$this->columns = array ('id', 'real_name', 'phone', 'email', 'city_id');
+			$this->columns = array ('id', 'real_name', 'phone', 'email', 'city_id', 'website', 'username', 'password', 'is_real_email', 'is_active', 'is_dealer');
 			$this->required = array('real_name', 'phone', 'email', 'city_id');
 			parent::__construct($primary_key_value);
 		}

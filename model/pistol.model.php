@@ -24,8 +24,8 @@
 		
 		function __construct($primary_key_value = false) {
 			$this->table = 'pistols';
-			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'caliber', 'city_id', 'price', 'description', 'is_active_user', 'is_active_admin');
-			$this->required = array ('user_id', 'is_old', 'type_id', 'mark_id', 'caliber', 'city_id', 'price');
+			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'caliber_id', 'city_id', 'price', 'description', 'is_active_user', 'is_active_admin');
+			$this->required = array ('user_id', 'is_old', 'type_id', 'mark_id', 'caliber_id', 'city_id', 'price');
 			parent::__construct($primary_key_value);
 		}
 		
