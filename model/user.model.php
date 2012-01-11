@@ -19,4 +19,13 @@
 			$this->city = new CityModel($this->city_id);
 			$this->city->fetch();
 		}
+		
+		function getByUserAndPass($username, $password) {
+			$users = $this->fetchAll(array('filter' => ' where username = :username and password = :password', 'values' => array('username' => $username, 'password' => $password)));
+			if (empty($users)) {
+				return false;
+			} else {
+				return $users[0];
+			}
+		}
 	}

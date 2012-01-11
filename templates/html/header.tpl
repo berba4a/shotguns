@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="mainHead">
-	<div class="logo"><img style="border:1px solid #249a24;" src="{$smarty.const.WWW}templates/images/testLogo.jpg" width="238" height="90"/>
+	<div class="logo"><img src="{$smarty.const.WWW}templates/images/testLogo.jpg" width="238" height="90"/>
 	</div>
 	<a href="http://tera-imoti.com" target="_blank"><div class="banner1">
 		  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="728" height="90" align="middle">
@@ -26,6 +26,27 @@
 		<a href=""><li class="mainMenuSelectedIthem">публикуване</li></a>
 		<a href=""><li>подробно търсене</li></a>
 		<a href=""><li>дилъри</li></a>
+		<a href=""><li>Форум</li></a>
 		<a href=""><li>контакти</li></a>
 	</ul>
+	<br>
+	<div class="ithemsBand">
+	<ul>
+			<a href="#"> <li>Ловни пушки и карабини </li></a>
+			<a href="#"> <li class="mainMenuSelectedIthem">Пистолети </li></a>
+			<a href="#"><li> Патрони </li></a>
+
+			<a href="#"><li>Оптики </li></a>
+			<a href="#"><li> Екипировка </li></a>
+			<a href="#"><li> Аксесоари </li></a>
+			<a href="#"><li> Оръжейни сейфове </li></a>
+			<a href="#"><li> кучета </li></a>
+
+			<a href="#"><li style="-moz-border-radius-topright: 5px;
+-webkit-top-right-radius: 5px;
+-o-border-top-right-radius: 5px;
+-khtml-border-top-right-radius: 5px;
+border-top-right-radius: 5px;"> Офроуд автомобили </li></a>
+		</ul>
+	</div>
 	<div style="clear:both;">&nbsp;</div>

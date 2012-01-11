@@ -5,6 +5,7 @@
 	require_once HTDOCS . '/model/pistol_mark.model.php';
 	require_once HTDOCS . '/model/pistol_caliber.model.php';
 	require_once HTDOCS . '/model/city.model.php';
+	require_once HTDOCS . '/model/currency.model.php';
 	require_once HTDOCS . '/classes/upload.class.php';
 	
 	class PistolController Extends BaseController {
@@ -28,6 +29,7 @@
 			$this->registry->smarty->assign('mark_id', $this->getValue('mark_id'));
 			$this->registry->smarty->assign('caliber_id', $this->getValue('caliber_id'));
 			$this->registry->smarty->assign('price', $this->getValue('price'));
+			$this->registry->smarty->assign('currency_id', $this->getValue('currency_id'));
 			$this->registry->smarty->assign('city_id', $this->getValue('city_id'));
 			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
 			$this->registry->smarty->assign('description', $this->getValue('description'));
@@ -52,6 +54,10 @@
 			$cities = $tmp_city->fetchAll();
 			$this->registry->smarty->assign('cities', $cities);
 			
+			$tmp_currency = new CurrencyModel();
+			$currency = $tmp_currency->fetchAll();
+			$this->registry->smarty->assign('currency', $currency);
+			
 			$this->display('html/pistol/ur_add_pistol.tpl');
 		}
 		
@@ -64,6 +70,8 @@
 			$user = new UserModel();
 			$_POST['username'] = md5($this->getValue('email') . time());
 			$_POST['password'] = $_POST['username'];
+			$_SESSION['tmp_username'] = $_POST['username'];
+			$_SESSION['tmp_password'] = $_POST['password'];
 			$_POST['is_dealer'] = 0;
 			$user->setRequiredFields(array('username', 'password', 'email'));
 			$user_id = $user->insert($_POST);
@@ -122,12 +130,15 @@
 				$handle = new Upload($file);
 				if ($handle->uploaded) {
 					$file_name = time() . '_' . rand(1,10000);
-					$handle->file_new_name_body   = $file_name;
+					$handle->file_new_name_body = $file_name;
+					$handle->image_resize = true;
+					$handle->image_x = 360;
+					$handle->image_y = 270;
 					$handle->Process(HTDOCS . '/templates/images/user_data/');
 					if ($handle->processed) {
-						$data = array('pistol_id' => $pistol_id, 'image' => $file_name . '.' . $handle->file_src_name_ext);
+						$data = array('pistol_id' => $pistol_id, 'image' => 'templates/images/user_data/' . $file_name . '.' . $handle->file_src_name_ext);
 						$pistol_image = new PistolImageModel();
-						print_r($pistol_image->insert($data));
+						$pistol_image->insert($data);
 					} else {
 						$this->rollBack();
 						$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на снимките към обявата!!!');
@@ -142,7 +153,39 @@
 				unset($handle);
 			}
 			
-			$this->ur_add_pistol();
+			$this->registry->smarty->assign('save_preview', true);
+			$this->preview($pistol_id);
+		}
+		
+		public function preview($id = false) {
+			if (empty($id)) {
+				$id = $this->getValue('pistol_id', false, '_GET');
+			}
+			
+			if ($id) {
+				$pistol = new PistolModel($id);
+				$pistol->fetch();
+				
+				if (($pistol->is_active_user) && ($pistol->is_active_admin)) {
+					$this->registry->smarty->assign('pistol', $pistol);
+					$this->display('html/pistol/ur_preview.tpl');
+				} else {
+					$this->registry->smarty->assign('site_error', 'Обявата не е намерена!!!');
+				}
+			} else {
+				$this->redirect(WWW . 'pistol/search');
+			}
+		}
+		
+		public function ur_activate() {
+			$pistol = new PistolModel();
+			$pistol->urAcativate($_SESSION['tmp_username'], $_SESSION['tmp_password']);
+			$pistol = $pistol->urFetch($_SESSION['tmp_username'], $_SESSION['tmp_password']);
+			if (empty($pistol)) {
+				$this->registry->smarty->assign('site_error', 'Обявата не е намерена!!!');
+			} else {
+				$this->preview($pistol->id);
+			}
 		}
 		
 		/**

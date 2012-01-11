@@ -1,3 +1,11 @@
+create table currency (
+  id int not null primary key auto_increment,
+  currency varchar(20) not null
+);
+insert into currency (currency) values ('Лева');
+insert into currency (currency) values ('EUR');
+insert into currency (currency) values ('USD');
+
 create table cities (
   id int not null primary key auto_increment,
   city varchar(75) not null comment 'Име на града'
@@ -427,13 +435,16 @@ create table pistols (
   caliber_id varchar(20) not null comment 'Калибър',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
+  currency_id int not null comment 'Валута',
   description text comment 'Описание',
-  is_active_user bool not null default 1 comment 'Активна от потребителя',
+  is_active_user bool not null default 0 comment 'Активна от потребителя',
   is_active_admin bool not null default 1 comment 'Активна от администратор',
+  created timestamp default CURRENT_TIMESTAMP(),
   constraint fk_pistols_user foreign key (user_id) references users(id),
   constraint fk_pistols_makr foreign key (mark_id) references pistol_marks(id),
   constraint fk_pistols_type foreign key (type_id) references pistol_types(id),
-  constraint fk_pistols_city foreign key (city_id) references cities(id)
+  constraint fk_pistols_city foreign key (city_id) references cities(id),
+  constraint fk_pistols_currency foreign key (currency_id) references currency(id)
 );
 
 create table pistol_images (
@@ -535,4 +546,3 @@ create table optics (
   constraint fk_optics_makr foreign key (makr_id) references optics_marks(id),
   constraint fk_optics_city foreign key (city_id) references cities(id)
 ) comment 'Патрони';
-

@@ -5,14 +5,13 @@
 		$('#caliber_id').val({$caliber_id});
 	});
 </script>
+
 <div class="mainMenuBand">Публикуване на обява в катеория <b>ПИСТОЛЕТИ</b></div>
 	<div class="mainField">
 		<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol.gif" /></div>
-		<div class="addingWelcomeText">Добре дошли в раздела за добавяне на вашата обява в раздел <b>пистолети</b> .Aко вашата обява не е свързана със този раздел моля върнете се на предходната страница за <a href="#">избор на категория</a> или в <a href="#">началото</a> на сайта.Отбелязаните със <span class="redStar">*</span> полета са задължителни.</div> 
+		<div class="addingWelcomeText">Добре дошли в раздела за <b>ПУБЛИКУВАНЕ</b> на вашата обява в раздел <b>ПИСТОЛЕТИ</b> .Aко вашата обява не е свързана със този раздел моля върнете се на предходната страница за <a href="#">избор на категория</a> или в <a href="#">началото</a> на сайта.Отбелязаните със <span class="redStar">*</span> полета са задължителни.</div> 
 
 	<div style="clear:both;">&nbsp;</div>
-
-	<hr style="margin-left:20px;margin-right:20px;margin-top:-10px;" />
 	
 	{if !empty($site_error)}
 		<span class="error_message">{$site_error}</span>
@@ -58,6 +57,15 @@
 			<br><span class="error_message">{$price_error}</span>
 		{/if}
 	</li>
+	
+	<li><span class="redStar">*</span>Валута:<br />
+		<select class="aField" id="currency_id" name="currency_id">
+			{foreach $currency as $curr}
+				<option value="{$curr->id}" {if $currency_id == $curr->id}selected{/if}>{$curr->currency}</option>
+			{/foreach}
+		</select>
+	</li>
+	
 
 	<li><span class="redStar">*</span>Местоположение:<br />
 	<select class="aField" id="city_id" name="city_id">
