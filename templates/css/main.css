@@ -1,5 +1,5 @@
 body {
-	background-image: url(/templates/images/camouflage%20copia.png);
+	background-image: url(images/camouflage%20copia.png);
 }
 
 .mainHead{
@@ -72,7 +72,7 @@ border-bottom-right-radius: 5px;
 border-bottom-left-radius: 5px;
 }
 .ithemsBand{
-margin-left:-31px;
+margin-left:-32px;
 margin-top:-28px;
 width:980px;
 margin-right:10px;
@@ -85,20 +85,20 @@ border-top-right-radius: 5px;
 }
 
 .ithemsBand li{
+height:20px;
 border:1px solid #685300;
 border-bottom:hidden;
 text-decoration:none;
 color:white;
 float:left;
-margin-left:2px;
+margin-left:3px;
 padding-left:5px;
 padding-right:5px;
-padding-bottom:3px;
-padding-top:3px;
+padding-top:5px;
 background-color:#685300;
 list-style:none;
 font-family:Verdana, Arial, Helvetica, sans-serif;
-font-size:10px;
+font-size:14px;
 text-transform:uppercase;
 font-weight:bold;
 }
@@ -359,7 +359,7 @@ height:250px;
 margin-left:20px;
 }
 .searchMenu{
-	margin-top:25px;
+	margin-top:40px;
 	margin-left:15px;
 	height:150px;
 	float:left;
@@ -374,12 +374,29 @@ margin-left:20px;
 	width:auto;
 }
 .searchMenu li{
-	width:155px;
+	width:150px;
 	list-style:none;
 	margin-left:-40px;
 	
 }
+.searchHeaders{
+width:150px;
+font-weight:bold;
+background-color:#c5ac49;
+padding:5px;
+-moz-border-radius-topright: 5px;
+-webkit-top-right-radius: 5px;
+-o-border-top-right-radius: 5px;
+-khtml-border-top-right-radius: 5px;
+border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-webkit-top-left-radius: 5px;
+-o-border-top-left-radius: 5px;
+-khtml-border-top-left-radius: 5px;
+border-top-left-radius: 5px;
+}
 
 .error_message {
 	color: red;
+}
 }

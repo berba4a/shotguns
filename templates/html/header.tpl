@@ -6,6 +6,7 @@
 	<link href="{$smarty.const.WWW}templates/css/main.css" rel="stylesheet" type="text/css" media="all" />
 	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/main.js"></script>
+	<link rel="stylesheet" href="{$smarty.const.WWW}templates/css/lightbox.css" type="text/css" media="screen" />
 </head>
 <body>
 <div class="mainHead">
@@ -32,15 +33,13 @@
 	<br>
 	<div class="ithemsBand">
 	<ul>
-			<a href="#"> <li>Ловни пушки и карабини </li></a>
-			<a href="#"> <li class="mainMenuSelectedIthem">Пистолети </li></a>
+			<a href="#"> <li> Пушки </li></a>
+			<a href="#"> <li class="mainMenuSelectedIthem"> Пистолети </li></a>
 			<a href="#"><li> Патрони </li></a>
-
-			<a href="#"><li>Оптики </li></a>
+			<a href="#"><li> Оптики </li></a>
 			<a href="#"><li> Екипировка </li></a>
 			<a href="#"><li> Аксесоари </li></a>
-			<a href="#"><li> Оръжейни сейфове </li></a>
-			<a href="#"><li> кучета </li></a>
+			<a href="#"><li> Ловни кучета </li></a>
 
 			<a href="#"><li style="-moz-border-radius-topright: 5px;
 -webkit-top-right-radius: 5px;

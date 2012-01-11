@@ -1,3 +1,6 @@
+	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/prototype.js"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/scriptaculous.js?load=effects,builder"></script>
+	<script type="text/javascript" src="{$smarty.const.WWW}templates/javascript/lightbox.js"></script>
 <div class="mainMenuBand">Публикуване на обява в катеория <b>ПИСТОЛЕТИ - ПРЕГЛЕД НА ОБЯВАТА</b></div>
 
 	<div class="mainField">
@@ -6,10 +9,8 @@
 		<div class="gallery">
 			<ul class="gallery">
 				<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adBigPic" id="bigPic" name="bigPic" src="{$smarty.const.WWW}{$pistol->images.0->image}" /></a></li>
-				<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adSmallPic"  onclick="document.bigPic.src=this.src;" src="{$smarty.const.WWW}{$pistol->images.0->image}" /></a></li>
-				<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adSmallPic" onclick="document.bigPic.src=this.src;"src="{$smarty.const.WWW}{$pistol->images.0->image}" /></a></li>
 				{foreach $pistol->images as $image}
-					<li><img class="adSmallPic" onclick="document.bigPic.src=this.src;" src="{$smarty.const.WWW}{$image->image}" /></li>
+					<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adSmallPic" onclick="document.bigPic.src=this.src;" src="{$smarty.const.WWW}{$image->image}" /></a></li>
 				{/foreach}
 			</ul>
 

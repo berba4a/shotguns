@@ -58,7 +58,7 @@
 		{/if}
 	</li>
 	
-	<li><span class="redStar">*</span>Валута:<br />
+	<li style="margin-left:15px;"><span class="redStar">*</span>Валута:<br />
 		<select class="aField" id="currency_id" name="currency_id">
 			{foreach $currency as $curr}
 				<option value="{$curr->id}" {if $currency_id == $curr->id}selected{/if}>{$curr->currency}</option>
