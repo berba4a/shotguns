@@ -188,6 +188,199 @@
 			}
 		}
 		
+		public function search() {
+			if (empty($_GET['edit_search'])) {
+				$_SESSION['tmp_pistol_search']['is_old'] = array();
+				$_SESSION['tmp_pistol_search']['type_id'] = array();
+				$_SESSION['tmp_pistol_search']['mark_id'] = array();
+				$_SESSION['tmp_pistol_search']['caliber_id'] = array();
+				$_SESSION['tmp_pistol_search']['city_id'] = array();
+				$_SESSION['tmp_pistol_search']['order_by'] = 'created desc';
+				$_SESSION['tmp_pistol_search']['start_price'] = '';
+				$_SESSION['tmp_pistol_search']['end_price'] = '';
+				$_SESSION['tmp_pistol_search']['currency_id'] = '';
+				$_SESSION['tmp_pistol_search']['date'] = '';
+				$_SESSION['tmp_pistol_search']['has_image'] = '';
+			}
+			
+			$tmp_type = new PistolTypeModel();
+			$types = $tmp_type->fetchAll();
+			$this->registry->smarty->assign('types', $types);
+			
+			$tmp_mark = new PistolMarkModel();
+			$marks = $tmp_mark->fetchAll();
+			$this->registry->smarty->assign('marks', $marks);
+			
+			$tmp_caliber = new PistolCaliberModel();
+			$calibers = $tmp_caliber->fetchAll();
+			$this->registry->smarty->assign('calibers', $calibers);
+			
+			$tmp_city = new CityModel();
+			$cities = $tmp_city->fetchAll();
+			$this->registry->smarty->assign('cities', $cities);
+			
+			$this->display('html/pistol/search.tpl');
+		}
+		
+		public function results() {
+			print_r($_POST);
+			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 ', 'values' => array());
+			
+			if ($this->getValue('submitForm')) {
+				$_SESSION['tmp_pistol_search']['is_old'] = $this->getValue('is_old', array());
+				$_SESSION['tmp_pistol_search']['type_id'] = $this->getValue('type_id', array());
+				$_SESSION['tmp_pistol_search']['mark_id'] = $this->getValue('mark_id', array());
+				$_SESSION['tmp_pistol_search']['caliber_id'] = $this->getValue('caliber_id', array());
+				$_SESSION['tmp_pistol_search']['city_id'] = $this->getValue('city_id', array());
+				$_SESSION['tmp_pistol_search']['order_by'] = $this->getValue('order_by', 'created desc');
+				$_SESSION['tmp_pistol_search']['start_price'] = $this->getValue('start_price', '');
+				$_SESSION['tmp_pistol_search']['end_price'] = $this->getValue('end_price', '');
+				$_SESSION['tmp_pistol_search']['currency_id'] = $this->getValue('currency_id', '');
+				$_SESSION['tmp_pistol_search']['date'] = $this->getValue('date', '');
+				$_SESSION['tmp_pistol_search']['has_image'] = $this->getValue('has_image');
+			}
+			
+			if ($_SESSION['tmp_pistol_search']['start_price']) {
+				$this->registry->smarty->assign('start_price_text', 'от ' . $_SESSION['tmp_pistol_search']['start_price']);
+			} else {
+				$this->registry->smarty->assign('start_price_text', '');
+			}
+			if ($_SESSION['tmp_pistol_search']['end_price']) {
+				$this->registry->smarty->assign('end_price_text', 'до ' . $_SESSION['tmp_pistol_search']['end_price']);
+			} else {
+				if ($_SESSION['tmp_pistol_search']['start_price']) {
+					$this->registry->smarty->assign('end_price_text', '');
+				} else {
+					$this->registry->smarty->assign('end_price_text', 'Без значение');
+				}
+			}
+			
+			
+			if ((count($_SESSION['tmp_pistol_search']['is_old']) == 2) || (count($_SESSION['tmp_pistol_search']['is_old']) == 0)) {
+				$this->registry->smarty->assign('is_old_text', 'Употребявани и Нови');
+			} else {
+				$filter['filter'] .= ' and is_old = :is_old';
+				$filter['values']['is_old'] = $_SESSION['tmp_pistol_search']['is_old'][0];
+				$this->registry->smarty->assign('is_old_text', $_SESSION['tmp_pistol_search']['is_old'][0]?'Употребявани':'Нови');
+			}
+			
+			if (!empty($_SESSION['tmp_pistol_search']['type_id'])) {
+				$tmp_filter = '';
+				$type_id_text = '';
+				foreach($_SESSION['tmp_pistol_search']['type_id'] as $key=>$value) {
+					$tmp_filter .= ':type_id_' . $key . ', ';
+					$filter['values']['type_id_' . $key] = $value;
+					$pistol_type = new PistolTypeModel($value);
+					$pistol_type->fetch();
+					$type_id_text .= $pistol_type->type . ', ';
+				}
+				$type_id_text = trim($type_id_text, ', ');
+				$this->registry->smarty->assign('type_id_text', $type_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and type_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('type_id_text', 'Всички');
+			}
+			
+			if (!empty($_SESSION['tmp_pistol_search']['mark_id'])) {
+				$tmp_filter = '';
+				$mark_id_text = '';
+				foreach($_SESSION['tmp_pistol_search']['mark_id'] as $key=>$value) {
+					$tmp_filter .= ':mark_id_' . $key . ', ';
+					$filter['values']['mark_id_' . $key] = $value;
+					$pistol_mark = new PistolMarkModel($value);
+					$pistol_mark->fetch();
+					$mark_id_text .= $pistol_mark->mark . ', ';
+				}
+				$mark_id_text = trim($mark_id_text, ', ');
+				$this->registry->smarty->assign('mark_id_text', $mark_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and mark_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('mark_id_text', 'Всички');
+			}
+			
+			if (!empty($_SESSION['tmp_pistol_search']['caliber_id'])) {
+				$tmp_filter = '';
+				$caliber_id_text = '';
+				foreach($_SESSION['tmp_pistol_search']['caliber_id'] as $key=>$value) {
+					$tmp_filter .= ':caliber_id_' . $key . ', ';
+					$filter['values']['caliber_id_' . $key] = $value;
+					$pistol_caliber = new PistolCaliberModel($value);
+					$pistol_caliber->fetch();
+					$caliber_id_text .= $pistol_caliber->caliber . ', ';
+				}
+				$caliber_id_text = trim($caliber_id_text, ', ');
+				$this->registry->smarty->assign('caliber_id_text', $caliber_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and caliber_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('caliber_id_text', 'Всички');
+			}
+			
+			if (!empty($_SESSION['tmp_pistol_search']['city_id'])) {
+				$tmp_filter = '';
+				$city_id_text = '';
+				foreach($_SESSION['tmp_pistol_search']['city_id'] as $key=>$value) {
+					$tmp_filter .= ':city_id_' . $key . ', ';
+					$filter['values']['city_id_' . $key] = $value;
+					$city = new CityModel($value);
+					$city->fetch();
+					$city_id_text .= $city->caliber . ', ';
+				}
+				$city_id_text = trim($city_id_text, ', ');
+				$this->registry->smarty->assign('city_id_text', $city_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and city_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('city_id_text', 'Всички');
+			}
+			
+			print_r($filter);
+			
+			$results_per_page = 20;
+			$page = empty($_POST['page'])?'1':$_POST['page'];
+			$start_result = ($page - 1) * $results_per_page;
+			
+			$filter['filter'] .= " order by " . $_SESSION['tmp_pistol_search']['order_by'] . " limit " . $start_result . ", " . $results_per_page;
+			
+			$tmp_pistol = new PistolModel();
+			$pistols = $tmp_pistol->fetchAll($filter);
+			$this->registry->smarty->assign('pistols', $pistols);
+			$all_result = $tmp_pistol->count($filter); 
+			
+			$end_result = count($pistols) + $start_result;
+			$max_page = ceil($all_result/$results_per_page);
+			
+			$this->registry->smarty->assign('page', $page);
+			$this->registry->smarty->assign('max_page', $max_page);
+			$this->registry->smarty->assign('start_result', $start_result + 1);
+			$this->registry->smarty->assign('end_result', $end_result);
+			$this->registry->smarty->assign('all_result', $all_result);
+			
+			$results_button = 9;
+			if ($page <= floor($results_button / 2)) {
+				$this->registry->smarty->assign('start_button', 1);
+				if ($max_page < $results_button) {
+					$this->registry->smarty->assign('end_button', $max_page);
+				} else {
+					$this->registry->smarty->assign('end_button', $results_button);
+				}
+			} else {
+				$this->registry->smarty->assign('start_button', $page - floor($results_button / 2));
+				if ($page >= $max_page - floor($results_button / 2)) {
+					$this->registry->smarty->assign('start_button', $max_page - $results_button);
+					$this->registry->smarty->assign('end_button', $max_page);
+				}
+			}
+			
+			$this->display('html/pistol/results.tpl');
+		}
+		
 		/**
 		 * 
 		 * Връяа марките на даден вид пистолет в json формат

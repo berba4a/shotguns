@@ -11,7 +11,7 @@
 <div class="footer">
 
 <div class="footerLogoField">
-<img src="images/testLogo.jpg" width="80" height="27" />
+<img src="{$smarty.const.WWW}templates/images/testLogo.jpg" width="80" height="27" />
 <br/>
 <a style="color:red;text-decoration:none;" href="#">MySite.com</a><br />
 <span style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:9px;color:#828282;">© Copyright 2012</span>

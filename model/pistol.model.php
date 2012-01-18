@@ -128,4 +128,11 @@
 			$this->getCurrency();
 			$this->getImages();
 		}
+		
+		function count($filter = false) {
+			$query = "select count(0) as cnt from pistols";
+			
+			$row = $this->db->fastSelect($query, $filter);
+			return $row->cnt;
+		}
 	}
