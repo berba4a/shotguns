@@ -2,10 +2,10 @@
 	define('DEBUG', true);
 	
 	//Домейна на системата
-	define('DOMAIN', 'http://shotguns');
+	define('DOMAIN', 'http://localhost');
 	
 	//Къде се намира началната страница
-	define('WWW', '/');
+	define('WWW', '/shotguns/');
 
 	define('DSN', 'mysql:dbname=shotguns;host=localhost');
 	define('USER', 'root');
