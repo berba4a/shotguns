@@ -29,6 +29,7 @@
 		<a href=""><li>дилъри</li></a>
 		<a href=""><li>Форум</li></a>
 		<a href=""><li>контакти</li></a>
+		<a href=""><li>предложения</li></a>
 	</ul>
 	<br>
 	<div class="ithemsBand">
