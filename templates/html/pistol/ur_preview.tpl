@@ -10,7 +10,7 @@
 			<ul class="gallery">
 				<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adBigPic" id="bigPic" name="bigPic" src="{$smarty.const.WWW}{$pistol->images.0->image}" /></a></li>
 				{foreach $pistol->images as $image}
-					<li><a href="{$smarty.const.WWW}{$pistol->images.0->image}" rel="lightbox[something]" title="my caption"><img class="adSmallPic" onclick="document.bigPic.src=this.src;" src="{$smarty.const.WWW}{$image->image}" /></a></li>
+					<li><a href="{$smarty.const.WWW}{$image->image}" rel="lightbox[something]" title="my caption"><img class="adSmallPic" onclick="document.bigPic.src=this.src;" src="{$smarty.const.WWW}{$image->image}" /></a></li>
 				{/foreach}
 			</ul>
 

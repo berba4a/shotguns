@@ -132,8 +132,8 @@
 					$file_name = time() . '_' . rand(1,10000);
 					$handle->file_new_name_body = $file_name;
 					$handle->image_resize = true;
-					$handle->image_x = 360;
-					$handle->image_y = 270;
+					$handle->image_x = 800;
+					$handle->image_y = 600;
 					$handle->Process(HTDOCS . '/templates/images/user_data/');
 					if ($handle->processed) {
 						$data = array('pistol_id' => $pistol_id, 'image' => 'templates/images/user_data/' . $file_name . '.' . $handle->file_src_name_ext);
