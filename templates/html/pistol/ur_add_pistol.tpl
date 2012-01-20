@@ -23,6 +23,7 @@
 
   				<fieldset class="addingFields" id="dataFieldSet" name="dataFieldSet">
     					<legend  class="addingLegend">1.Данни на обявата:</legend>
+						
 						<ul class="addingMenu">
 	<li><span class="redStar">*</span>Категория:<br />
 	<select class="aField" id="type_id" name="type_id" onchange="javascript: getPistolMarks();">
@@ -43,6 +44,15 @@
 	{/if}
    </li>
 
+<li><span class="redStar">*</span>Модел:<br /><select class="aField" id="marka" name="marka">
+  <option>Модел 1</option>
+  <option>Модел 2</option>
+  <option>Модел 3</option>
+  <option>Модел 4</option>
+   <option>Модел 5</option>
+	</select>
+   </li>
+
     <li><span class="redStar">*</span>Калибър:<br />
     <select class="aField" id="caliber_id" name="caliber_id">
 	</select>
@@ -52,13 +62,13 @@
 	</li>
 
 	<li><span class="redStar">*</span>Цена:<br />
-		<input class="aField" type="text" id="price"  name="price" value="{$price}"/>
+		<input class="aField" type="text" size="10" id="price"  name="price" value="{$price}"/>
 		{if !empty($price_error)}
 			<br><span class="error_message">{$price_error}</span>
 		{/if}
 	</li>
 	
-	<li style="margin-left:15px;"><span class="redStar">*</span>Валута:<br />
+	<li style="margin-left:5px;"><span class="redStar">*</span>Валута:<br />
 		<select class="aField" id="currency_id" name="currency_id">
 			{foreach $currency as $curr}
 				<option value="{$curr->id}" {if $currency_id == $curr->id}selected{/if}>{$curr->currency}</option>
@@ -146,10 +156,12 @@
 				}
 			</script>
 			<div><input type="file" id="images[]" name="images[]"></div></div>
-		</li>
+		</li><br />
+<li>Оставащи снимки за прикачане:<span style="color:red;">10</span></li>
+		<li><span class="redStar">*</span>Максимален брой снимки:10.</li>
 	</ul>
 	</fieldset>
-<div class="addFinalText"><img style="border:0px;" src="images/warning.gif" width="30" height="30" /> Ако попълнените от Вас полета са коректни и всички желани снимки от Вас са прикачени ,за да видите как ще изглежда Вашата обява моля натиснете бутона <span style="font-weight:bold;">Преглед на обявата</span> ,а ако полетата са некоректни за да изчистите формата натиснете бутона <span style="font-weight:bold;">Изчистване на полетата</span>.</div>
+<div class="addFinalText"><img style="border:0px;" src="{$smarty.const.WWW}templates/images/warning.gif" width="30" height="30" /> Ако попълнените от Вас полета са коректни и всички желани снимки от Вас са прикачени ,за да видите как ще изглежда Вашата обява моля натиснете бутона <span style="font-weight:bold;">Преглед на обявата</span> ,а ако полетата са некоректни за да изчистите формата натиснете бутона <span style="font-weight:bold;">Изчистване на полетата</span>.</div>
 <div style="text-align:center;margin-bottom:20px;"><input  type="submit" id="submitForm" name="submitForm" value="Преглед на обявата"/>
 <input style="margin-left:200px;" type="reset" id="clearForm" name="clearForm" value="Изчистване на полетата"/></div>
 
