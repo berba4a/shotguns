@@ -14,20 +14,23 @@
 		function home_pistols() {
 			parent::display('html/templates/home_pistols.tpl');
 		}
-		
-		function page2() {
-			parent::display('html/templates/page2.tpl');
+		function home_optics() {
+			parent::display('html/templates/home_optics.tpl');
 		}
 		
-		function page3() {
-			parent::display('html/templates/page3.tpl');
+		function results_optics() {
+			parent::display('html/templates/results_optics.tpl');
 		}
 		
-		function page4() {
-			parent::display('html/templates/page4.tpl');
+		function add_optics() {
+			parent::display('html/templates/add_optics.tpl');
 		}
 		
-		function page5() {
-			parent::display('html/templates/page5.tpl');
+		function search_optics() {
+			parent::display('html/templates/search_optics.tpl');
+		}
+		
+		function preview_optics() {
+			parent::display('html/templates/preview_optics.tpl');
 		}
 	}
