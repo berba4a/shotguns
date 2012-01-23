@@ -42,13 +42,24 @@
    </li>
 
 
-    <li><span class="redStar">*</span>Размер:<br /><select class="aField" id="size" name="size">
-  <option>1-8x</option>
+    <li><span class="redStar">*</span>Размер:<br /><select style="float:left;" class="aField" id="size" name="size">
+  				<option>1-8x</option>
 				  <option>2.4-16x</option>
 				  <option>2.5-16x</option>
 				  <option>2.5-15x</option>
 				   <option>2.5x</option>
 					</select>
+                    <select class="aField" style="float:left;" id="size" name="size">
+  				<option>10</option>
+				  <option>20</option>
+				  <option>24</option>
+				  <option>30</option>
+				   <option>44</option>
+					<option>50</option>
+					<option>56</option>
+					</select>
+                    <div style="clear:both;">&nbsp;</div>
+                    
 	</li>
 
 	<li><div style="float:left;"><span class="redStar">*</span>Цена:<br /><input class="aField" type="text" size="10" id="price"  name="price"/></div>
