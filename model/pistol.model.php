@@ -59,8 +59,8 @@
 		
 		function __construct($primary_key_value = false) {
 			$this->table = 'pistols';
-			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'currency_id', 'description', 'is_active_user', 'is_active_admin', 'created');
-			$this->required = array ('user_id', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'currency_id');
+			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'real_price', 'currency_id', 'description', 'is_active_user', 'is_active_admin', 'created');
+			$this->required = array ('user_id', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'real_price', 'currency_id');
 			parent::__construct($primary_key_value);
 		}
 		
@@ -147,5 +147,14 @@
 			
 			$row = $this->db->fastSelect($query, $filter);
 			return $row->cnt;
+		}
+		
+		function insert($data) {
+			//Слагаме ралната цена в левове
+			if ($data['currency_id'] == 1) {
+				$data['real_price'] = $data['price'];
+			} else {
+				$data['real_price'] = $data['price'] * COURSE_EUR;
+			}
 		}
 	}

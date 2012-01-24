@@ -2,8 +2,8 @@ create table currency (
   id int not null primary key auto_increment,
   currency varchar(20) not null
 );
-insert into currency (currency) values ('Лева');
-insert into currency (currency) values ('EUR');
+insert into currency (id, currency) values (1, 'Лева');
+insert into currency (id, currency) values (2, 'EUR');
 
 create table cities (
   id int not null primary key auto_increment,
@@ -447,6 +447,7 @@ create table pistols (
   caliber_id varchar(20) not null comment 'Калибър',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
+  real_price real not null comment 'Цената в левове',
   currency_id int not null comment 'Валута',
   description text comment 'Описание',
   is_active_user bool not null default 0 comment 'Активна от потребителя',

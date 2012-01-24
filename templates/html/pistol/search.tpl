@@ -1,3 +1,29 @@
+<script type="text/javascript">
+<!--
+	$(document).ready(function() {
+		getPistolMarks(0, true);
+		$('#mark_id\\[0\\]').val({$smarty.session.tmp_pistol_search.mark_id.0});
+		getPistolModels(0, true);
+		$('#model_id\\[0\\]').val({$smarty.session.tmp_pistol_search.model_id.0});
+		getPistolCalibers(0, true);
+		$('#caliber_id\\[0\\]').val({$smarty.session.tmp_pistol_search.caliber_id.0});
+
+		getPistolMarks(1, true);
+		$('#mark_id\\[1\\]').val({$smarty.session.tmp_pistol_search.mark_id.1});
+		getPistolModels(1, true);
+		$('#model_id\\[1\\]').val({$smarty.session.tmp_pistol_search.model_id.1});
+		getPistolCalibers(1, true);
+		$('#caliber_id\\[1\\]').val({$smarty.session.tmp_pistol_search.caliber_id.1});
+
+		getPistolMarks(2, true);
+		$('#mark_id\\[2\\]').val({$smarty.session.tmp_pistol_search.mark_id.2});
+		getPistolModels(2, true);
+		$('#model_id\\[2\\]').val({$smarty.session.tmp_pistol_search.model_id.2});
+		getPistolCalibers(2, true);
+		$('#caliber_id\\[2\\]').val({$smarty.session.tmp_pistol_search.caliber_id.2});
+	});
+//-->
+</script>
 <div class="mainMenuBand">Подробно търсене на обява в категория <b>ПИСТОЛЕТИ</b></div>
 
 	<div class="mainField">
@@ -21,7 +47,7 @@
 					<select id="type_id[0]" name="type_id[0]" onchange="javascript: getPistolMarks(0, true);">
 						<option></option>
 						{foreach $types as $type}
-							<option value="{$type->id}">{$type->type}</option>
+							<option value="{$type->id}" {if $smarty.session.tmp_pistol_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
 						{/foreach}
 					</select>
 				</li>
@@ -29,7 +55,7 @@
 					<select id="type_id[1]" name="type_id[1]" onchange="javascript: getPistolMarks(1, true);">
 						<option></option>
 						{foreach $types as $type}
-							<option value="{$type->id}">{$type->type}</option>
+							<option value="{$type->id}" {if $smarty.session.tmp_pistol_search.type_id.1 == $type->id}selected{/if}>{$type->type}</option>
 						{/foreach}
 					</select>
 				</li>
@@ -37,7 +63,7 @@
 					<select id="type_id[2]" name="type_id[2]" onchange="javascript: getPistolMarks(2, true);">
 						<option></option>
 						{foreach $types as $type}
-							<option value="{$type->id}">{$type->type}</option>
+							<option value="{$type->id}" {if $smarty.session.tmp_pistol_search.type_id.2 == $type->id}selected{/if}>{$type->type}</option>
 						{/foreach}
 					</select>
 				</li>
@@ -55,25 +81,31 @@
 				<li>1.<br />
 					<select id="mark_id[0]" name="mark_id[0]" onchange="javascript: getPistolModels(0, true);">
 						<option></option>
+{*
 						{foreach $marks as $mark}
 							<option value="{$mark->id}">{$mark->mark}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>2.<br />
 					<select id="mark_id[1]" name="mark_id[1]" onchange="javascript: getPistolModels(1, true);">
 						<option></option>
+{*
 						{foreach $marks as $mark}
 							<option value="{$mark->id}">{$mark->mark}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>3.<br />
 					<select id="mark_id[2]" name="mark_id[2]" onchange="javascript: getPistolModels(2, true);">
 						<option></option>
+{*
 						{foreach $marks as $mark}
 							<option value="{$mark->id}">{$mark->mark}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 			</ul>
@@ -84,25 +116,31 @@
 				<li>1.<br />
 					<select id="model_id[0]" name="model_id[0]" onchange="javascript: getPistolCalibers(0, true);">
 						<option></option>
+{*
 						{foreach $models as $model}
 							<option values="{$model->id}">{$model->model}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>2.<br />
 					<select id="model_id[1]" name="model_id[1]" onchange="javascript: getPistolCalibers(1, true);">
 						<option></option>
+{*
 						{foreach $models as $model}
 							<option values="{$model->id}">{$model->model}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>3.<br />
 					<select id="model_id[2]" name="model_id[2]" onchange="javascript: getPistolCalibers(2, true);">
 						<option></option>
+{*
 						{foreach $models as $model}
 							<option values="{$model->id}">{$model->model}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 			  </ul>
@@ -118,25 +156,31 @@
 				<li>1.<br />
 					<select id="caliber_id[0]" name="caliber_id[0]">
 						<option></option>
+{*
 						{foreach $calibers as $caliber}
 							<option id="{$caliber->id}">{$caliber->caliber}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>2.<br />
 					<select id="caliber_id[1]" name="caliber_id[1]">
 						<option></option>
+{*
 						{foreach $calibers as $caliber}
 							<option id="{$caliber->id}">{$caliber->caliber}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 				<li>3.<br />
 					<select id="caliber_id[2]" name="caliber_id[2]">
 						<option></option>
+{*
 						{foreach $calibers as $caliber}
 							<option id="{$caliber->id}">{$caliber->caliber}</option>
 						{/foreach}
+*}
 					</select>
 				</li>
 			</ul>

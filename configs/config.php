@@ -29,6 +29,9 @@
 	define('EMAIL_SERVER', 'mail.kontrax.bg');
 	define('EMAIL_SENDER', 'mpavlov@kontrax.bg');
 	
+	//Курса на EUR
+	define('COURSE_EUR', 1.995);
+	
 //Не променяй от тук надолу	
 	if (DEBUG) {
 		/*** error reporting on ***/
