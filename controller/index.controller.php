@@ -8,7 +8,7 @@
 		}
 		
 		function index() {
-			parent::display('html/index/login.tpl');
+			parent::display('html/index/index.tpl');
 		}
 		
 		function login() {

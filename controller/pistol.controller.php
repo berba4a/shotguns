@@ -11,11 +11,19 @@
 	class PistolController Extends BaseController {
 		
 		function __construct($registry) {
+			
+			
 			parent::__construct($registry);
 		}
 		
 		function index() {
-			parent::display('html/index/login.tpl');
+			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 order by created desc limit 12', 'values' => array());
+			
+			$tmp_pistol = new PistolModel();
+			$pistols = $tmp_pistol->fetchAll($filter);
+			$this->registry->smarty->assign('pistols', $pistols);
+			
+			parent::display('html/pistol/index.tpl');
 		}
 		
 		function setPistolData() {
@@ -27,6 +35,7 @@
 			//данни за обявата
 			$this->registry->smarty->assign('type_id', $this->getValue('type_id'));
 			$this->registry->smarty->assign('mark_id', $this->getValue('mark_id'));
+			$this->registry->smarty->assign('model_id', $this->getValue('model_id'));
 			$this->registry->smarty->assign('caliber_id', $this->getValue('caliber_id'));
 			$this->registry->smarty->assign('price', $this->getValue('price'));
 			$this->registry->smarty->assign('currency_id', $this->getValue('currency_id'));
@@ -43,7 +52,7 @@
 		 * 
 		 * Добавяне на пистолет от не регистриран потребител
 		 */
-		function ur_add_pistol() {
+		function ur_add() {
 			$this->setPistolData();
 			
 			$tmp_pistol_type = new PistolTypeModel();
@@ -83,14 +92,14 @@
 				}
 
 				$this->rollBack();
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
 			if (empty($user_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за контракти!!!');
 				
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
@@ -106,14 +115,14 @@
 				}
 			
 				$this->rollBack();
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 				
 			if (empty($pistol_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за обявата!!!');
 			
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
@@ -158,19 +167,25 @@
 		}
 		
 		public function preview($id = false) {
+			//Ако е нов пистолет трябва да може да се види от този, който го е вкарал и за това няма да се прави проверка за това дали потребителя е активен 
+			$is_new_pistol = false;
 			if (empty($id)) {
 				$id = $this->getValue('pistol_id', false, '_GET');
+			} else {
+				$is_new_pistol = true;
 			}
 			
 			if ($id) {
 				$pistol = new PistolModel($id);
 				$pistol->fetch();
 				
-				if (($pistol->is_active_user) && ($pistol->is_active_admin)) {
+				if ((($pistol->is_active_user) && ($pistol->is_active_admin)) || ($is_new_pistol)) {
 					$this->registry->smarty->assign('pistol', $pistol);
 					$this->display('html/pistol/ur_preview.tpl');
 				} else {
 					$this->registry->smarty->assign('site_error', 'Обявата не е намерена!!!');
+					//TODO: Трябва да се извиква някаква страница на която да се показва грешката
+					echo "Трябва да се извиква някаква страница на която да се показва грешката";
 				}
 			} else {
 				$this->redirect(WWW . 'pistol/search');
@@ -218,6 +233,10 @@
 			$tmp_city = new CityModel();
 			$cities = $tmp_city->fetchAll();
 			$this->registry->smarty->assign('cities', $cities);
+			
+			$tmp_currencies = new CurrencyModel();
+			$currencies = $tmp_currencies->fetchAll();
+			$this->registry->smarty->assign('currencies', $currencies);
 			
 			$this->display('html/pistol/search.tpl');
 		}
@@ -406,15 +425,40 @@
 			return true;
 		}
 		
-		function calibers() {
+		/**
+		*
+		* Връща моделите на дадена марка пистолет в json формат
+		* @return boolean
+		*/
+		function models() {
 			$mark_id = $this->getValue('mark_id', false, '_GET');
 			if (empty($mark_id)) {
 				return false;
 			}
 				
 			$return = array();
+			$tmp_models = new PistolModelModel();
+			$models = $tmp_models->fetchAll(array('filter' => ' where mark_id = :mark_id', 'values' => array('mark_id' => $mark_id)));
+			foreach ($models as $model) {
+				$tmp = new stdClass();
+				$tmp->id = $model->id;
+				$tmp->model = $model->model;
+				$return[] = $tmp;
+			}
+			echo json_encode($return);
+				
+			return true;
+		}
+		
+		function calibers() {
+			$model_id = $this->getValue('model_id', false, '_GET');
+			if (empty($model_id)) {
+				return false;
+			}
+				
+			$return = array();
 			$tmp_caliber = new PistolCaliberModel();
-			$calibers = $tmp_caliber->fetchAll(array('filter' => ' where mark_id = :mark_id', 'values' => array('mark_id' => $mark_id)));
+			$calibers = $tmp_caliber->fetchAll(array('filter' => ' where model_id = :model_id', 'values' => array('model_id' => $model_id)));
 			foreach ($calibers as $caliber) {
 				$tmp = new stdClass();
 				$tmp->id = $caliber->id;

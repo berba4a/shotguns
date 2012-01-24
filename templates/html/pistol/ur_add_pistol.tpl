@@ -2,6 +2,7 @@
 	$(document).ready(function() {
 		getPistolMarks();
 		$('#mark_id').val({$mark_id});
+		$('#model_id').val({$model_id});
 		$('#caliber_id').val({$caliber_id});
 	});
 </script>
@@ -37,20 +38,19 @@
 </li>
 
     <li><span class="redStar">*</span>Марка:<br />
-    <select class="aField" id="mark_id" name="mark_id" onchange="javascript: getPistolCalibers();">
+    <select class="aField" id="mark_id" name="mark_id" onchange="javascript: getPistolModels();">
 	</select>
 	{if !empty($mark_id_error)}
 		<br><span class="error_message">{$mark_id_error}</span>
 	{/if}
    </li>
 
-<li><span class="redStar">*</span>Модел:<br /><select class="aField" id="marka" name="marka">
-  <option>Модел 1</option>
-  <option>Модел 2</option>
-  <option>Модел 3</option>
-  <option>Модел 4</option>
-   <option>Модел 5</option>
+<li><span class="redStar">*</span>Модел:<br />
+	<select class="aField" id="model_id" name="model_id" onchange="javascript: getPistolCalibers();">
 	</select>
+	{if !empty($model_id_error)}
+		<br><span class="error_message">{$model_id_error}</span>
+	{/if}
    </li>
 
     <li><span class="redStar">*</span>Калибър:<br />

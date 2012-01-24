@@ -1,6 +1,7 @@
 <?php
 	require_once 'pistol_type.model.php';
 	require_once 'pistol_mark.model.php';
+	require_once 'pistol_model.model.php';
 	require_once 'pistol_caliber.model.php';
 	require_once 'pistol_image.model.php';
 	require_once 'user.model.php';
@@ -19,6 +20,12 @@
 		 * @var PistolMarkModel
 		 */
 		public $mark;
+		/**
+		 * 
+		 * Enter description here ...
+		 * @var PistolModelModel
+		 */
+		public $model;
 		/**
 		 * 
 		 * Enter description here ...
@@ -52,8 +59,8 @@
 		
 		function __construct($primary_key_value = false) {
 			$this->table = 'pistols';
-			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'caliber_id', 'city_id', 'price', 'currency_id', 'description', 'is_active_user', 'is_active_admin', 'created');
-			$this->required = array ('user_id', 'is_old', 'type_id', 'mark_id', 'caliber_id', 'city_id', 'price', 'currency_id');
+			$this->columns = array ('id', 'user_id', 'is_old', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'currency_id', 'description', 'is_active_user', 'is_active_admin', 'created');
+			$this->required = array ('user_id', 'type_id', 'mark_id', 'model_id', 'caliber_id', 'city_id', 'price', 'currency_id');
 			parent::__construct($primary_key_value);
 		}
 		
@@ -65,6 +72,11 @@
 		function getMark() {
 			$this->mark = new PistolMarkModel($this->mark_id);
 			$this->mark->fetch();
+		}
+		
+		function getModel() {
+			$this->model = new PistolModelModel($this->model_id);
+			$this->model->fetch();
 		}
 		
 		function getCaliber() {
@@ -122,6 +134,7 @@
 			parent::fetch();
 			$this->getType();
 			$this->getMark();
+			$this->getModel();
 			$this->getCaliber();
 			$this->getCity();
 			$this->getUser();

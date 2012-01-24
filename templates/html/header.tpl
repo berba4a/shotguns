@@ -21,26 +21,27 @@
  
   </div> </a>
 	<div style="clear:both;margin-top:-10px;margin-bottom:-10px;">&nbsp;</div>
-	
+--{$controller}/{$action}--	
 	<ul class="mainMenu">
-		<a href=""><li>начало</li></a>
-		<a href=""><li class="mainMenuSelectedIthem">публикуване</li></a>
-		<a href=""><li>подробно търсене</li></a>
-		<a href=""><li>дилъри</li></a>
-		<a href=""><li>Форум</li></a>
-		<a href=""><li>контакти</li></a>
-		<a href=""><li>предложения</li></a>
+		<a href="{$smarty.const.WWW}{$controller}/index"><li {if ($controller != 'dealers') && ($controller != 'contracts') && (($action == '') || ($action == 'index'))}class="mainMenuSelectedIthem"{/if}>начало</li></a>
+		<a href="{$smarty.const.WWW}{$controller}/ur_add"><li {if ($controller != 'dealers') && ($controller != 'contracts') && ($action == 'ur_add')}class="mainMenuSelectedIthem"{/if}>публикуване</li></a>
+		<a href="{$smarty.const.WWW}{$controller}/search"><li {if ($controller != 'dealers') && ($controller != 'contracts') && ($action == 'search')}class="mainMenuSelectedIthem"{/if}>подробно търсене</li></a>
+		<a href="{$smarty.const.WWW}dealers"><li {if $controller == 'dealers'}class="mainMenuSelectedIthem"{/if}>дилъри</li></a>
+		<a href="#"><li {if $controller == 'forum'}class="mainMenuSelectedIthem"{/if}>Форум</li></a>
+		<a href="{$smarty.const.WWW}contacts"><li {if $controller == 'contacts' && (action == '' || $action == 'index')}class="mainMenuSelectedIthem"{/if}>контакти</li></a>
+		<a href="{$smarty.const.WWW}contacts/suggestion"><li {if (($controller == 'contacts') && ($action == 'suggestion'))}class="mainMenuSelectedIthem"{/if}>предложения</li></a>
 	</ul>
+	
 	<br>
 	<div class="ithemsBand">
 	<ul>
-			<a href="#"> <li> Пушки </li></a>
-			<a href="#"> <li class="mainMenuSelectedIthem"> Пистолети </li></a>
-			<a href="#"><li> Патрони </li></a>
-			<a href="#"><li> Оптики </li></a>
-			<a href="#"><li> Екипировка </li></a>
-			<a href="#"><li> Аксесоари </li></a>
-			<a href="#"><li> Ловни кучета </li></a>
+			<a href="{$smarty.const.WWW}shotgun/{$action}"> <li {if $controller == 'shotgun'}class="mainMenuSelectedIthem"{/if}> Пушки </li></a>
+			<a href="{$smarty.const.WWW}pistol/{$action}"> <li {if $controller == 'pistol'}class="mainMenuSelectedIthem"{/if}> Пистолети </li></a>
+			<a href="{$smarty.const.WWW}"><li> Патрони </li></a>
+			<a href="{$smarty.const.WWW}"><li> Оптики </li></a>
+			<a href="{$smarty.const.WWW}"><li> Екипировка </li></a>
+			<a href="{$smarty.const.WWW}"><li> Аксесоари </li></a>
+			<a href="{$smarty.const.WWW}"><li> Ловни кучета </li></a>
 
 			<a href="#"><li style="-moz-border-radius-topright: 5px;
 -webkit-top-right-radius: 5px;

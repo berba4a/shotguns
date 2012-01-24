@@ -17,28 +17,28 @@
 					<li><input type="checkbox" name="type_id[]" value="{$type->id}" {if in_array($type->id, $smarty.session.tmp_pistol_search.type_id)}checked{/if} />{$type->type}</li>
 				{/foreach}
 				-->
-				<li>1. <select id="category[]" name="category[]">
-					  <option>Револвери</option>
-					  <option>Полуавтоматични</option>
-					  <option>Автоматични</option>
-					  <option>Пневнатични</option>
-					   <option>Газови</option>
+				<li>1. 
+					<select id="type_id[0]" name="type_id[0]" onchange="javascript: getPistolMarks(0, true);">
+						<option></option>
+						{foreach $types as $type}
+							<option value="{$type->id}">{$type->type}</option>
+						{/foreach}
 					</select>
 				</li>
-				<li>2. <select id="category[]" name="category[]">
-					  <option>Револвери</option>
-					  <option>Полуавтоматични</option>
-					  <option>Автоматични</option>
-					  <option>Пневнатични</option>
-					   <option>Газови</option>
+				<li>2. 
+					<select id="type_id[1]" name="type_id[1]" onchange="javascript: getPistolMarks(1, true);">
+						<option></option>
+						{foreach $types as $type}
+							<option value="{$type->id}">{$type->type}</option>
+						{/foreach}
 					</select>
 				</li>
-				<li>3. <select   id="category[]" name="category[]">
-					  <option>Револвери</option>
-					  <option>Полуавтоматични</option>
-					  <option>Автоматични</option>
-					  <option>Пневнатични</option>
-					   <option>Газови</option>
+				<li>3. 
+					<select id="type_id[2]" name="type_id[2]" onchange="javascript: getPistolMarks(2, true);">
+						<option></option>
+						{foreach $types as $type}
+							<option value="{$type->id}">{$type->type}</option>
+						{/foreach}
 					</select>
 				</li>
 			</ul>
@@ -53,30 +53,27 @@
 				
 				-->
 				<li>1.<br />
-					<select id="mark[]" name="mark[]">
-				  <option>Байкал</option>
-				  <option>Glock</option>
-				  <option>Colt</option>
-				  <option>TT</option>
-				   <option>Берета</option>
+					<select id="mark_id[0]" name="mark_id[0]" onchange="javascript: getPistolModels(0, true);">
+						<option></option>
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
 					</select>
 				</li>
 				<li>2.<br />
-				<select id="mark[]" name="mark[]">
-				  <option>Байкал</option>
-				  <option>Glock</option>
-				  <option>Colt</option>
-				  <option>TT</option>
-				   <option>Берета</option>
+					<select id="mark_id[1]" name="mark_id[1]" onchange="javascript: getPistolModels(1, true);">
+						<option></option>
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
 					</select>
 				</li>
 				<li>3.<br />
-				<select id="mark[]" name="mark[]">
-				  <option>Байкал</option>
-				  <option>Glock</option>
-				  <option>Colt</option>
-				  <option>TT</option>
-				   <option>Берета</option>
+					<select id="mark_id[2]" name="mark_id[2]" onchange="javascript: getPistolModels(2, true);">
+						<option></option>
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
 					</select>
 				</li>
 			</ul>
@@ -85,31 +82,28 @@
 
             <ul>
 				<li>1.<br />
-					<select id="model[]" name="model[]">
-					  <option>Модел 1</option>
-					  <option>Модел 2</option>
-					  <option>Модел 3</option>
-					  <option>Модел 4</option>
-					   <option>Модел 5</option>
-						</select>
+					<select id="model_id[0]" name="model_id[0]" onchange="javascript: getPistolCalibers(0, true);">
+						<option></option>
+						{foreach $models as $model}
+							<option values="{$model->id}">{$model->model}</option>
+						{/foreach}
+					</select>
 				</li>
 				<li>2.<br />
-					<select id="model[]" name="model[]">
-					  <option>Модел 1</option>
-					  <option>Модел 2</option>
-					  <option>Модел 3</option>
-					  <option>Модел 4</option>
-					   <option>Модел 5</option>
-						</select>
+					<select id="model_id[1]" name="model_id[1]" onchange="javascript: getPistolCalibers(1, true);">
+						<option></option>
+						{foreach $models as $model}
+							<option values="{$model->id}">{$model->model}</option>
+						{/foreach}
+					</select>
 				</li>
 				<li>3.<br />
-					<select id="model[]" name="model[]">
-					  <option>Модел 1</option>
-					  <option>Модел 2</option>
-					  <option>Модел 3</option>
-					  <option>Модел 4</option>
-					   <option>Модел 5</option>
-						</select>
+					<select id="model_id[2]" name="model_id[2]" onchange="javascript: getPistolCalibers(2, true);">
+						<option></option>
+						{foreach $models as $model}
+							<option values="{$model->id}">{$model->model}</option>
+						{/foreach}
+					</select>
 				</li>
 			  </ul>
             </div>
@@ -122,30 +116,27 @@
 				{/foreach}
 				-->
 				<li>1.<br />
-				<select id="calibre" name="calibre">
-				  <option>Калнбър1</option>
-				  <option>Калнбър2</option>
-				  <option>Калнбър3</option>
-				  <option>Калнбър4</option>
-				   <option>Калнбър5</option>
+					<select id="caliber_id[0]" name="caliber_id[0]">
+						<option></option>
+						{foreach $calibers as $caliber}
+							<option id="{$caliber->id}">{$caliber->caliber}</option>
+						{/foreach}
 					</select>
 				</li>
 				<li>2.<br />
-				<select id="calibre" name="calibre">
-				  <option>Калнбър1</option>
-				  <option>Калнбър2</option>
-				  <option>Калнбър3</option>
-				  <option>Калнбър4</option>
-				   <option>Калнбър5</option>
+					<select id="caliber_id[1]" name="caliber_id[1]">
+						<option></option>
+						{foreach $calibers as $caliber}
+							<option id="{$caliber->id}">{$caliber->caliber}</option>
+						{/foreach}
 					</select>
 				</li>
 				<li>3.<br />
-				<select id="calibre" name="calibre">
-				  <option>Калнбър1</option>
-				  <option>Калнбър2</option>
-				  <option>Калнбър3</option>
-				  <option>Калнбър4</option>
-				   <option>Калнбър5</option>
+					<select id="caliber_id[2]" name="caliber_id[2]">
+						<option></option>
+						{foreach $calibers as $caliber}
+							<option id="{$caliber->id}">{$caliber->caliber}</option>
+						{/foreach}
 					</select>
 				</li>
 			</ul>
@@ -164,8 +155,9 @@
                 <li style="margin-top:10px;margin-right:5px;margin-left:-35px;">До <input type="text" id="end_price" name="end_price" size="10" value="{$smarty.session.tmp_pistol_search.end_price}"/></li>
                 <li style="margin-top:10px;margin-right:5px;margin-left:-35px;">
                 <select class="aField" id="currency_id" name="currency_id">
-                      <option>Лева</option>
-                      <option>EUR</option>
+                      {foreach $currencies as $currency}
+                      	<option id="{$currency->id}" {if $smarty.session.tmp_pistol_search.currency_id == $currency->id}selected{/if}>{$currency->currency}</option>
+                      {/foreach}
                  </select>
 
                  </li>
@@ -184,8 +176,8 @@
 				<div  class="searchMenu" style="margin-left:0px; margin-top:15px;">
 					<div class="searchHeaders">Снимки:</div>
 							<ul style="height:auto; margin-top:5px;">
-								<li><input type="checkbox" name="pictures[]" value="value[]" />Със снимки</li>
-								 <li><input type="checkbox" name="pictures[]" value="value[]" />Всички</li>
+								<li><input type="radio" id="has_image" name="has_image" value="1" {if $smarty.session.tmp_pistol_search.has_image}checked{/if} />Със снимки</li>
+								<li><input type="radio" id="has_image" name="has_image" value="0" {if !$smarty.session.tmp_pistol_search.has_image}checked{/if}/>Всички</li>
 							</ul>
 				</div>
 			</div>
