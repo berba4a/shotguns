@@ -4,7 +4,7 @@
 <div class="mainMenuBand">Публикуване на обява в катеория <b>ПИСТОЛЕТИ - ПРЕГЛЕД НА ОБЯВАТА</b></div>
 
 	<div class="mainField">
-	<div class="firstTitle">Пистолет {$pistol->mark->mark} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if}</div>
+	<div class="firstTitle">{$pistol->type->type} {$pistol->mark->mark} {$pistol->model->model} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if}</div>
 	<div class="mainAdField">
 		<div class="gallery">
 			<ul class="gallery">
@@ -15,7 +15,7 @@
 			</ul>
 
 		</div>
-		<div class="adText"><span class="secondTitle">Пистолет {$pistol->mark->mark} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if}</span></div><br />
+		<div class="adText"><span class="secondTitle">{$pistol->type->type} {$pistol->mark->mark} {$pistol->model->model} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if}</span></div><br />
 <br />
 <br />
 <div  class="descrHeaders">
@@ -24,6 +24,7 @@
 			<li>Категория:<span>Пистолети</span></li>
 
 			<li>Марка:<span>{$pistol->mark->mark}</span></li>
+			<li>Модел:<span>{$pistol->model->model}</span></li>
 			<li>Калибър:<span>{$pistol->caliber->caliber}</span></li>
 			<li>Употреба:<span>{if $pistol->is_old} Използван {else} Нов {/if}</span></li>
 			<li>Дата на публикуване:<span>{$pistol->created}</span></li>

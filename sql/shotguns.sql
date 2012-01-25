@@ -2,9 +2,8 @@ create table currency (
   id int not null primary key auto_increment,
   currency varchar(20) not null
 );
-insert into currency (currency) values ('Лева');
-insert into currency (currency) values ('EUR');
-insert into currency (currency) values ('USD');
+insert into currency (id, currency) values (1, 'Лева');
+insert into currency (id, currency) values (2, 'EUR');
 
 create table cities (
   id int not null primary key auto_increment,
@@ -410,21 +409,33 @@ create table pistol_marks (
 --insert into pistol_marks (type_id, mark) values (2, 'Марка 2-1');
 --insert into pistol_marks (type_id, mark) values (3, 'Марка 3-1');
 
+create table pistol_models (
+  id int not null primary key auto_increment,
+  mark_id int not null comment 'Марка пистолет',
+  model varchar(100) not null comment 'Модел пистолет',
+  constraint fk_pistolet_modles_mark foreign key (mark_id) references pistol_marks(id)
+) comment 'Модели пистолети';
+--insert into pistol_models (mark_id, model) values (1, 'Модел 1-1');
+--insert into pistol_models (mark_id, model) values (1, 'Модел 1-2');
+--insert into pistol_models (mark_id, model) values (1, 'Модел 1-3');
+--insert into pistol_models (mark_id, model) values (2, 'Модел 2-1');
+--insert into pistol_models (mark_id, model) values (3, 'Модел 3-1');
+
 create table pistol_calibers (
   id int not null primary key auto_increment,
-  mark_id varchar(100) not null comment 'Марка пистолет',
+  model_id varchar(100) not null comment 'Модел пистолет',
   caliber varchar(100) not null comment 'Калибър на пистолета',
-  constraint fk_pistolet_marks_mark foreign key (mark_id) references pistol_marks(id)
+  constraint fk_pistol_calibers_model foreign key (model_id) references pistol_models(id)
 ) comment 'Калибри на пистолети';
---insert into pistol_calibers (mark_id, caliber) values (1, 'Калибър 1-1');
---insert into pistol_calibers (mark_id, caliber) values (1, 'Калибър 1-2');
---insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-1');
---insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-2');
---insert into pistol_calibers (mark_id, caliber) values (2, 'Калибър 2-3');
---insert into pistol_calibers (mark_id, caliber) values (3, 'Калибър 3-1');
---insert into pistol_calibers (mark_id, caliber) values (4, 'Калибър 4-1');
---insert into pistol_calibers (mark_id, caliber) values (4, 'Калибър 4-2');
---insert into pistol_calibers (mark_id, caliber) values (5, 'Калибър 5-1');
+--insert into pistol_calibers (model_id, caliber) values (1, 'Калибър 1-1');
+--insert into pistol_calibers (model_id, caliber) values (1, 'Калибър 1-2');
+--insert into pistol_calibers (model_id, caliber) values (2, 'Калибър 2-1');
+--insert into pistol_calibers (model_id, caliber) values (2, 'Калибър 2-2');
+--insert into pistol_calibers (model_id, caliber) values (2, 'Калибър 2-3');
+--insert into pistol_calibers (model_id, caliber) values (3, 'Калибър 3-1');
+--insert into pistol_calibers (model_id, caliber) values (4, 'Калибър 4-1');
+--insert into pistol_calibers (model_id, caliber) values (4, 'Калибър 4-2');
+--insert into pistol_calibers (model_id, caliber) values (5, 'Калибър 5-1');
 
 create table pistols (
   id int not null primary key auto_increment,
@@ -432,9 +443,11 @@ create table pistols (
   is_old bool not null comment 'Стара/Нова',
   type_id int not null comment 'Тип пистолет',
   mark_id int not null comment 'Марка',
+  model_id int not null comment 'Модел',
   caliber_id varchar(20) not null comment 'Калибър',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
+  real_price real not null comment 'Цената в левове',
   currency_id int not null comment 'Валута',
   description text comment 'Описание',
   is_active_user bool not null default 0 comment 'Активна от потребителя',
@@ -442,6 +455,7 @@ create table pistols (
   created timestamp default CURRENT_TIMESTAMP(),
   constraint fk_pistols_user foreign key (user_id) references users(id),
   constraint fk_pistols_makr foreign key (mark_id) references pistol_marks(id),
+  constraint fk_pistols_model foreign key (model_id) references pistol_models(id),
   constraint fk_pistols_type foreign key (type_id) references pistol_types(id),
   constraint fk_pistols_city foreign key (city_id) references cities(id),
   constraint fk_pistols_currency foreign key (currency_id) references currency(id)

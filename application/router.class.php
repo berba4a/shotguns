@@ -122,12 +122,17 @@ class Router {
 		}
 		
 		if (empty($this->controller)) {
-			$this->controller = 'index';
+			$this->controller = 'shotgun';
 		}
 		
 		if (empty($this->action)) {
 			$this->action = 'index';
 		}
+		
+		//Не е нужно
+		$this->registry->smarty->assign('controller', $this->controller);
+		$this->registry->smarty->assign('action', $this->action);
+		
 		$this->file = $this->path .'/'. $this->controller . '.controller.php';
 	}
 }

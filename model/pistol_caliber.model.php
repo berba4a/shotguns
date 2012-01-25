@@ -1,18 +1,23 @@
 <?php
-	require_once 'pistol_type.model.php';
+	require_once 'pistol_model.model.php';
 	
 	class PistolCaliberModel extends BaseModel {
 		/**
 		 * 
 		 * Enter description here ...
-		 * @var PistolTypeModel
+		 * @var PistolModelModel
 		 */
-		public $type;
+		public $model;
 		
 		function __construct($primary_key_value = false) {
 			$this->table = 'pistol_calibers';
-			$this->columns = array ('id', 'mark_id', 'caliber');
-			$this->required = array ('mark_id', 'caliber');
+			$this->columns = array ('id', 'model_id', 'caliber');
+			$this->required = array ('model_id', 'caliber');
 			parent::__construct($primary_key_value);
+		}
+		
+		function getModel() {
+			$this->model = new PistolModelModel($this->model_id);
+			$this->model->fetch();
 		}
 	}

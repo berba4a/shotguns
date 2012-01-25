@@ -11,11 +11,19 @@
 	class PistolController Extends BaseController {
 		
 		function __construct($registry) {
+			
+			
 			parent::__construct($registry);
 		}
 		
 		function index() {
-			parent::display('html/index/login.tpl');
+			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 order by created desc limit 12', 'values' => array());
+			
+			$tmp_pistol = new PistolModel();
+			$pistols = $tmp_pistol->fetchAll($filter);
+			$this->registry->smarty->assign('pistols', $pistols);
+			
+			parent::display('html/pistol/index.tpl');
 		}
 		
 		function setPistolData() {
@@ -27,6 +35,7 @@
 			//данни за обявата
 			$this->registry->smarty->assign('type_id', $this->getValue('type_id'));
 			$this->registry->smarty->assign('mark_id', $this->getValue('mark_id'));
+			$this->registry->smarty->assign('model_id', $this->getValue('model_id'));
 			$this->registry->smarty->assign('caliber_id', $this->getValue('caliber_id'));
 			$this->registry->smarty->assign('price', $this->getValue('price'));
 			$this->registry->smarty->assign('currency_id', $this->getValue('currency_id'));
@@ -43,7 +52,7 @@
 		 * 
 		 * Добавяне на пистолет от не регистриран потребител
 		 */
-		function ur_add_pistol() {
+		function ur_add() {
 			$this->setPistolData();
 			
 			$tmp_pistol_type = new PistolTypeModel();
@@ -83,14 +92,14 @@
 				}
 
 				$this->rollBack();
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
 			if (empty($user_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за контракти!!!');
 				
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
@@ -106,14 +115,14 @@
 				}
 			
 				$this->rollBack();
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 				
 			if (empty($pistol_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за обявата!!!');
 			
-				$this->ur_add_pistol();
+				$this->ur_add();
 				return false;
 			}
 			
@@ -158,19 +167,25 @@
 		}
 		
 		public function preview($id = false) {
+			//Ако е нов пистолет трябва да може да се види от този, който го е вкарал и за това няма да се прави проверка за това дали потребителя е активен 
+			$is_new_pistol = false;
 			if (empty($id)) {
 				$id = $this->getValue('pistol_id', false, '_GET');
+			} else {
+				$is_new_pistol = true;
 			}
 			
 			if ($id) {
 				$pistol = new PistolModel($id);
 				$pistol->fetch();
 				
-				if (($pistol->is_active_user) && ($pistol->is_active_admin)) {
+				if ((($pistol->is_active_user) && ($pistol->is_active_admin)) || ($is_new_pistol)) {
 					$this->registry->smarty->assign('pistol', $pistol);
 					$this->display('html/pistol/ur_preview.tpl');
 				} else {
 					$this->registry->smarty->assign('site_error', 'Обявата не е намерена!!!');
+					//TODO: Трябва да се извиква някаква страница на която да се показва грешката
+					echo "Трябва да се извиква някаква страница на която да се показва грешката";
 				}
 			} else {
 				$this->redirect(WWW . 'pistol/search');
@@ -188,12 +203,29 @@
 			}
 		}
 		
-		public function search() {
+		private function setPistolSearchData() {
+			if ($this->getValue('submitForm')) {
+				$_SESSION['tmp_pistol_search']['is_old'] = $this->getValue('is_old', array());
+				$_SESSION['tmp_pistol_search']['type_id'] = $this->getValue('type_id', array());
+				$_SESSION['tmp_pistol_search']['mark_id'] = $this->getValue('mark_id', array());
+				$_SESSION['tmp_pistol_search']['caliber_id'] = $this->getValue('caliber_id', array());
+				$_SESSION['tmp_pistol_search']['city_id'] = $this->getValue('city_id', array());
+				$_SESSION['tmp_pistol_search']['order_by'] = $this->getValue('order_by', 'created desc');
+				$_SESSION['tmp_pistol_search']['start_price'] = $this->getValue('start_price', '');
+				$_SESSION['tmp_pistol_search']['end_price'] = $this->getValue('end_price', '');
+				$_SESSION['tmp_pistol_search']['currency_id'] = $this->getValue('currency_id', '');
+				$_SESSION['tmp_pistol_search']['date'] = $this->getValue('date', '');
+				$_SESSION['tmp_pistol_search']['has_image'] = $this->getValue('has_image');
+				
+				return true;
+			}
+			
 			if (empty($_GET['edit_search'])) {
 				$_SESSION['tmp_pistol_search']['is_old'] = array();
-				$_SESSION['tmp_pistol_search']['type_id'] = array();
-				$_SESSION['tmp_pistol_search']['mark_id'] = array();
-				$_SESSION['tmp_pistol_search']['caliber_id'] = array();
+				$_SESSION['tmp_pistol_search']['type_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_pistol_search']['mark_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_pistol_search']['model_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_pistol_search']['caliber_id'] = array(0 => '', 1 => '', 2 => '');
 				$_SESSION['tmp_pistol_search']['city_id'] = array();
 				$_SESSION['tmp_pistol_search']['order_by'] = 'created desc';
 				$_SESSION['tmp_pistol_search']['start_price'] = '';
@@ -201,7 +233,13 @@
 				$_SESSION['tmp_pistol_search']['currency_id'] = '';
 				$_SESSION['tmp_pistol_search']['date'] = '';
 				$_SESSION['tmp_pistol_search']['has_image'] = '';
+				
+				return true;
 			}
+		}
+		
+		public function search() {
+			$this->setPistolSearchData();
 			
 			$tmp_type = new PistolTypeModel();
 			$types = $tmp_type->fetchAll();
@@ -219,6 +257,10 @@
 			$cities = $tmp_city->fetchAll();
 			$this->registry->smarty->assign('cities', $cities);
 			
+			$tmp_currencies = new CurrencyModel();
+			$currencies = $tmp_currencies->fetchAll();
+			$this->registry->smarty->assign('currencies', $currencies);
+			
 			$this->display('html/pistol/search.tpl');
 		}
 		
@@ -226,19 +268,7 @@
 			print_r($_POST);
 			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 ', 'values' => array());
 			
-			if ($this->getValue('submitForm')) {
-				$_SESSION['tmp_pistol_search']['is_old'] = $this->getValue('is_old', array());
-				$_SESSION['tmp_pistol_search']['type_id'] = $this->getValue('type_id', array());
-				$_SESSION['tmp_pistol_search']['mark_id'] = $this->getValue('mark_id', array());
-				$_SESSION['tmp_pistol_search']['caliber_id'] = $this->getValue('caliber_id', array());
-				$_SESSION['tmp_pistol_search']['city_id'] = $this->getValue('city_id', array());
-				$_SESSION['tmp_pistol_search']['order_by'] = $this->getValue('order_by', 'created desc');
-				$_SESSION['tmp_pistol_search']['start_price'] = $this->getValue('start_price', '');
-				$_SESSION['tmp_pistol_search']['end_price'] = $this->getValue('end_price', '');
-				$_SESSION['tmp_pistol_search']['currency_id'] = $this->getValue('currency_id', '');
-				$_SESSION['tmp_pistol_search']['date'] = $this->getValue('date', '');
-				$_SESSION['tmp_pistol_search']['has_image'] = $this->getValue('has_image');
-			}
+			$this->setPistolSearchData();
 			
 			if ($_SESSION['tmp_pistol_search']['start_price']) {
 				$this->registry->smarty->assign('start_price_text', 'от ' . $_SESSION['tmp_pistol_search']['start_price']);
@@ -264,16 +294,18 @@
 				$this->registry->smarty->assign('is_old_text', $_SESSION['tmp_pistol_search']['is_old'][0]?'Употребявани':'Нови');
 			}
 			
-			if (!empty($_SESSION['tmp_pistol_search']['type_id'])) {
-				$tmp_filter = '';
-				$type_id_text = '';
-				foreach($_SESSION['tmp_pistol_search']['type_id'] as $key=>$value) {
-					$tmp_filter .= ':type_id_' . $key . ', ';
-					$filter['values']['type_id_' . $key] = $value;
-					$pistol_type = new PistolTypeModel($value);
-					$pistol_type->fetch();
-					$type_id_text .= $pistol_type->type . ', ';
-				}
+			//Филтрите за типовете пистолети
+			$tmp_filter = '';
+			$type_id_text = '';
+			foreach($_SESSION['tmp_pistol_search']['type_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':type_id_' . $key . ', ';
+				$filter['values']['type_id_' . $key] = $value;
+				$pistol_type = new PistolTypeModel($value);
+				$pistol_type->fetch();
+				$type_id_text .= $pistol_type->type . ', ';
+			}
+			if (!empty($type_id_text)) {
 				$type_id_text = trim($type_id_text, ', ');
 				$this->registry->smarty->assign('type_id_text', $type_id_text);
 				
@@ -283,16 +315,18 @@
 				$this->registry->smarty->assign('type_id_text', 'Всички');
 			}
 			
-			if (!empty($_SESSION['tmp_pistol_search']['mark_id'])) {
-				$tmp_filter = '';
-				$mark_id_text = '';
-				foreach($_SESSION['tmp_pistol_search']['mark_id'] as $key=>$value) {
-					$tmp_filter .= ':mark_id_' . $key . ', ';
-					$filter['values']['mark_id_' . $key] = $value;
-					$pistol_mark = new PistolMarkModel($value);
-					$pistol_mark->fetch();
-					$mark_id_text .= $pistol_mark->mark . ', ';
-				}
+			//Филтрите за марките пистолети
+			$tmp_filter = '';
+			$mark_id_text = '';
+			foreach($_SESSION['tmp_pistol_search']['mark_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':mark_id_' . $key . ', ';
+				$filter['values']['mark_id_' . $key] = $value;
+				$pistol_mark = new PistolMarkModel($value);
+				$pistol_mark->fetch();
+				$mark_id_text .= $pistol_mark->mark . ', ';
+			}
+			if (!empty($mark_id_text)) {			
 				$mark_id_text = trim($mark_id_text, ', ');
 				$this->registry->smarty->assign('mark_id_text', $mark_id_text);
 				
@@ -302,16 +336,39 @@
 				$this->registry->smarty->assign('mark_id_text', 'Всички');
 			}
 			
-			if (!empty($_SESSION['tmp_pistol_search']['caliber_id'])) {
-				$tmp_filter = '';
-				$caliber_id_text = '';
-				foreach($_SESSION['tmp_pistol_search']['caliber_id'] as $key=>$value) {
-					$tmp_filter .= ':caliber_id_' . $key . ', ';
-					$filter['values']['caliber_id_' . $key] = $value;
-					$pistol_caliber = new PistolCaliberModel($value);
-					$pistol_caliber->fetch();
-					$caliber_id_text .= $pistol_caliber->caliber . ', ';
-				}
+			//Филтрите за моделите пистолети
+			$tmp_filter = '';
+			$model_id_text = '';
+			foreach($_SESSION['tmp_pistol_search']['model_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':model_id_' . $key . ', ';
+				$filter['values']['model_id_' . $key] = $value;
+				$pistol_model = new PistolModelModel($value);
+				$pistol_model->fetch();
+				$model_id_text .= $pistol_model->model . ', ';
+			}
+			if (!empty($model_id_text)) {			
+				$model_id_text = trim($model_id_text, ', ');
+				$this->registry->smarty->assign('model_id_text', $model_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and model_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('model_id_text', 'Всички');
+			}
+			
+			//Филтрите за калибрите пистолети
+			$tmp_filter = '';
+			$caliber_id_text = '';
+			foreach($_SESSION['tmp_pistol_search']['caliber_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':caliber_id_' . $key . ', ';
+				$filter['values']['caliber_id_' . $key] = $value;
+				$pistol_caliber = new PistolCaliberModel($value);
+				$pistol_caliber->fetch();
+				$caliber_id_text .= $pistol_caliber->caliber . ', ';
+			}
+			if (!empty($caliber_id_text)) {
 				$caliber_id_text = trim($caliber_id_text, ', ');
 				$this->registry->smarty->assign('caliber_id_text', $caliber_id_text);
 				
@@ -338,6 +395,21 @@
 				$filter['filter'] .= ' and city_id in (' . $tmp_filter . ') ';
 			} else {
 				$this->registry->smarty->assign('city_id_text', 'Всички');
+			}
+			
+			//Филтрите за цената
+			if ((!empty($_SESSION['tmp_pistol_search']['currency_id'])) && ($_SESSION['tmp_pistol_search']['currency_id'] == 2)) {
+				$correction = COURSE_EUR;
+			} else {
+				$correction = 1;
+			}
+			if (!empty($_SESSION['tmp_pistol_search']['start_price'])) {
+				$filter['filter'] .= ' and real_price >= :start_price ';
+				$filter['values']['start_price'] = $_SESSION['tmp_pistol_search']['start_price'] * $correction;
+			}
+			if (!empty($_SESSION['tmp_pistol_search']['end_price'])) {
+				$filter['filter'] .= ' and real_price <= :end_price ';
+				$filter['values']['end_price'] = $_SESSION['tmp_pistol_search']['end_price'] * $correction;
 			}
 			
 			print_r($filter);
@@ -406,15 +478,40 @@
 			return true;
 		}
 		
-		function calibers() {
+		/**
+		*
+		* Връща моделите на дадена марка пистолет в json формат
+		* @return boolean
+		*/
+		function models() {
 			$mark_id = $this->getValue('mark_id', false, '_GET');
 			if (empty($mark_id)) {
 				return false;
 			}
 				
 			$return = array();
+			$tmp_models = new PistolModelModel();
+			$models = $tmp_models->fetchAll(array('filter' => ' where mark_id = :mark_id', 'values' => array('mark_id' => $mark_id)));
+			foreach ($models as $model) {
+				$tmp = new stdClass();
+				$tmp->id = $model->id;
+				$tmp->model = $model->model;
+				$return[] = $tmp;
+			}
+			echo json_encode($return);
+				
+			return true;
+		}
+		
+		function calibers() {
+			$model_id = $this->getValue('model_id', false, '_GET');
+			if (empty($model_id)) {
+				return false;
+			}
+				
+			$return = array();
 			$tmp_caliber = new PistolCaliberModel();
-			$calibers = $tmp_caliber->fetchAll(array('filter' => ' where mark_id = :mark_id', 'values' => array('mark_id' => $mark_id)));
+			$calibers = $tmp_caliber->fetchAll(array('filter' => ' where model_id = :model_id', 'values' => array('model_id' => $model_id)));
 			foreach ($calibers as $caliber) {
 				$tmp = new stdClass();
 				$tmp->id = $caliber->id;
