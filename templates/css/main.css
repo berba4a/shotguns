@@ -563,3 +563,30 @@ color:white;
 		font-family:Verdana, Geneva, sans-serif;
 		font-size:12px;
 	}
+	.select_category_list{
+	margin-left:auto;
+	margin-right:auto;
+	
+	}
+	.select_category_list li{
+	width:140px;
+	height:130px;
+	text-align:center;
+	vertical-align:middle;
+	/*padding:10px;*/
+	border:1px solid #c5ac49;
+	list-style:none;
+	margin-left:20px;
+	margin-top:20px;
+	margin-bottom:30px;
+	float:left;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(ie-css3.htc);
+	}
+	.select_category_list li:hover{
+	background-color:#d7ffda;
+	}
