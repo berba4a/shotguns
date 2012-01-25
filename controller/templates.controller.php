@@ -33,4 +33,12 @@
 		function preview_optics() {
 			parent::display('html/templates/preview_optics.tpl');
 		}
+		
+		function add_bullets() {
+			parent::display('html/templates/add_bullets.tpl');
+		}
+		function search_select_category() {
+			parent::display('html/templates/search_select_category.tpl');
+		}
+		
 	}
