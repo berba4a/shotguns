@@ -1,7 +1,7 @@
 <div class="mainMenuBand">Подробно търсене на обява в категория <b>ПИСТОЛЕТИ</b></div>
 
 	<div class="mainField">
-	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol.gif" /></div>
+	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol1.gif" /></div>
 		<div class="addingWelcomeText">Добре дошли в раздела за <b>ПОДРОБНО ТЪРСЕНЕ</b> в раздел <b>ПИСТОЛЕТИ</b> .Aко Вашето търсене не е свързано със този раздел моля изберете исканата от вас категория от менюто <a href="#">избор на категория</a> или се върнете в <a href="#">началото</a> на сайта.</div> 
 	<div style="clear:both;">&nbsp;</div>
 
@@ -81,7 +81,7 @@
 				</li>
 			</ul>
             </div>
-            <div  class="searchMenu"> <div class="searchHeaders">Модел:</div>
+            <div  class="searchMenu"><div class="searchHeaders">Модел:</div>
 
             <ul>
 				<li>1.<br />
