@@ -37,6 +37,15 @@
 		function add_bullets() {
 			parent::display('html/templates/bullets/add_bullets.tpl');
 		}
+		
+		function home_bullets() {
+			parent::display('html/templates/bullets/home_bullets.tpl');
+		}
+		
+		function search_bullets() {
+			parent::display('html/templates/bullets/search_bullets.tpl');
+		}
+		
 		function search_select_category() {
 			parent::display('html/templates/search_select_category.tpl');
 		}
