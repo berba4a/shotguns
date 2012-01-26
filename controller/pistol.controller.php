@@ -208,6 +208,7 @@
 				$_SESSION['tmp_pistol_search']['is_old'] = $this->getValue('is_old', array());
 				$_SESSION['tmp_pistol_search']['type_id'] = $this->getValue('type_id', array());
 				$_SESSION['tmp_pistol_search']['mark_id'] = $this->getValue('mark_id', array());
+				$_SESSION['tmp_pistol_search']['model_id'] = $this->getValue('model_id', array());
 				$_SESSION['tmp_pistol_search']['caliber_id'] = $this->getValue('caliber_id', array());
 				$_SESSION['tmp_pistol_search']['city_id'] = $this->getValue('city_id', array());
 				$_SESSION['tmp_pistol_search']['order_by'] = $this->getValue('order_by', 'created desc');

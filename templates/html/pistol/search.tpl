@@ -1,26 +1,24 @@
 <script type="text/javascript">
 <!--
-	$(document).ready(function() {
+		var default_mark_id = new Array();
+		default_mark_id[0] = '{$smarty.session.tmp_pistol_search.mark_id.0}';
+		default_mark_id[1] = '{$smarty.session.tmp_pistol_search.mark_id.1}';
+		default_mark_id[2] = '{$smarty.session.tmp_pistol_search.mark_id.2}';
+		
+		var default_model_id = new Array();
+		default_model_id[0] = '{$smarty.session.tmp_pistol_search.model_id.0}';
+		default_model_id[1] = '{$smarty.session.tmp_pistol_search.model_id.1}';
+		default_model_id[2] = '{$smarty.session.tmp_pistol_search.model_id.2}';
+		
+		var default_caliber_id = new Array();
+		default_caliber_id[0] = '{$smarty.session.tmp_pistol_search.caliber_id.0}';
+		default_caliber_id[1] = '{$smarty.session.tmp_pistol_search.caliber_id.1}';
+		default_caliber_id[2] = '{$smarty.session.tmp_pistol_search.caliber_id.2}';
+		
+	$(document).ready(function() {	
 		getPistolMarks(0, true);
-		$('#mark_id\\[0\\]').val({$smarty.session.tmp_pistol_search.mark_id.0});
-		getPistolModels(0, true);
-		$('#model_id\\[0\\]').val({$smarty.session.tmp_pistol_search.model_id.0});
-		getPistolCalibers(0, true);
-		$('#caliber_id\\[0\\]').val({$smarty.session.tmp_pistol_search.caliber_id.0});
-
 		getPistolMarks(1, true);
-		$('#mark_id\\[1\\]').val({$smarty.session.tmp_pistol_search.mark_id.1});
-		getPistolModels(1, true);
-		$('#model_id\\[1\\]').val({$smarty.session.tmp_pistol_search.model_id.1});
-		getPistolCalibers(1, true);
-		$('#caliber_id\\[1\\]').val({$smarty.session.tmp_pistol_search.caliber_id.1});
-
 		getPistolMarks(2, true);
-		$('#mark_id\\[2\\]').val({$smarty.session.tmp_pistol_search.mark_id.2});
-		getPistolModels(2, true);
-		$('#model_id\\[2\\]').val({$smarty.session.tmp_pistol_search.model_id.2});
-		getPistolCalibers(2, true);
-		$('#caliber_id\\[2\\]').val({$smarty.session.tmp_pistol_search.caliber_id.2});
 	});
 //-->
 </script>

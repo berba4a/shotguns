@@ -1,30 +1,35 @@
 //Взема марките пистолети за даден вид пистолет
 function getPistolMarks(id, add_empty) {
+	var tmp_id;
 	if ((typeof(id) == 'undefined') || (id === false)) {
-		id = '';
+		tmp_id = '';
 	} else {
-		id = '\\[' + id + '\\]';
+		tmp_id = '\\[' + id + '\\]';
 	}
-	
-	var type_id = $('#type_id' + id).val();
+	var type_id = $('#type_id' + tmp_id).val();
 	
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost/shotguns/pistol/marks/?type_id=' + type_id,
 		dataType: "json",
 		success: function (data) {
-			$('#mark_id' + id).find('option').remove();
+			$('#mark_id' + tmp_id).find('option').remove();
 			if ((typeof(add_empty) != 'undefined') && (add_empty)) {
-				$('#mark_id' + id).prepend("<option value='' selected='selected'></option>");
+				$('#mark_id' + tmp_id).prepend("<option value='' selected='selected'></option>");
 			}
 			for(i in data) {
-				$('#mark_id' + id)
+				$('#mark_id' + tmp_id)
 					.append($('<option>', { value : data[i].id })
 					.text(data[i].mark));
 			}
 			
+			if ((typeof(default_mark_id[id]) !== 'undefined') && (default_mark_id[id])) {
+				$('#mark_id' + tmp_id).val(default_mark_id[id]);
+				default_mark_id[id] = false;
+			}
+			
 			//Взимаме и съответните калибри
-			getPistolModels(id);
+			getPistolModels(id, add_empty);
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
 			alert("Има грешка при зареждането на марките!!!");
@@ -35,30 +40,41 @@ function getPistolMarks(id, add_empty) {
 
 //Взема моделите пистолети за даден вид пистолет
 function getPistolModels(id, add_empty) {
+	var tmp_id;
 	if ((typeof(id) == 'undefined') || (id === false)) {
-		id = '';
+		tmp_id = '';
 	} else {
-		id = '\\[' + id + '\\]';
+		tmp_id = '\\[' + id + '\\]';
 	}
-	var mark_id = $('#mark_id' + id).val();
+	var mark_id = $('#mark_id' + tmp_id).val();
 	
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost/shotguns/pistol/models/?mark_id=' + mark_id,
 		dataType: "json",
 		success: function (data) {
-			$('#model_id' + id).find('option').remove();
+			$('#model_id' + tmp_id).find('option').remove();
 			if ((typeof(add_empty) != 'undefined') && (add_empty)) {
-				$('#model_id' + id).prepend("<option value='' selected='selected'></option>");
+				$('#model_id' + tmp_id).prepend("<option value='' selected='selected'></option>");
 			}
 			for(i in data) {
-				$('#model_id' + id)
+				$('#model_id' + tmp_id)
 					.append($('<option>', { value : data[i].id })
 					.text(data[i].model));
 			}
 			
+			console.info(tmp_id);
+			console.info(typeof(default_model_id[id]));
+			console.info('==' + default_model_id[id] + '==');
+			console.info(id);
+			if ((typeof(default_model_id[id]) !== 'undefined') && (default_model_id[id])) {
+				console.info(default_model_id[id]);
+				$('#model_id' + tmp_id).val(default_model_id[id]);
+				default_model_id[id] = false;
+			}
+			
 			//Взимаме и съответните калибри
-			getPistolCalibers();
+			getPistolCalibers(id, add_empty);
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
 			alert("Има грешка при зареждането на моделите!!!");
@@ -69,26 +85,32 @@ function getPistolModels(id, add_empty) {
 
 //Взема калибрите за дадена марка пистолет
 function getPistolCalibers(id, add_empty) {
+	var tmp_id;
 	if ((typeof(id) == 'undefined') || (id === false)) {
-		id = '';
+		tmp_id = '';
 	} else {
-		id = '\\[' + id + '\\]';
+		tmp_id = '\\[' + id + '\\]';
 	}
-	var model_id = $('#model_id' + id).val();
+	var model_id = $('#model_id' + tmp_id).val();
 	
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost/shotguns/pistol/calibers/?model_id=' + model_id,
 		dataType: "json",
 		success: function (data) {
-			$('#caliber_id' + id).find('option').remove();
+			$('#caliber_id' + tmp_id).find('option').remove();
 			if ((typeof(add_empty) != 'undefined') && (add_empty)) {
-				$('#caliber_id' + id).prepend("<option value='' selected='selected'></option>");
+				$('#caliber_id' + tmp_id).prepend("<option value='' selected='selected'></option>");
 			}
 			for(i in data) {
-				$('#caliber_id' + id)
+				$('#caliber_id' + tmp_id)
 					.append($('<option>', { value : data[i].id })
 					.text(data[i].mark));
+			}
+			
+			if ((typeof(default_caliber_id[id]) !== 'undefined') && (default_caliber_id[id])) {
+				$('#caliber_id' + tmp_id).val(default_caliber_id[id]);
+				default_caliber_id[id] = false;
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
