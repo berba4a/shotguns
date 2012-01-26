@@ -158,18 +158,20 @@
             <div  class="searchMenu">
 			<div class="searchHeaders">Местоположение:</div>
             <ul>
+			<li>
 			<!--
 				{foreach $cities as $city}
 					<li><input type="checkbox" name="city_id[]" value="{$city->id}" {if in_array($city->id, $smarty.session.tmp_pistol_search.city_id)}checked{/if} />{$city->city}</li>
 				{/foreach}
 				-->
-				<select id="location[]" name="location[]"  style="margin-top:5px;">
+				<select id="location[]" name="location[]">
 				  <option>Каспичан</option>
 				  <option>татарево</option>
 				  <option>Стърчипишка</option>
 				  <option>Някъде си</option>
 				   <option>Ангел Войвода</option>
 					</select>
+					</li>
 			</ul>
            </div>
 		   
