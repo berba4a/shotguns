@@ -130,10 +130,10 @@
         	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ОПТИКИ</div>
             
              <!--Начало на голямата обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px; height:112px;">
+             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
                  
                  <div class="beginPageBigPicture">
-                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="images/testLogo.jpg" width="150" border="0" /></a>
+                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="images/optics_big.gif" width="150" border="0" /></a>
                  </div>
              
                  <div class="beginPageBigAdText" align="right" id="bgnPageBigAdTaxt" name="bgnPageBigAdTaxt">
