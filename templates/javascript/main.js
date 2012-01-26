@@ -10,7 +10,7 @@ function getPistolMarks(id, add_empty) {
 	
 	$.ajax({
 		type: "GET",
-		url: 'http://shotguns/pistol/marks/?type_id=' + type_id,
+		url: 'http://localhost/shotguns/pistol/marks/?type_id=' + type_id,
 		dataType: "json",
 		success: function (data) {
 			$('#mark_id' + id).find('option').remove();
@@ -44,7 +44,7 @@ function getPistolModels(id, add_empty) {
 	
 	$.ajax({
 		type: "GET",
-		url: 'http://shotguns/pistol/models/?mark_id=' + mark_id,
+		url: 'http://localhost/shotguns/pistol/models/?mark_id=' + mark_id,
 		dataType: "json",
 		success: function (data) {
 			$('#model_id' + id).find('option').remove();
@@ -78,7 +78,7 @@ function getPistolCalibers(id, add_empty) {
 	
 	$.ajax({
 		type: "GET",
-		url: 'http://shotguns/pistol/calibers/?model_id=' + model_id,
+		url: 'http://localhost/shotguns/pistol/calibers/?model_id=' + model_id,
 		dataType: "json",
 		success: function (data) {
 			$('#caliber_id' + id).find('option').remove();
