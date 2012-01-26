@@ -124,9 +124,7 @@
  				</div>
         <!--LeftField end -->    
 		</div>
-        
-        
-        
+              
         <!--RightField begin -->
         <div class="beginPageRightField">
         	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПИСТОЛЕТИ</div>
@@ -167,147 +165,7 @@
                 </a>
               </div>  
               <!--Край на малката обява -->
-               <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява --> <!--Начало на малка обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-                <a href="#">
-                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-                    <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
-                    </div>
-                    
-                    <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
-                    </div>
-                </a>
-              </div>  
-              <!--Край на малката обява -->
+             
             
             <div class="searchHeaders" style="width:auto;margin-top:20px;">Статистика</div>
             <div align="center"><img src="images/warning.gif"  height="100"/><br />
