@@ -54,6 +54,27 @@
 			parent::display('html/templates/bullets/results_bullets.tpl');
 		}
 		
+		function add_rifles() {
+			parent::display('html/templates/bullets/add_rifles.tpl');
+		}
+		
+		function home_rifles() {
+			parent::display('html/templates/bullets/home_rifles.tpl');
+		}
+		
+		function search_rifles() {
+			parent::display('html/templates/bullets/search_rifles.tpl');
+		}
+		
+		function preview_rifles() {
+			parent::display('html/templates/bullets/preview_rifles.tpl');
+		}
+		
+		function results_rifles() {
+			parent::display('html/templates/bullets/results_rifles.tpl');
+		}
+		
+		
 		function search_select_category() {
 			parent::display('html/templates/search_select_category.tpl');
 		}
