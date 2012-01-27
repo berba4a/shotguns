@@ -1,11 +1,11 @@
 	<div class="mainField">
-	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="80"/></div>
-		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>
+	<div class="addLogo" ><img src="images/optika.gif" /></div>
+		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ОПТИКИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
                 
 		<div class="beginPageLeftField">
 			
-            <div class="searchHeaders" style="width:auto;">Бързо търсене в ПИСТОЛЕТИ</div> 
+            <div class="searchHeaders" style="width:auto;">Бързо търсене в ОПТИКИ</div> 
              <form id="basicSearchForm" name="basicSearchForm" action="" method="POST" enctype="multipart/form-data">
              
           <div class="simpleSearchField">
@@ -14,10 +14,10 @@
                 <div style="float:left;">Раздел: <br />
                
                 <select id="mainCategory" name="mainCategory">
-                <option>Пистолети</option>
+                <option>Оптики</option>
+				<option>Пистолети</option>
                 <option>Пушки</option>
                 <option>Патрони</option>
-                <option>Оптики</option>
                 <option>Екипировка</option>
 				<option>Аксесоари</option>
                 <option>Ловни кучета</option>
@@ -26,7 +26,7 @@
                 </select>
                 </div>
             
-            	<div align="right"><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="40" /></div>
+            	<div align="right"><img src="images/optika.gif" width="40" /></div>
             
             <div style="clear:both">&nbsp;</div>
             </div>
@@ -34,24 +34,24 @@
             <div class="beginPageRows">
             <div style="float:left;">Категория: <br />
                
-                <select id="category" name="category">
-                <option>Револвери</option>
-                <option>Автоматични</option>
-                <option>Плуавтоматични</option>
-                <option>Пневматични</option>
-                <option>Газови</option>
-                </select>
+                <select id="category" name="category" style="width:140px;">
+					  <option>Оптичен мерник</option>
+					  <option>Бинокъл</option>
+					  <option>Уред за нощно виждане</option>
+					  <option>Лазерен прицел</option>
+					   <option>Уред за термално виждане</option>
+					</select>
                 </div>
                 
                 <div align="right">Марка: <br />
                
                 <select id="marka" name="marka">
-                <option>Макаров</option>
-                <option>Колт</option>
-                <option>Смит § Уесън</option>
-                <option>Берета</option>
-                <option>ТТ</option>
-                </select>
+				  <option>Carl Zeiss</option>
+				  <option>Nikon</option>
+				  <option>Walther</option>
+				  <option>Swarowski Optic</option>
+				   <option>Lichter</option>
+					</select>
                 </div>
             
             
@@ -62,7 +62,7 @@
             <div style="float:left;">Модел: <br />
                
                 <select id="calibre" name="calibre">
-                <option>Модел 1</option>
+                <option>CZ 1.8-8x50 MST</option>
                 <option>Модел 2</option>
                 <option>Модел 3</option>
                 <option>Модел 4</option>
@@ -70,16 +70,16 @@
                 </select>
                 </div>
                 
-                <div align="right">Калибър: <br />
+                <div align="right">Размер: <br />
                
                
                 <select id="calibre" name="calibre">
-                <option>Калибър 1</option>
-                <option>Калибър 2</option>
-                <option>Калибър 3</option>
-                <option>Калибър 4</option>
-                <option>Калибър 5</option>
-                </select>
+               <option>1-8x</option>
+				  <option>2.4-16x</option>
+				  <option>2.5-16x</option>
+				  <option>2.5-15x</option>
+				   <option>2.5x</option>
+					</select>
                 </div>
             
             
@@ -106,7 +106,7 @@
             </div>
             
             <div class="beginPageRows">
-            <div style="float:left;"><a href="{$smarty.const.WWW}pistol/search" style="color:#685300; text-decoration:underline;">Подробно търсене>></a></div>
+            <div style="float:left;"><a href="#" style="color:#685300; text-decoration:underline;">Подробно търсене>></a></div>
             	<div align="right" ><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-weight:bold;" type="submit" name="submitBtn" id="submitBtn" value="ТЪРСИ" /></div>
 			<div style="clear:both">&nbsp;</div>
             
@@ -124,24 +124,22 @@
  				</div>
         <!--LeftField end -->    
 		</div>
-        
-        
-        
+              
         <!--RightField begin -->
         <div class="beginPageRightField">
-        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПИСТОЛЕТИ</div>
+        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ОПТИКИ</div>
             
              <!--Начало на голямата обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px; height:112px;">
+             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
                  
                  <div class="beginPageBigPicture">
-                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="{$smarty.const.WWW}templates/images/testLogo.jpg" width="150" border="0" /></a>
+                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="images/optics_big.gif" width="150" border="0" /></a>
                  </div>
              
                  <div class="beginPageBigAdText" align="right" id="bgnPageBigAdTaxt" name="bgnPageBigAdTaxt">
                   <a href="#">
-                    Пистолет Макаров<br />
-					Модел 1<br />
+                    Оптичен Мерник Carl Zeiss<br />
+					CZ 1.8-8x50 MST<br />
                     <font color="red"><b> 150 Лева </b></font><br />
                     Каспичан<br />
                     <br />
@@ -152,26 +150,25 @@
              </div>
              <!--Край на голямата обява -->
              
-             {foreach $pistols as $pistol}
-             	<!--Начало на малка обява -->
-	             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
-	                <a href="#">
-	                    <div align="left" style="float:left;" class="beginPageSmallAdText">
-	                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
-	                    <img src="{$smarty.const.WWW}templates/images/testLogo.jpg" height="10" border="0"/>
-	                    Пистолет , {$pistol->mark->mark} Модел 2, {$pistol->city->city}               
-	                    </div>
-	                    
-	                    <div class="beginPageSmallAdText" align="right">
-	                    <b>{$pistol->price} {$pistol->currency->currency}</b>
-	                    </div>
-	                </a>
-	              </div>  
-	              <!--Край на малката обява -->
-             {/foreach}
+             <!--Начало на малка обява -->
+             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
+                <a href="#">
+                    <div align="left" style="float:left;" class="beginPageSmallAdText">
+                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
+                    <img src="images/testLogo.jpg" height="10" border="0"/>
+                    Оптичен мерник , Carl Zeiss CZ 1.8-8x50 MST, Татарево               
+                    </div>
+                    
+                    <div class="beginPageSmallAdText" align="right">
+                    <b>250 Лева </b>
+                    </div>
+                </a>
+              </div>  
+              <!--Край на малката обява -->
+             
             
             <div class="searchHeaders" style="width:auto;margin-top:20px;">Статистика</div>
-            <div align="center"><img src="{$smarty.const.WWW}templates/images/warning.gif"  height="100"/><br />
+            <div align="center"><img src="images/warning.gif"  height="100"/><br />
 В момента статистиката е достъпна само за администратора на сайта!
              </div>
              </div>

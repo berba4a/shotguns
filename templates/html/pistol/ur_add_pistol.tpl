@@ -9,7 +9,7 @@
 
 <div class="mainMenuBand">Публикуване на обява в катеория <b>ПИСТОЛЕТИ</b></div>
 	<div class="mainField">
-		<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol.gif" /></div>
+		<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="80" /></div>
 		<div class="addingWelcomeText">Добре дошли в раздела за <b>ПУБЛИКУВАНЕ</b> на вашата обява в раздел <b>ПИСТОЛЕТИ</b> .Aко вашата обява не е свързана със този раздел моля върнете се на предходната страница за <a href="#">избор на категория</a> или в <a href="#">началото</a> на сайта.Отбелязаните със <span class="redStar">*</span> полета са задължителни.</div> 
 
 	<div style="clear:both;">&nbsp;</div>

@@ -1,11 +1,11 @@
 	<div class="mainField">
-	<div class="addLogo" ><img src="images/pistol.gif" /></div>
-		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>
+	<div class="addLogo" ><img src="images/bullets_big.gif"  width="80"/></div>
+		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПАТРОНИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
                 
 		<div class="beginPageLeftField">
 			
-            <div class="searchHeaders" style="width:auto;">Бързо търсене в ПИСТОЛЕТИ</div> 
+            <div class="searchHeaders" style="width:auto;">Бързо търсене в ПАТРОНИ</div> 
              <form id="basicSearchForm" name="basicSearchForm" action="" method="POST" enctype="multipart/form-data">
              
           <div class="simpleSearchField">
@@ -14,10 +14,10 @@
                 <div style="float:left;">Раздел: <br />
                
                 <select id="mainCategory" name="mainCategory">
-                <option>Пистолети</option>
-                <option>Пушки</option>
-                <option>Патрони</option>
+				<option>Патрони</option>
                 <option>Оптики</option>
+				<option>Пистолети</option>
+                <option>Пушки</option>
                 <option>Екипировка</option>
 				<option>Аксесоари</option>
                 <option>Ловни кучета</option>
@@ -26,62 +26,53 @@
                 </select>
                 </div>
             
-            	<div align="right"><img src="images/pistol.gif" width="40" /></div>
+            	<div align="right"><img src="images/bullets_big.gif" width="40" /></div>
             
             <div style="clear:both">&nbsp;</div>
             </div>
             
             <div class="beginPageRows">
-            <div style="float:left;">Категория: <br />
+            <div style="float:left;">Предназначение: <br />
                
-                <select id="category" name="category">
-                <option>Револвери</option>
-                <option>Автоматични</option>
-                <option>Плуавтоматични</option>
-                <option>Пневматични</option>
-                <option>Газови</option>
-                </select>
+                <select id="category" name="category" >
+					  <option>За гладкоцевни оръжия</option>
+					  <option>За карабини</option>
+					  <option>За пистолети</option>
+					  <option>За револвери</option>
+					   <option>За газови оръжия</option>
+					</select>
                 </div>
                 
-                <div align="right">Марка: <br />
-               
-                <select id="marka" name="marka">
-                <option>Макаров</option>
-                <option>Колт</option>
-                <option>Смит § Уесън</option>
-                <option>Берета</option>
-                <option>ТТ</option>
-                </select>
-                </div>
+             
             
             
 			<div style="clear:both">&nbsp;</div>
             </div>
             
             <div class="beginPageRows">
-            <div style="float:left;">Модел: <br />
-               
-                <select id="calibre" name="calibre">
-                <option>Модел 1</option>
-                <option>Модел 2</option>
-                <option>Модел 3</option>
-                <option>Модел 4</option>
-                <option>Модел 5</option>
-                </select>
+            <div style="float:left;">Производител: <br />
+                <select id="marka" name="marka">
+				  <option>Smith & Wesson</option>
+				  <option>Colt</option>
+				  <option>Magnum</option>
+				  <option>Turkey</option>
+				   <option>China</option>
+					</select>
+                
                 </div>
                 
-                <div align="right">Калибър: <br />
+           <div align="right">Калибър: <br />
                
                
                 <select id="calibre" name="calibre">
-                <option>Калибър 1</option>
-                <option>Калибър 2</option>
-                <option>Калибър 3</option>
-                <option>Калибър 4</option>
-                <option>Калибър 5</option>
+                <option>12</option>
+				  <option>22</option>
+				  <option>9 мм</option>
+				  <option>45 colt</option>
+				   <option>357 mag</option>
                 </select>
                 </div>
-            
+          
             
 			<div style="clear:both">&nbsp;</div>
             </div>
@@ -96,11 +87,11 @@
                 <option>EUR</option>
                 </select>
                 </div>
-				
+		<!-- този раздел няма състояние		
             <div align="right">Състояние: <br /></div>
                 <div align="right">Нов<input type="checkbox" name="condition[]" value="value[]" /></div>
 				<div align="right" >Употребяван<input type="checkbox" name="condition[]" value="value[]" /></div>
-            	
+            	-->
 			<div style="clear:both">&nbsp;</div>
             
             </div>
@@ -117,9 +108,9 @@
             </form>
             <div class="banner3" style="margin-left:0px;">       
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="300" height="250" align="middle">
-			<param name="movie" value="swf/flashvortex_sqr.swf">
+			<param name="movie" value="../optics/swf/flashvortex_sqr.swf">
 			<param name="quality" value="high">
-			<embed src="swf/flashvortex_sqr.swf" width="300" height="250" align="middle" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+			<embed src="../optics/swf/flashvortex_sqr.swf" width="300" height="250" align="middle" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
 		  </object>
  				</div>
         <!--LeftField end -->    
@@ -127,26 +118,26 @@
               
         <!--RightField begin -->
         <div class="beginPageRightField">
-        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПИСТОЛЕТИ</div>
+        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПАТРОНИ</div>
             
              <!--Начало на голямата обява -->
-             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px; height:112px;">
+             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px; ">
                  
                  <div class="beginPageBigPicture">
-                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="images/testLogo.jpg" width="150" border="0" /></a>
+                 <a href="#"><img id="bgnPageBigPic" name="bgnPageBigPic" src="images/bullets_big.gif" width="150" border="0" /></a>
                  </div>
              
                  <div class="beginPageBigAdText" align="right" id="bgnPageBigAdTaxt" name="bgnPageBigAdTaxt">
                   <a href="#">
-                    Пистолет Макаров<br />
-					Модел 1<br />
-                    <font color="red"><b> 150 Лева </b></font><br />
+                   Патрони за гладкоцввно оръжие Smith & Wenson<br />
+					12 клаибър<br />
+                    <font color="red"><b> 2.30 лева </b></font><br />
                     Каспичан<br />
                     <br />
                     12.01.2012
                     </a>
                   </div>
-                     <div style="clear:both">&nbsp;</div>
+                     <div style="clear:both;">&nbsp;</div>
              </div>
              <!--Край на голямата обява -->
              
@@ -156,11 +147,11 @@
                     <div align="left" style="float:left;" class="beginPageSmallAdText">
                    <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
                     <img src="images/testLogo.jpg" height="10" border="0"/>
-                    Пистолет , Колт Модел 2, Татарево               
+                    Патрони за гладкоцевно оръжие , Smith & wenson 22 калибър, Татарево               
                     </div>
                     
                     <div class="beginPageSmallAdText" align="right">
-                    <b>250 Лева </b>
+                    <b>1.20 Лева </b>
                     </div>
                 </a>
               </div>  
