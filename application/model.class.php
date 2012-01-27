@@ -122,11 +122,27 @@
 		}
 		
 		function update($date) {
+			$missing = array();
+			//Проверка за задължителните полета
+			foreach ($this->required as $column) {
+				if (empty($data[$column])) {
+					$missing[$column] = $column;
+				}
+			}
+			
+			//Ако има грешка за задължителни полета връщаме кои са те
+			if (!empty($missing)) {
+				return $missing;
+			}
+			
+			//Взимаме само нужните данни за запис и сглобяваме заявката
 			$sql = 'update ' . $this->table . ' set ';
 			$values = array();
-			foreach ($date as $key=>$value) {
-				$sql .= $key . ' = :' . $key . ', ';
-				$values[$key] = $value;
+			foreach($this->columns as $column) {
+				if (!empty($data[$column])) {
+					$sql .= $column . ' = :' . $column . ', ';
+					$values[$column] = $data[$column];
+				}
 			}
 			
 			$sql = trim($sql, ', ');

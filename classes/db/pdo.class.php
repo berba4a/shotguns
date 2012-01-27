@@ -100,7 +100,7 @@
 				Logger::getInstance()->log($string, "QUERY ERROR");
 				Logger::getInstance()->log($this->db[$this->current]['db']->errorInfo(), "QUERY ERROR");
 				Logger::getInstance()->log($this->prepare[$this->current][$md5]->errorInfo(), "QUERY ERROR");
-				Logger::getInstance()->log($this->createQuery($query, $bind));
+				Logger::getInstance()->log($this->createQuery($query, $bind), "QUERY ERROR");
 				throw new Exception("Query execution error!!!");
 			}
 			   

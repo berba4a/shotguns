@@ -88,7 +88,7 @@ e-mail:<br />
 {if !empty($save_preview)}
 	<div style="text-align:center;margin-bottom:20px;">
 		<input  type="button" id="btn_edit" name="btn_edit" value="Публикувай обявата" onclick="javascript: document.location = '{$smarty.const.WWW}pistol/ur_activate'"/>
-		<input style="margin-left:200px;" type="button" id="btn_edit" name="btn_edit" value="Редактирай обявата"/>
+		<input style="margin-left:200px;" type="button" id="btn_edit" name="btn_edit" value="Редактирай обявата" onclick="javascript: window.location = '{$smarty.const.WWW}pistol/ur_add/?edit=1';"/>
 	</div>
 {/if}
 </div>

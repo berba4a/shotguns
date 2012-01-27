@@ -27,25 +27,39 @@
 		}
 		
 		function setPistolData() {
+			//Ако се събмитва или не сме в редакция  слагаме каквото е пратено или стойност по подразбиране
+			if (($this->getValue('submitForm')) || (empty($_GET['edit']))) {
+				$_SESSION['pistol_id'] = false;
+				$_SESSION['tmp_pistol_save']['real_name'] = $this->getValue('real_name');
+				$_SESSION['tmp_pistol_save']['phone'] = $this->getValue('phone');
+				$_SESSION['tmp_pistol_save']['email'] = $this->getValue('email');
+				$_SESSION['tmp_pistol_save']['website'] = $this->getValue('website');
+				$_SESSION['tmp_pistol_save']['type_id'] = $this->getValue('type_id');
+				$_SESSION['tmp_pistol_save']['mark_id'] = $this->getValue('mark_id');
+				$_SESSION['tmp_pistol_save']['model_id'] = $this->getValue('model_id');
+				$_SESSION['tmp_pistol_save']['caliber_id'] = $this->getValue('caliber_id');
+				$_SESSION['tmp_pistol_save']['price'] = $this->getValue('price');
+				$_SESSION['tmp_pistol_save']['currency_id'] = $this->getValue('currency_id');
+				$_SESSION['tmp_pistol_save']['city_id'] = $this->getValue('city_id');
+				$_SESSION['tmp_pistol_save']['is_old'] = $this->getValue('is_old');
+				$_SESSION['tmp_pistol_save']['description'] = $this->getValue('description');
+			}
+			
 			//данни за потребителя
-			$this->registry->smarty->assign('real_name', $this->getValue('real_name'));
-			$this->registry->smarty->assign('phone', $this->getValue('phone'));
-			$this->registry->smarty->assign('email', $this->getValue('email'));
-			$this->registry->smarty->assign('website', $this->getValue('website'));
+			$this->registry->smarty->assign('real_name', $_SESSION['tmp_pistol_save']['real_name']);
+			$this->registry->smarty->assign('phone', $_SESSION['tmp_pistol_save']['phone']);
+			$this->registry->smarty->assign('email', $_SESSION['tmp_pistol_save']['email']);
+			$this->registry->smarty->assign('website', $_SESSION['tmp_pistol_save']['website']);
 			//данни за обявата
-			$this->registry->smarty->assign('type_id', $this->getValue('type_id'));
-			$this->registry->smarty->assign('mark_id', $this->getValue('mark_id'));
-			$this->registry->smarty->assign('model_id', $this->getValue('model_id'));
-			$this->registry->smarty->assign('caliber_id', $this->getValue('caliber_id'));
-			$this->registry->smarty->assign('price', $this->getValue('price'));
-			$this->registry->smarty->assign('currency_id', $this->getValue('currency_id'));
-			$this->registry->smarty->assign('city_id', $this->getValue('city_id'));
-			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
-			$this->registry->smarty->assign('description', $this->getValue('description'));
-			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
-			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
-			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
-			$this->registry->smarty->assign('is_old', $this->getValue('is_old'));
+			$this->registry->smarty->assign('type_id', $_SESSION['tmp_pistol_save']['type_id']);
+			$this->registry->smarty->assign('mark_id', $_SESSION['tmp_pistol_save']['mark_id']);
+			$this->registry->smarty->assign('model_id', $_SESSION['tmp_pistol_save']['model_id']);
+			$this->registry->smarty->assign('caliber_id', $_SESSION['tmp_pistol_save']['caliber_id']);
+			$this->registry->smarty->assign('price', $_SESSION['tmp_pistol_save']['price']);
+			$this->registry->smarty->assign('currency_id', $_SESSION['tmp_pistol_save']['currency_id']);
+			$this->registry->smarty->assign('city_id', $_SESSION['tmp_pistol_save']['city_id']);
+			$this->registry->smarty->assign('is_old', $_SESSION['tmp_pistol_save']['is_old']);
+			$this->registry->smarty->assign('description', $_SESSION['tmp_pistol_save']['description']);
 		}
 		
 		/**
@@ -70,11 +84,109 @@
 			$this->display('html/pistol/ur_add_pistol.tpl');
 		}
 		
+		function ur_update() {
+			$this->ur_add;
+		}
+		
+		function save_ur_pistol() {
+			if (empty($_SESSION['pistol_id'])) {
+				$this->save_ur_pistol_new();
+			} else {
+				$this->update_ur_pistol();
+			}
+		}
+		
+		private function update_ur_pistol() {
+			//Взимаме потребителя
+			$pistol_id = $_SESSION['pistol_id'];
+			$pistol = new PistolModel($_SESSION['pistol_id']);
+			$pistol->fetch();
+			
+			//Обновяване на потребителските данни
+			$user = new UserModel($pistol->user->id);
+			$_POST['username'] = md5($this->getValue('email') . time());
+			$_POST['password'] = $_POST['username'];
+			$_SESSION['tmp_username'] = $_POST['username'];
+			$_SESSION['tmp_password'] = $_POST['password'];
+			$_POST['is_dealer'] = 0;
+			$user->setRequiredFields(array('username', 'password', 'email'));
+			$user_id = $user->update($_POST);
+			
+			if (is_array($user_id)) {
+				foreach ($user_id as $column) {
+					$this->registry->smarty->assign($column . '_error', 'Полето е задължително');
+					$this->registry->smarty->assign('site_error', 'Не са попълнени всички задължителни полета!!!');
+				}
+
+				$this->rollBack();
+				$this->ur_add();
+				return false;
+			}
+			
+			$_POST['user_id'] = $user_id;
+			$pistol_id = $pistol->update($_POST);
+				
+			if (is_array($pistol_id)) {
+				foreach ($pistol_id as $column) {
+					$this->registry->smarty->assign($column . '_error', 'Полето е задължително');
+					$this->registry->smarty->assign('site_error', 'Не са попълнени всички задължителни полета!!!');
+				}
+					
+				$this->rollBack();
+				$this->ur_add();
+				return false;
+			}
+				
+			//Прикачане на картинките за обява
+			$pistol->deleteImages();
+			$files = array();
+			foreach ($_FILES['images'] as $k => $l) {
+				foreach ($l as $i => $v) {
+					if (!array_key_exists($i, $files))
+					$files[$i] = array();
+					$files[$i][$k] = $v;
+				}
+			}
+			foreach ($files as $file) {
+				$handle = new Upload($file);
+				if ($handle->uploaded) {
+					$file_name = time() . '_' . rand(1,10000);
+					$handle->file_new_name_body = $file_name;
+					$handle->image_resize = true;
+					$handle->image_x = 800;
+					$handle->image_y = 600;
+					$handle->Process(HTDOCS . '/templates/images/user_data/');
+					if ($handle->processed) {
+						$data = array('pistol_id' => $pistol_id, 'image' => 'templates/images/user_data/' . $file_name . '.' . $handle->file_src_name_ext);
+						$pistol_image = new PistolImageModel();
+						$pistol_image->insert($data);
+					} else {
+						$this->rollBack();
+						$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на снимките към обявата!!!');
+						//TODO: Запис на грешката в лог файл
+					}
+				} else {
+					$this->rollBack();
+					$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на снимките към обявата!!!');
+					//TODO: Запис на грешката в лог файл
+					// 					echo 'Error: ' . $handle->error;
+				}
+				unset($handle);
+			}
+				
+			$this->registry->smarty->assign('save_preview', true);
+			//Слагаме id-то на пистолета, за да можем да го редактираме
+			$_SESSION['pistol_id'] = $pistol_id;
+			$this->preview($pistol_id);
+		}
+		
 		/**
 		 * 
 		 * Запис на пистолет от не регистриран потребител
 		 */
-		function save_ur_pistol() {
+		private function save_ur_pistol_new() {
+			$this->setPistolData();
+			
 			//Запис на потребителските данни
 			$user = new UserModel();
 			$_POST['username'] = md5($this->getValue('email') . time());
@@ -95,7 +207,6 @@
 				$this->ur_add();
 				return false;
 			}
-			
 			if (empty($user_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за контракти!!!');
 				
@@ -118,7 +229,7 @@
 				$this->ur_add();
 				return false;
 			}
-				
+			
 			if (empty($pistol_id)) {
 				$this->registry->smarty->assign('site_error', 'Възникна грешка при запис на информацията за обявата!!!');
 			
@@ -163,6 +274,8 @@
 			}
 			
 			$this->registry->smarty->assign('save_preview', true);
+			//Слагаме id-то на пистолета, за да можем да го редактираме
+			$_SESSION['pistol_id'] = $pistol_id;
 			$this->preview($pistol_id);
 		}
 		

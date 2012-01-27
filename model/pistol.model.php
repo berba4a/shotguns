@@ -142,6 +142,14 @@
 			$this->getImages();
 		}
 		
+		function deleteImages($filter = false) {
+			if (!$filter) {
+				$filter = array('filter' => ' where pistol_id = :pistol_id', 'values' => array('pistol_id' => $this->id));
+			}
+			
+			$this->db->delete('delete from pistol_images', $filter);
+		}
+		
 		function count($filter = false) {
 			$query = "select count(0) as cnt from pistols";
 			
@@ -156,5 +164,7 @@
 			} else {
 				$data['real_price'] = $data['price'] * COURSE_EUR;
 			}
+			
+			return parent::insert($data);
 		}
 	}

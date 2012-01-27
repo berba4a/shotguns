@@ -1,9 +1,9 @@
 <script>
+	var default_mark_id = '{$mark_id}';
+	var default_model_id = '{$model_id}';
+	var default_caliber_id = '{$caliber_id}';
 	$(document).ready(function() {
 		getPistolMarks();
-		$('#mark_id').val({$mark_id});
-		$('#model_id').val({$model_id});
-		$('#caliber_id').val({$caliber_id});
 	});
 </script>
 
@@ -145,7 +145,14 @@
 		<li style="margin-top:0px;">Прикачане на снимки:<br />
 			<div id="up_images" name="up_images"><input type="button" value="Добави поле за снимка" onclick="javascript: addFileField();"><br /><br />
 			<script>
+				var image_counter = 9;
 				function addFileField() {
+					if (image_counter > 0) {
+						image_counter--;
+						$('#image_counter').html(image_counter);
+					} else {
+						return;
+					}
 					div = document.createElement("div");
 					file = document.createElement("input");
 					file.type = "file";
@@ -157,8 +164,7 @@
 			</script>
 			<div><input type="file" id="images[]" name="images[]"></div></div>
 		</li><br />
-<li>Оставащи снимки за прикачане:<span style="color:red;">10</span></li>
-		<li><span class="redStar">*</span>Максимален брой снимки:10.</li>
+<li>Оставащи снимки за прикачане:<span style="color:red;" id="image_counter">10</span> от 10</li><br>
 	</ul>
 	</fieldset>
 <div class="addFinalText"><img style="border:0px;" src="{$smarty.const.WWW}templates/images/warning.gif" width="30" height="30" /> Ако попълнените от Вас полета са коректни и всички желани снимки от Вас са прикачени ,за да видите как ще изглежда Вашата обява моля натиснете бутона <span style="font-weight:bold;">Преглед на обявата</span> ,а ако полетата са некоректни за да изчистите формата натиснете бутона <span style="font-weight:bold;">Изчистване на полетата</span>.</div>

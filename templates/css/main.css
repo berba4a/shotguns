@@ -563,6 +563,10 @@ color:white;
 		font-family:Verdana, Geneva, sans-serif;
 		font-size:12px;
 	}
+	.error_message {
+		color: red;
+		font-weight:bold;
+	}
 	.select_category_list{
 	margin-left:auto;
 	margin-right:auto;
