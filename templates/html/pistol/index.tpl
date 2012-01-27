@@ -1,5 +1,5 @@
 	<div class="mainField">
-	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistol.gif" /></div>
+	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="80"/></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
                 
@@ -26,7 +26,7 @@
                 </select>
                 </div>
             
-            	<div align="right"><img src="{$smarty.const.WWW}templates/images/pistol.gif" width="40" /></div>
+            	<div align="right"><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="40" /></div>
             
             <div style="clear:both">&nbsp;</div>
             </div>
