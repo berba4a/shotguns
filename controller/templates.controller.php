@@ -46,6 +46,14 @@
 			parent::display('html/templates/bullets/search_bullets.tpl');
 		}
 		
+		function preview_bullets() {
+			parent::display('html/templates/bullets/preview_bullets.tpl');
+		}
+		
+		function results_bullets() {
+			parent::display('html/templates/bullets/results_bullets.tpl');
+		}
+		
 		function search_select_category() {
 			parent::display('html/templates/search_select_category.tpl');
 		}

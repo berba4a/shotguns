@@ -1,6 +1,6 @@
 <div class="mainMenuBand">Резултати от търсене в категория <b>ПАТРОНИ</b></div>
 	<div class="mainField">
-	<div class="addLogo" ><img src="images/optika.gif" /></div>
+	<div class="addLogo" ><img src="images/bullets_big.gif" width="80" /></div>
 		<div class="addingWelcomeText">Резултати от вашето търсене в раздел <b>ПАТРОНИ</b> ,   Тип:<b>За гладкоцевни оръжия</b> , Производител:<b>Smith & Wenson</b> , Калибър:<b>22</b> ,Местоположение:<b>Каспичан</b> ,Цена:<b>от 1 до 2 лева</b> ,Снимки:<b>Със снимки</b> ,Давност:<b>От Днес</b> ,Сортирани по:<b>Цена</b> . Ако това не са изискванията на вашето търсене можете да направите:<br />
 <div style="text-align:center;font-size:15px;font-weight:bold;margin-top:10px;"><a style="color:#685300; text-decoration:underline;" href="#" >Ново търсене</a> &nbsp; или &nbsp; <a style="color:#685300; text-decoration:underline;"  href="#">Корекция на търсенето</a></div></div>
 		<div style="clear:both;">&nbsp;</div>
@@ -27,9 +27,9 @@
        <div class="adRow">
     	<div class="adRowPic"><a href="#"><img src="images/optika.gif" width="150" border="0" /></a></div> 
 	   <div class="adRowTextField">
-	   	<div class="adHeadLine">Оптичен мерник <br />Carl Zeiss CZ1.8-8x50  &nbsp; <span class="adPrice">150 лева</span></div>
+	   	<div class="adHeadLine">Патрони за гладкоцевни оръжия<br />Smith & Wenson &nbsp; <span class="adPrice">1.50 лева</span></div>
 	   <div class="adText">
-	   Оптичен мерник ,Carl Zeiss, CZ1.8-8x50, 1.8-8x , Употребяван<br />
+	   Патрони за гладкоцевно оръжие ,Smith & Wenson , 22 kal<br />
 		Местоположение:Каспичан.<br />
 		Част от описанието ....(не всички подробности а няколко думи)
 		</div>
