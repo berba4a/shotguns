@@ -1,6 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<script>
+		var WWW = '{$smarty.const.WWW}';
+		var DOMAIN = '{$smarty.const.DOMAIN}';
+	</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 	<title>Hunt Site</title>
 	<link href="{$smarty.const.WWW}templates/css/main.css" rel="stylesheet" type="text/css" media="all" />

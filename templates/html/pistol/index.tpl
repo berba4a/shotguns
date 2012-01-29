@@ -6,14 +6,14 @@
 		<div class="beginPageLeftField">
 			
             <div class="searchHeaders" style="width:auto;">Бързо търсене в ПИСТОЛЕТИ</div> 
-             <form id="basicSearchForm" name="basicSearchForm" action="" method="POST" enctype="multipart/form-data">
+             <form id="basicSearchForm" name="basicSearchForm" action="{$smarty.const.WWW}pistol/results" method="POST" enctype="multipart/form-data">
              
           <div class="simpleSearchField">
              
             <div class="beginPageRows">
                 <div style="float:left;">Раздел: <br />
                
-                <select id="mainCategory" name="mainCategory">
+                <select id="cat" name="cat">
                 <option>Пистолети</option>
                 <option>Пушки</option>
                 <option>Патрони</option>
@@ -34,23 +34,17 @@
             <div class="beginPageRows">
             <div style="float:left;">Категория: <br />
                
-                <select id="category" name="category">
-                <option>Револвери</option>
-                <option>Автоматични</option>
-                <option>Плуавтоматични</option>
-                <option>Пневматични</option>
-                <option>Газови</option>
+                <select id="type_id[0]" name="type_id[0]" onchange="javascript: getPistolMarks(0, true);">
+                	<option></option>
+					{foreach $types as $type}
+						<option value="{$type->id}" {if $smarty.session.tmp_pistol_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
+					{/foreach}
                 </select>
                 </div>
                 
                 <div align="right">Марка: <br />
                
-                <select id="marka" name="marka">
-                <option>Макаров</option>
-                <option>Колт</option>
-                <option>Смит § Уесън</option>
-                <option>Берета</option>
-                <option>ТТ</option>
+                <select id="mark_id[0]" name="mark_id[0]" onchange="javascript: getPistolModels(0, true);">
                 </select>
                 </div>
             
@@ -61,24 +55,14 @@
             <div class="beginPageRows">
             <div style="float:left;">Модел: <br />
                
-                <select id="calibre" name="calibre">
-                <option>Модел 1</option>
-                <option>Модел 2</option>
-                <option>Модел 3</option>
-                <option>Модел 4</option>
-                <option>Модел 5</option>
+                <select id="model_id[0]" name="model_id[0]" onchange="javascript: getPistolCalibers(0, true);">
                 </select>
                 </div>
                 
                 <div align="right">Калибър: <br />
                
                
-                <select id="calibre" name="calibre">
-                <option>Калибър 1</option>
-                <option>Калибър 2</option>
-                <option>Калибър 3</option>
-                <option>Калибър 4</option>
-                <option>Калибър 5</option>
+                <select id="caliber_id[0]" name="caliber_id[0]">
                 </select>
                 </div>
             
@@ -90,16 +74,17 @@
             <div class="beginPageRows">
 			 <div align="left" style="float:left;">Цена до: <br />
                
-                <input type="text" size="10" id="maxPrice" name="maxPrice"/>
-                <select id="currency" name="currency">
-                <option>Лева</option>
-                <option>EUR</option>
+                <input type="text" size="10" id="end_price" name="end_price"/>
+                <select id="currency_id" name="currency_id">
+	                {foreach $currencies as $currency}
+	                	<option id="{$currency->id}" {if $smarty.session.tmp_pistol_search.currency_id == $currency->id}selected{/if}>{$currency->currency}</option>
+	                {/foreach}
                 </select>
                 </div>
 				
             <div align="right">Състояние: <br /></div>
-                <div align="right">Нов<input type="checkbox" name="condition[]" value="value[]" /></div>
-				<div align="right" >Употребяван<input type="checkbox" name="condition[]" value="value[]" /></div>
+                <div align="right">Нов<input type="checkbox"  name="is_old[]" value="0" /></div>
+				<div align="right" >Употребяван<input type="checkbox"  name="is_old[]" value="1" /></div>
             	
 			<div style="clear:both">&nbsp;</div>
             

@@ -17,11 +17,14 @@
 		}
 		
 		function index() {
+			//Последно добавените пистолети
 			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 order by created desc limit 12', 'values' => array());
-			
 			$tmp_pistol = new PistolModel();
 			$pistols = $tmp_pistol->fetchAll($filter);
 			$this->registry->smarty->assign('pistols', $pistols);
+			
+			//Попълване на филтрите
+			$this->setPistolSearchData();
 			
 			parent::display('html/pistol/index.tpl');
 		}
@@ -317,6 +320,26 @@
 		}
 		
 		private function setPistolSearchData() {
+			$tmp_type = new PistolTypeModel();
+			$types = $tmp_type->fetchAll();
+			$this->registry->smarty->assign('types', $types);
+				
+			$tmp_mark = new PistolMarkModel();
+			$marks = $tmp_mark->fetchAll();
+			$this->registry->smarty->assign('marks', $marks);
+				
+			$tmp_caliber = new PistolCaliberModel();
+			$calibers = $tmp_caliber->fetchAll();
+			$this->registry->smarty->assign('calibers', $calibers);
+				
+			$tmp_city = new CityModel();
+			$cities = $tmp_city->fetchAll();
+			$this->registry->smarty->assign('cities', $cities);
+				
+			$tmp_currencies = new CurrencyModel();
+			$currencies = $tmp_currencies->fetchAll();
+			$this->registry->smarty->assign('currencies', $currencies);
+			
 			if ($this->getValue('submitForm')) {
 				$_SESSION['tmp_pistol_search']['is_old'] = $this->getValue('is_old', array());
 				$_SESSION['tmp_pistol_search']['type_id'] = $this->getValue('type_id', array());
@@ -354,26 +377,6 @@
 		
 		public function search() {
 			$this->setPistolSearchData();
-			
-			$tmp_type = new PistolTypeModel();
-			$types = $tmp_type->fetchAll();
-			$this->registry->smarty->assign('types', $types);
-			
-			$tmp_mark = new PistolMarkModel();
-			$marks = $tmp_mark->fetchAll();
-			$this->registry->smarty->assign('marks', $marks);
-			
-			$tmp_caliber = new PistolCaliberModel();
-			$calibers = $tmp_caliber->fetchAll();
-			$this->registry->smarty->assign('calibers', $calibers);
-			
-			$tmp_city = new CityModel();
-			$cities = $tmp_city->fetchAll();
-			$this->registry->smarty->assign('cities', $cities);
-			
-			$tmp_currencies = new CurrencyModel();
-			$currencies = $tmp_currencies->fetchAll();
-			$this->registry->smarty->assign('currencies', $currencies);
 			
 			$this->display('html/pistol/search.tpl');
 		}

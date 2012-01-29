@@ -514,49 +514,105 @@ create table ammunitions (
 ) comment 'Патрони';
 
 ------------------------------------------------------------------------------------------------
-/*
+
 create table optic_types (
   id int not null primary key auto_increment,
   type varchar(100) not null comment 'Тип оптика'
 ) comment 'Типове оптики';
-insert into ammunition_types values (1, 'За гладкоцевни');
-insert into ammunition_types values (2, 'За нарезни');
-*/
+insert into optic_types values (1, 'Оптичен мерник');
+insert into optic_types values (2, 'Бинокъл');
+insert into optic_types values (3, 'Уред за нощно виждане');
+insert into optic_types values (4, 'Лазерен прицел');
+insert into optic_types values (5, 'Уред за термално виждане');
+
 
 create table optic_marks (
   id int not null primary key auto_increment,
-  --type_id int not null comment 'Тип оптика',
+  type_id int not null comment 'Тип оптика',
   mark varchar(100) not null comment 'Марка оптика',
-  constraint fk_pistolet_marks_type foreign key (type_id) references pistol_types(id)
+  constraint fk_optic_mark_types foreign key (type_id) references optic_types(id)
 ) comment 'Марки оптики';
+insert into optic_marks values (1, 1, 'Марка 1');
+insert into optic_marks values (2, 2, 'Марка 2');
+insert into optic_marks values (3, 3, 'Марка 3');
+insert into optic_marks values (4, 4, 'Марка 4');
+insert into optic_marks values (5, 5, 'Марка 5');
+insert into optic_marks values (6, 1, 'Марка 6');
+insert into optic_marks values (7, 2, 'Марка 7');
+insert into optic_marks values (8, 3, 'Марка 8');
+insert into optic_marks values (9, 4, 'Марка 9');
+insert into optic_marks values (10, 5, 'Марка 10');
 
 
-create table optic_kinds (
+create table optic_models (
   id int not null primary key auto_increment,
-  --type_id int not null comment 'Тип патрони',
-  kind varchar(100) not null comment 'Марка оптика',
-  constraint fk_pistolet_kinds_type foreign key (type_id) references pistol_types(id)
-) comment 'Марки оптики';
-insert into ammunition_kinds (kind) values ('Магнум');
-insert into ammunition_kinds (kind) values ('Мини-магнум');
-insert into ammunition_kinds (kind) values ('Обикновени');
-insert into ammunition_kinds (kind) values ('Магнум');
-insert into ammunition_kinds (kind) values ('Обикновени');
+  mark_id int not null comment 'Марка оптика',
+  model varchar(100) not null comment 'Модел оптика',
+  constraint fk_optic_model_types foreign key (mark_id) references optic_marks(id)
+) comment 'Модели оптики';
+insert into optic_models values (1, 1, 'Модел 1');
+insert into optic_models values (2, 2, 'Модел 2');
+insert into optic_models values (3, 3, 'Модел 3');
+insert into optic_models values (4, 4, 'Модел 4');
+insert into optic_models values (5, 5, 'Модел 5');
+insert into optic_models values (6, 6, 'Модел 6');
+insert into optic_models values (7, 7, 'Модел 7');
+insert into optic_models values (8, 8, 'Модел 8');
+insert into optic_models values (9, 9, 'Модел 9');
+insert into optic_models values (10, 10, 'Модел 10');
+insert into optic_models values (11, 1, 'Модел 11');
+insert into optic_models values (12, 2, 'Модел 12');
+insert into optic_models values (13, 3, 'Модел 13');
+insert into optic_models values (14, 4, 'Модел 14');
+insert into optic_models values (15, 5, 'Модел 15');
+
+create table optic_sizes (
+  id int not null primary key auto_increment,
+  model_id int not null comment 'Модел оптика',
+  size varchar(100) not null comment 'Размер оптика',
+  constraint fk_optic_size_modles foreign key (model_id) references optic_models(id)
+);
+insert into optic_sizes values (1, 1, 'Размер 1');
+insert into optic_sizes values (2, 2, 'Размер 2');
+insert into optic_sizes values (3, 3, 'Размер 3');
+insert into optic_sizes values (4, 4, 'Размер 4');
+insert into optic_sizes values (5, 5, 'Размер 5');
+insert into optic_sizes values (6, 6, 'Размер 6');
+insert into optic_sizes values (7, 7, 'Размер 7');
+insert into optic_sizes values (8, 8, 'Размер 8');
+insert into optic_sizes values (9, 9, 'Размер 9');
+insert into optic_sizes values (10, 10, 'Размер 10');
+insert into optic_sizes values (11, 11, 'Размер 11');
+insert into optic_sizes values (12, 12, 'Размер 12');
+insert into optic_sizes values (13, 13, 'Размер 13');
+insert into optic_sizes values (14, 14, 'Размер 14');
+insert into optic_sizes values (15, 15, 'Размер 15');
+insert into optic_sizes values (16, 6, 'Размер 16');
+insert into optic_sizes values (17, 7, 'Размер 17');
+insert into optic_sizes values (18, 8, 'Размер 18');
+insert into optic_sizes values (19, 9, 'Размер 19');
+insert into optic_sizes values (20, 2, 'Размер 20');
+insert into optic_sizes values (21, 1, 'Размер 21');
 
 create table optics (
   id int not null primary key auto_increment,
   user_id int not null comment 'Собственик',
   is_old bool not null comment 'Стара/Нова',
-  kind_id int not null comment 'Вид',
   mark_id int not null comment 'Марка',
-  size varchar(10) not null comment 'Размер',
+  model_id int not null comment 'Модел',
+  size_id int not null comment 'Размер',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
+  real_price real not null comment 'Цената в левове',
+  currency_id int not null comment 'Валута',
   description text comment 'Описание',
   is_active_user bool not null default 1 comment 'Активна от потребителя',
   is_active_admin bool not null default 1 comment 'Активна от администратор',
+  created timestamp default CURRENT_TIMESTAMP(),
   constraint fk_optics_user foreign key (user_id) references users(id),
-  constraint fk_optics_kind foreign key (makr_id) references optics_kinds(id),
-  constraint fk_optics_makr foreign key (makr_id) references optics_marks(id),
+  constraint fk_optics_model foreign key (model_id) references optics_models(id),
+  constraint fk_optics_makr foreign key (mark_id) references optics_marks(id),
+  constraint fk_optics_size foreign key (size_id) references optics_sizes(id),
+  constraint fk_optics_currency foreign key (currency_id) references currency(id),
   constraint fk_optics_city foreign key (city_id) references cities(id)
-) comment 'Патрони';
+) comment 'Оптики';

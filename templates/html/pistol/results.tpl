@@ -23,7 +23,7 @@
 	       <div class="adRow">
 	    	<div class="adRowPic"><a href="{$smarty.const.WWW}pistol/preview?pistol_id={$pistol->id}"><img src="{$smarty.const.WWW}{$pistol->images.0->image}" width="150" border="0" /></a></div> 
 		   <div class="adRowTextField">
-		   	<div class="adHeadLine">{$pistol->type->type} {$pistol->mark->mark} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if} &nbsp; <span class="adPrice">{$pistol->price} {$pistol->currency->currency}</span></div>
+		   	<div class="adHeadLine">{$pistol->type->type} {$pistol->mark->mark} {$pistol->model->model} {$pistol->caliber->caliber} - {if $pistol->is_old} Използван {else} Нов {/if} &nbsp; <span class="adPrice">{$pistol->price} {$pistol->currency->currency}</span></div>
 		   <div class="adText">
 		   {$pistol->type->type}, {$pistol->mark->mark}, {$pistol->model->model}, {$pistol->caliber->caliber}, {if $pistol->is_old} Използван {else} Нов {/if}<br />
 			Местоположение: {$pistol->city->city}<br />
