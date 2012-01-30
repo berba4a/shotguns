@@ -78,6 +78,10 @@
 			parent::display('html/templates/dealers/home_dealers.tpl');
 		}
 		
+		function add_dealer() {
+			parent::display('html/templates/dealers/add_dealer.tpl');
+		}
+		
 		
 		function search_select_category() {
 			parent::display('html/templates/search_select_category.tpl');

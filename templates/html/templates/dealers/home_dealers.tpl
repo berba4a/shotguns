@@ -1,3 +1,4 @@
+	<div class="mainMenuBand"><b>Начало ДИЛЪРИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="images/dealers.gif" width="80"/></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ДИЛЪРИ .</b></div>

@@ -1,3 +1,4 @@
+	<div class="mainMenuBand"><b>Начало ПАТРОНИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="images/bullets_big.gif"  width="80"/></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПАТРОНИ .</b></div>
