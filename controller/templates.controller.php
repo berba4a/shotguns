@@ -74,6 +74,10 @@
 			parent::display('html/templates/rifles/results_rifles.tpl');
 		}
 		
+		function home_dealers() {
+			parent::display('html/templates/dealers/home_dealers.tpl');
+		}
+		
 		
 		function search_select_category() {
 			parent::display('html/templates/search_select_category.tpl');
