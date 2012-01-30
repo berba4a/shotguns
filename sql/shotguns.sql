@@ -598,6 +598,7 @@ create table optics (
   id int not null primary key auto_increment,
   user_id int not null comment 'Собственик',
   is_old bool not null comment 'Стара/Нова',
+  type_id int not null comment 'Тип',
   mark_id int not null comment 'Марка',
   model_id int not null comment 'Модел',
   size_id int not null comment 'Размер',
@@ -610,9 +611,19 @@ create table optics (
   is_active_admin bool not null default 1 comment 'Активна от администратор',
   created timestamp default CURRENT_TIMESTAMP(),
   constraint fk_optics_user foreign key (user_id) references users(id),
+  constraint fk_optics_type foreign key (type_id) references optic_types(id),
   constraint fk_optics_model foreign key (model_id) references optics_models(id),
   constraint fk_optics_makr foreign key (mark_id) references optics_marks(id),
   constraint fk_optics_size foreign key (size_id) references optics_sizes(id),
   constraint fk_optics_currency foreign key (currency_id) references currency(id),
   constraint fk_optics_city foreign key (city_id) references cities(id)
 ) comment 'Оптики';
+
+
+
+create table optic_images (
+  id int not null primary key auto_increment,
+  optic_id int not null,
+  image varchar(100),
+  constraint fk_optic_images_pistol foreign key (optic_id) references optics(id)
+);
