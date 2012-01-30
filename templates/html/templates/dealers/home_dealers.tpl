@@ -108,7 +108,7 @@
 				<a href="#"><span class="adHeadLine">Магазини Ловен Свят</span><br />
 				<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:black;">Криво Поле</span>
 <br /><br />
-				<span style="color:#685300; text-decoration:underline; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;">Разгледай обявите</span></a>
+				<span class="coloredLinks" style="font-size:12px;">Разгледай обявите</span></a>
 			 </div>
 	   <div style="clear:both;margin:-15px;">&nbsp;</div>
 	</div>
@@ -118,13 +118,14 @@
     	<div class="dealerLogo">
 			<a href="#">
 			<!--Лого на дилъра  -->
-			<img src="images/bullets_big.gif" width="150" border="0" />
+			<img src="images/testlogo.jpg" width="150" border="0" />
 			</a>
 		</div> 
 	  		 <div class="dealerText">
-				<a href="#"><span class="adHeadLine">Магазини Всичко за ловеца</span><br />
-<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:black;">Стърчипишка</span><br /><br />
-				<span style="color:#685300; text-decoration:underline; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;">Разгледай обявите</span></a>
+				<a href="#"><span class="adHeadLine">Магазини Ловен Свят</span><br />
+				<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:black;">Криво Поле</span>
+<br /><br />
+				<span class="coloredLinks" style="font-size:12px;">Разгледай обявите</span></a>
 			 </div>
 	   <div style="clear:both;margin:-15px;">&nbsp;</div>
 	</div>
@@ -134,17 +135,19 @@
     	<div class="dealerLogo">
 			<a href="#">
 			<!--Лого на дилъра  -->
-			<img src="images/ecommerce.jpg" width="150" border="0" />
+			<img src="images/testlogo.jpg" width="150" border="0" />
 			</a>
 		</div> 
 	  		 <div class="dealerText">
-				<a href="#"><span class="adHeadLine">Ловджия</span><br />
-<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:black;">Татарево</span><br /><br />
-				<span style="color:#685300; text-decoration:underline; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;">Разгледай обявите</span></a>
+				<a href="#"><span class="adHeadLine">Магазини Ловен Свят</span><br />
+				<span style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:black;">Криво Поле</span>
+<br /><br />
+				<span class="coloredLinks" style="font-size:12px;">Разгледай обявите</span></a>
 			 </div>
 	   <div style="clear:both;margin:-15px;">&nbsp;</div>
 	</div>
 	<!--Край на ред -->
+	
 	</div>
 					<div style="border-bottom:1px solid #685300; border-top:1px solid #685300; width:350px; margin-left:auto; margin-right:auto;">
 				<ul class="dealerPages">
