@@ -1,3 +1,4 @@
+	<div class="mainMenuBand"><b>Начало ПИСТОЛЕТИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="80"/></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>

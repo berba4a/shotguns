@@ -1,3 +1,4 @@
+	<div class="mainMenuBand"><b>Начало ПУШКИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="images/rifles_big.gif" width="80" /></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПУШКИ</b></div>

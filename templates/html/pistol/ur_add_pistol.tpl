@@ -61,19 +61,19 @@
 	{/if}
 	</li>
 
-	<li><span class="redStar">*</span>Цена:<br />
-		<input class="aField" type="text" size="10" id="price"  name="price" value="{$price}"/>
+	<li ><div style="float:left;"><span class="redStar">*</span>Цена:<br />
+		<input class="aField" type="text" size="10" id="price"  name="price" value="{$price}"/></div>
 		{if !empty($price_error)}
 			<br><span class="error_message">{$price_error}</span>
 		{/if}
-	</li>
 	
-	<li style="margin-left:5px;"><span class="redStar">*</span>Валута:<br />
+	
+	<div style="float:left;margin-left:3px;"><span class="redStar">*</span>Валута:<br />
 		<select class="aField" id="currency_id" name="currency_id">
 			{foreach $currency as $curr}
 				<option value="{$curr->id}" {if $currency_id == $curr->id}selected{/if}>{$curr->currency}</option>
 			{/foreach}
-		</select>
+		</select></div><div style="clear:both">&nbsp;</div>
 	</li>
 	
 
