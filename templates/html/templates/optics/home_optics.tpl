@@ -1,4 +1,5 @@
-	<div class="mainField">
+	<div class="mainMenuBand"><b>Начало ОПТИКИ</b></div>
+    <div class="mainField">
 	<div class="addLogo" ><img src="images/optika.gif" /></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ОПТИКИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
