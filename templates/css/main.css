@@ -686,3 +686,39 @@ color:white;
 	 color:#c5ac49;
 	 font-weight:bold;
 	 }
+	 .mainFieldDealer{
+	 width:1000px;
+	 border-top:1px solid #c5ac49;
+	 margin-top:22px;
+	 }
+	 .leftFieldDealer{
+	 float:left;
+	 width:700px;
+	 margin-left:10px;
+	 }
+	 .rightFieldDealer{
+	 float:left;
+	 width:250px;
+	 margin-left:10px;
+	 border-left:1px solid #685300;
+	 }
+	 .topFieldDealerBand{
+	 background-color:#c5ac49;
+	 width:705px;
+	 border-bottom:3px solid #685300;
+	 font-family:Verdana, Arial, Helvetica, sans-serif;
+	 font-size:16px;
+	 font-weight:bold;
+	 text-align:center;
+	 margin-bottom:20px;
+	 padding-bottom:5px;
+	 padding-top:5px;
+	}
+	.feedBackFormD{
+	text-align:center;
+	width:250px;
+	margin-left:15px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	}

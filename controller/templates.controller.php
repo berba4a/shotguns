@@ -90,4 +90,8 @@
 			parent::display('html/templates/search_select_category.tpl');
 		}
 		
+		function subdomain() {
+			parent::display('html/templates/dealers/subdomain.tpl');
+		}
+		
 	}
