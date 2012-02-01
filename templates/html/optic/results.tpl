@@ -1,7 +1,7 @@
-	<div class="mainMenuBand">Резултати от търсене в категория <b>ПИСТОЛЕТИ</b></div>
+	<div class="mainMenuBand">Резултати от търсене в категория <b>ОПТИКИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/optics_big.gif" width="80" /></div>
-		<div class="addingWelcomeText">Резултати от вашето търсене в раздел <b>ПИСТОЛЕТИ</b> ,   Категория:<b>{$type_id_text}</b> ,Състояние: <b>{$is_old_text}</b> , Марка:<b>{$mark_id_text}</b>  Модел:<b>{$model_id_text}</b>,Калибър:<b>{$size_id_text}</b> ,Местоположение:<b>{$city_id_text}</b> ,Цена:<b>{$start_price_text} {$end_price_text}</b> ,Снимки:<b>Със снимки</b> ,Давност:<b>От Днес</b> ,Сортирани по:<b>Цена</b> . Ако това не са изискванията на вашето търсене можете да направите:<br />
+		<div class="addingWelcomeText">Резултати от вашето търсене в раздел <b>ОПТИКИ</b> ,   Категория:<b>{$type_id_text}</b> ,Състояние: <b>{$is_old_text}</b> , Марка:<b>{$mark_id_text}</b>  Модел:<b>{$model_id_text}</b>,Калибър:<b>{$size_id_text}</b> ,Местоположение:<b>{$city_id_text}</b> ,Цена:<b>{$start_price_text} {$end_price_text}</b> ,Снимки:<b>Със снимки</b> ,Давност:<b>От Днес</b> ,Сортирани по:<b>Цена</b> . Ако това не са изискванията на вашето търсене можете да направите:<br />
 <div style="text-align:center;font-size:15px;font-weight:bold;margin-top:10px;"><a href="{$smarty.const.WWW}optic/search" >Ново търсене</a> или <a  href="{$smarty.const.WWW}optic/search?edit_search=1">Корекция на търсенето</a></div></div>
 		<div style="clear:both;">&nbsp;</div>
 		
