@@ -503,7 +503,7 @@
 					$filter['values']['city_id_' . $key] = $value;
 					$city = new CityModel($value);
 					$city->fetch();
-					$city_id_text .= $city->caliber . ', ';
+					$city_id_text .= $city->city . ', ';
 				}
 				$city_id_text = trim($city_id_text, ', ');
 				$this->registry->smarty->assign('city_id_text', $city_id_text);

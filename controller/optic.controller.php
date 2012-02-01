@@ -324,6 +324,259 @@
 			}
 		}
 		
+		
+		
+		private function setOpticSearchData() {
+			$tmp_type = new OpticTypeModel();
+			$types = $tmp_type->fetchAll();
+			$this->registry->smarty->assign('types', $types);
+							
+			$tmp_mark = new OpticMarkModel();
+			$marks = $tmp_mark->fetchAll();
+			$this->registry->smarty->assign('marks', $marks);
+			
+			$tmp_size = new OpticSizeModel();
+			$sizes = $tmp_size->fetchAll();
+			$this->registry->smarty->assign('sizes', $sizes);
+			
+			$tmp_city = new CityModel();
+			$cities = $tmp_city->fetchAll();
+			$this->registry->smarty->assign('cities', $cities);
+			
+			$tmp_currencies = new CurrencyModel();
+			$currencies = $tmp_currencies->fetchAll();
+			$this->registry->smarty->assign('currencies', $currencies);
+				
+			if ($this->getValue('submitForm')) {
+				$_SESSION['tmp_optic_search']['is_old'] = $this->getValue('is_old', array());
+				$_SESSION['tmp_optic_search']['type_id'] = $this->getValue('type_id', array());
+				$_SESSION['tmp_optic_search']['mark_id'] = $this->getValue('mark_id', array());
+				$_SESSION['tmp_optic_search']['model_id'] = $this->getValue('model_id', array());
+				$_SESSION['tmp_optic_search']['size_id'] = $this->getValue('size_id', array());
+				$_SESSION['tmp_optic_search']['city_id'] = $this->getValue('city_id', array());
+				$_SESSION['tmp_optic_search']['order_by'] = $this->getValue('order_by', 'created desc');
+				$_SESSION['tmp_optic_search']['start_price'] = $this->getValue('start_price', '');
+				$_SESSION['tmp_optic_search']['end_price'] = $this->getValue('end_price', '');
+				$_SESSION['tmp_optic_search']['currency_id'] = $this->getValue('currency_id', '');
+				$_SESSION['tmp_optic_search']['date'] = $this->getValue('date', '');
+				$_SESSION['tmp_optic_search']['has_image'] = $this->getValue('has_image');
+		
+				return true;
+			}
+					
+			if (empty($_GET['edit_search'])) {
+				$_SESSION['tmp_optic_search']['is_old'] = array();
+				$_SESSION['tmp_optic_search']['type_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_optic_search']['mark_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_optic_search']['model_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_optic_search']['size_id'] = array(0 => '', 1 => '', 2 => '');
+				$_SESSION['tmp_optic_search']['city_id'] = array();
+				$_SESSION['tmp_optic_search']['order_by'] = 'created desc';
+				$_SESSION['tmp_optic_search']['start_price'] = '';
+				$_SESSION['tmp_optic_search']['end_price'] = '';
+				$_SESSION['tmp_optic_search']['currency_id'] = '';
+				$_SESSION['tmp_optic_search']['date'] = '';
+				$_SESSION['tmp_optic_search']['has_image'] = '';
+							
+				return true;
+			}
+		}
+		
+		public function search() {
+			$this->setOpticSearchData();
+					
+			$this->display('html/optic/search.tpl');
+		}
+		
+		public function results() {
+			print_r($_POST);
+			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 ', 'values' => array());
+			
+			$this->setOpticSearchData();
+			
+			if ($_SESSION['tmp_optic_search']['start_price']) {
+				$this->registry->smarty->assign('start_price_text', 'от ' . $_SESSION['tmp_optic_search']['start_price']);
+			} else {
+				$this->registry->smarty->assign('start_price_text', '');
+			}
+			if ($_SESSION['tmp_optic_search']['end_price']) {
+				$this->registry->smarty->assign('end_price_text', 'до ' . $_SESSION['tmp_optic_search']['end_price']);
+			} else {
+				if ($_SESSION['tmp_optic_search']['start_price']) {
+					$this->registry->smarty->assign('end_price_text', '');
+				} else {
+					$this->registry->smarty->assign('end_price_text', 'Без значение');
+				}
+			}
+			
+			
+			if ((count($_SESSION['tmp_optic_search']['is_old']) == 2) || (count($_SESSION['tmp_optic_search']['is_old']) == 0)) {
+				$this->registry->smarty->assign('is_old_text', 'Употребявани и Нови');
+			} else {
+				$filter['filter'] .= ' and is_old = :is_old';
+				$filter['values']['is_old'] = $_SESSION['tmp_optic_search']['is_old'][0];
+				$this->registry->smarty->assign('is_old_text', $_SESSION['tmp_optic_search']['is_old'][0]?'Употребявани':'Нови');
+			}
+			
+			//Филтрите за типовете пистолети
+			$tmp_filter = '';
+			$type_id_text = '';
+			foreach($_SESSION['tmp_optic_search']['type_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':type_id_' . $key . ', ';
+				$filter['values']['type_id_' . $key] = $value;
+				$optic_type = new OpticTypeModel($value);
+				$optic_type->fetch();
+				$type_id_text .= $optic_type->type . ', ';
+			}
+			if (!empty($type_id_text)) {
+				$type_id_text = trim($type_id_text, ', ');
+				$this->registry->smarty->assign('type_id_text', $type_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and type_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('type_id_text', 'Всички');
+			}
+			
+			//Филтрите за марките пистолети
+			$tmp_filter = '';
+			$mark_id_text = '';
+			foreach($_SESSION['tmp_optic_search']['mark_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':mark_id_' . $key . ', ';
+				$filter['values']['mark_id_' . $key] = $value;
+				$optic_mark = new OpticMarkModel($value);
+				$optic_mark->fetch();
+				$mark_id_text .= $optic_mark->mark . ', ';
+			}
+			if (!empty($mark_id_text)) {			
+				$mark_id_text = trim($mark_id_text, ', ');
+				$this->registry->smarty->assign('mark_id_text', $mark_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and mark_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('mark_id_text', 'Всички');
+			}
+			
+			//Филтрите за моделите пистолети
+			$tmp_filter = '';
+			$model_id_text = '';
+			foreach($_SESSION['tmp_optic_search']['model_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':model_id_' . $key . ', ';
+				$filter['values']['model_id_' . $key] = $value;
+				$optic_model = new OpticModelModel($value);
+				$optic_model->fetch();
+				$model_id_text .= $optic_model->model . ', ';
+			}
+			if (!empty($model_id_text)) {			
+				$model_id_text = trim($model_id_text, ', ');
+				$this->registry->smarty->assign('model_id_text', $model_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and model_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('model_id_text', 'Всички');
+			}
+			
+			//Филтрите за калибрите пистолети
+			$tmp_filter = '';
+			$size_id_text = '';
+			foreach($_SESSION['tmp_optic_search']['size_id'] as $key=>$value) {
+				if (empty($value)) continue;
+				$tmp_filter .= ':size_id_' . $key . ', ';
+				$filter['values']['size_id_' . $key] = $value;
+				$optic_size = new OpticSizeModel($value);
+				$optic_size->fetch();
+				$size_id_text .= $optic_size->size . ', ';
+			}
+			if (!empty($size_id_text)) {
+				$size_id_text = trim($size_id_text, ', ');
+				$this->registry->smarty->assign('size_id_text', $size_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and size_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('size_id_text', 'Всички');
+			}
+			
+			if (!empty($_SESSION['tmp_optic_search']['city_id'])) {
+				$tmp_filter = '';
+				$city_id_text = '';
+				foreach($_SESSION['tmp_optic_search']['city_id'] as $key=>$value) {
+					$tmp_filter .= ':city_id_' . $key . ', ';
+					$filter['values']['city_id_' . $key] = $value;
+					$city = new CityModel($value);
+					$city->fetch();
+					$city_id_text .= $city->city . ', ';
+				}
+				$city_id_text = trim($city_id_text, ', ');
+				$this->registry->smarty->assign('city_id_text', $city_id_text);
+				
+				$tmp_filter = trim($tmp_filter, ', ');
+				$filter['filter'] .= ' and city_id in (' . $tmp_filter . ') ';
+			} else {
+				$this->registry->smarty->assign('city_id_text', 'Всички');
+			}
+			
+			//Филтрите за цената
+			if ((!empty($_SESSION['tmp_optic_search']['currency_id'])) && ($_SESSION['tmp_optic_search']['currency_id'] == 2)) {
+				$correction = COURSE_EUR;
+			} else {
+				$correction = 1;
+			}
+			if (!empty($_SESSION['tmp_optic_search']['start_price'])) {
+				$filter['filter'] .= ' and real_price >= :start_price ';
+				$filter['values']['start_price'] = $_SESSION['tmp_optic_search']['start_price'] * $correction;
+			}
+			if (!empty($_SESSION['tmp_optic_search']['end_price'])) {
+				$filter['filter'] .= ' and real_price <= :end_price ';
+				$filter['values']['end_price'] = $_SESSION['tmp_optic_search']['end_price'] * $correction;
+			}
+			
+			print_r($filter);
+			
+			$results_per_page = 20;
+			$page = empty($_POST['page'])?'1':$_POST['page'];
+			$start_result = ($page - 1) * $results_per_page;
+			
+			$filter['filter'] .= " order by " . $_SESSION['tmp_optic_search']['order_by'] . " limit " . $start_result . ", " . $results_per_page;
+			
+			$tmp_optic = new OpticModel();
+			$optics = $tmp_optic->fetchAll($filter);
+			$this->registry->smarty->assign('optics', $optics);
+			$all_result = $tmp_optic->count($filter); 
+			
+			$end_result = count($optics) + $start_result;
+			$max_page = ceil($all_result/$results_per_page);
+			
+			$this->registry->smarty->assign('page', $page);
+			$this->registry->smarty->assign('max_page', $max_page);
+			$this->registry->smarty->assign('start_result', $start_result + 1);
+			$this->registry->smarty->assign('end_result', $end_result);
+			$this->registry->smarty->assign('all_result', $all_result);
+			
+			$results_button = 9;
+			if ($page <= floor($results_button / 2)) {
+				$this->registry->smarty->assign('start_button', 1);
+				if ($max_page < $results_button) {
+					$this->registry->smarty->assign('end_button', $max_page);
+				} else {
+					$this->registry->smarty->assign('end_button', $results_button);
+				}
+			} else {
+				$this->registry->smarty->assign('start_button', $page - floor($results_button / 2));
+				if ($page >= $max_page - floor($results_button / 2)) {
+					$this->registry->smarty->assign('start_button', $max_page - $results_button);
+					$this->registry->smarty->assign('end_button', $max_page);
+				}
+			}
+			
+			$this->display('html/optic/results.tpl');
+		}
+		
 		/**
 		 * 
 		 * Връяа марките на даден вид пистолет в json формат
