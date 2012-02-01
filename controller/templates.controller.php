@@ -57,6 +57,9 @@
 		function add_rifles() {
 			parent::display('html/templates/rifles/add_rifle.tpl');
 		}
+		function add_rifles2() {
+			parent::display('html/templates/rifles/add_rifle_2.tpl');
+		}
 		
 		function home_rifles() {
 			parent::display('html/templates/rifles/home_rifles.tpl');
