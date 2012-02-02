@@ -722,3 +722,25 @@ color:white;
 	font-size:12px;
 	font-weight:bold;
 	}
+	.subdomainAdminSelCategory{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	}
+	.subdomainAdminSelCategory  li{
+	float:left;
+	margin-left:5px;
+	list-style:none;
+	padding-top:5px;
+	padding-bottom:5px;
+	border:1px solid #c5ac49;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(ie-css3.htc);
+	}
+	.subdomainAdminSelCategory  li:hover{
+	background-color:#d7ffda;
+	}
