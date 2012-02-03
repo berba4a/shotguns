@@ -93,7 +93,7 @@
             
             <div class="beginPageRows">
             <div style="float:left;"><a href="{$smarty.const.WWW}pistol/search" style="color:#685300; text-decoration:underline;">Подробно търсене>></a></div>
-            	<div align="right" ><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-weight:bold;" type="submit" name="submitBtn" id="submitBtn" value="ТЪРСИ" /></div>
+            	<div align="right" ><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-weight:bold;" type="submit" name="submitForm" id="submitForm" value="ТЪРСИ" /></div>
 			<div style="clear:both">&nbsp;</div>
             
             </div>

@@ -15,8 +15,18 @@
 		}
 		
 		function index() {
-			echo "Да се направи";
-			parent::display('html/templates/home_optics.tpl');
+			//Последно добавените пистолети
+			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 order by created desc limit 12', 'values' => array());
+			$tmp_optic = new OpticModel();
+			$optics = $tmp_optic->fetchAll($filter);
+			$this->registry->smarty->assign('optics', $optics);
+			
+			print_r($optics);
+			
+			//Попълване на филтрите
+			$this->setOpticSearchData();
+			
+			parent::display('html/optic/index.tpl');
 		}
 		
 		function setOpticData() {
@@ -389,7 +399,6 @@
 		}
 		
 		public function results() {
-			print_r($_POST);
 			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 ', 'values' => array());
 			
 			$this->setOpticSearchData();
