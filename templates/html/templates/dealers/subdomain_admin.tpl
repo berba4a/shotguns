@@ -150,7 +150,7 @@
 	</fieldset>
 	Местоположение:
 	<div id="map_canvas" style="width:250px; height: 300px; margin-top:10px; border:1px solid #685300;">
-	<script src="maps" type="text/javascript"></script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA" type="text/javascript"></script>
     <script type="text/javascript">
 
     var map = null;

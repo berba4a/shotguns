@@ -10,12 +10,13 @@
 <link href="../../../css/main.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 
-<body>
+<body >
 <div class="mainHead">
+<!--Лого на дилъра -->
 	<div style="width:120px; padding-left:5px; padding-top:5px; float:left;"><img src="../../../images/dealers.gif" height="120"/>
 	</div>
-	<div align="center" style="margin-top:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:45px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
-<span style="text-transform:capitalize; font-size:30px;">софия</span>
+	<div align="center" style="margin-top:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:35px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
+<span style="text-transform:capitalize; font-size:20px;">софия</span>
 </div>
 	<div style="clear:both;">&nbsp;</div>
 	<ul class="mainMenu">
@@ -54,7 +55,7 @@
 		</div>
 		<!-- Начало на обявата -->
        <div class="adRow" style=" width:690px;">
-    	<div class="adRowPic"><a href="#"><img src="../../../images/dealers.gif" width="150" border="0" /></a></div> 
+    	<div class="adRowPic"><a href="#"><img src="../../../images/testlogo.jpg" width="150" border="0" /></a></div> 
 	   <div class="adRowTextField" style=" width:400px;">
 	   	<div class="adHeadLine">ИЖ модел 1 еди кво си еди що си 
 <span class="adPrice"><br />
@@ -95,10 +96,10 @@
 		</div>
 	</div>
 	
-	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:265px; margin-left:5px;">За контакти</div>
+	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:263px; margin-left:5px;">За контакти</div>
 	<div class="feedBackFormD">
 	
-	<fieldset>
+	<fieldset style="margin-bottom:10px;">
 		<legend>За контакти</legend>
 	<div align="left">Телефон:<span style="font-weight:normal;">038/63 15 26</span><br />
 	GSM:<span style="font-weight:normal;">0888/365 256<br /></span>
@@ -109,7 +110,7 @@
 	</div>
 	</fieldset>
 	
-	<fieldset>
+	<fieldset  style="margin-bottom:10px;">
 		<legend>Форма за контакт</legend>
 	<form id="feedbackForm" name="feedbackForm" action="" method="POST" enctype="multipart/form-data">
 	Име:<br />
@@ -125,8 +126,9 @@
 	<div style="clear:both; margin-bottom:-20px;">&nbsp;</div>
 	</form>
 	</fieldset>
+	Местоположение:
 	<div id="map_canvas" style="width:250px; height: 300px; margin-top:10px; border:1px solid #685300;">
-	<script src="maps" type="text/javascript"></script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA" type="text/javascript"></script>
     <script type="text/javascript">
 
     var map = null;
@@ -163,7 +165,7 @@
       }
     }
 	   initialize(); 
-	  showAddress('Хасково,Бул.Съединение 45');
+	  showAddress('Хасково,бул.Съединение 45');
 	  </script>
 	  </div>
 	</div>
