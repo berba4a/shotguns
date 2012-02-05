@@ -281,109 +281,87 @@ create table users (
   constraint fk_users_city foreign key (city_id) references cities(id)
 );
 
-create table shotgun_marks (
+-------------------------------------------------------------------------------------
+create table rifle_types (
   id int not null primary key auto_increment,
-  mark varchar(100) not null comment 'Марка'
-) comment 'Ловни пушки и карабини->Гладкоцевни марки';
-
-create table shotgun_types (
-  id int not null primary key auto_increment,
-  type varchar(100) not null comment 'Тип'
-) comment 'Ловни пушки и карабини->Гладкоцевни типове';
-insert into shotgun_types (name) values ('Кремаклийка');
-insert into shotgun_types (name) values ('Едноцевка');
-insert into shotgun_types (name) values ('Успоредка');
-insert into shotgun_types (name) values ('Надцевка');
-insert into shotgun_types (name) values ('Полуавтомат');
-insert into shotgun_types (name) values ('Автомат');
-
-create table shotgun (
-  id int not null primary key auto_increment,
-  user_id int not null comment 'Собственик',
-  is_old bool not null comment 'Стара/Нова',
-  mark_id int not null comment 'Марка',
-  caliber varchar(20) not null comment 'Калибър',
-  city_id int not null comment 'Град/Местоположение',
-  price real not null comment 'Цена',
-  description text comment 'Описание',
-  is_active_user bool not null default 1 comment 'Активна от потребителя',
-  is_active_admin bool not null default 1 comment 'Активна от администратор',
-  constraint fk_shotgun_user foreign key (user_id) references users(id),
-  constraint fk_shotgun_makr foreign key (makr_id) references shotgun_marks(id),
-  constraint fk_shotgun_city foreign key (city_id) references cities(id)
-) comment 'Ловни пушки и карабини->Гладкоцевни';
-
-create table shotgun_type (
-  id int not null primary key auto_increment,
-  shotgun_id int not null comment 'Гладкоцевна',
-  type_id int not null comment 'Тип',
-  constraint fk_shotgun_type_shotgun foreign key (shotgun_id) references shotgun(id),
-  constraint fk_shotgun_type_type foreign key (type_id) references shotgun_types(id)
-) comment 'Типове към гладкоцевни обяви';
+  type varchar(100) not null comment 'Тип пушка'
+) comment 'Видове пушкаи';
+insert into rifle_types (id, type) values (1, 'Револвери');
+insert into rifle_types (id, type) values (2, 'Полуавтоматични');
+insert into rifle_types (id, type) values (3, 'Автоматични');
+insert into rifle_types (id, type) values (4, 'Пневматични');
+insert into rifle_types (id, type) values (5, 'Газови');
 
 create table rifle_marks (
   id int not null primary key auto_increment,
-  mark varchar(100) not null comment 'Марка'
-) comment 'Ловни пушки и карабини->Нарезни марки';
+  type_id int not null comment 'Тип пушка',
+  mark varchar(100) not null comment 'Марка пушка',
+  constraint fk_rifleet_marks_type foreign key (type_id) references rifle_types(id)
+) comment 'Марки пушкаи';
+--insert into rifle_marks (type_id, mark) values (1, 'Марка 1-1');
+--insert into rifle_marks (type_id, mark) values (1, 'Марка 1-2');
+--insert into rifle_marks (type_id, mark) values (1, 'Марка 1-3');
+--insert into rifle_marks (type_id, mark) values (2, 'Марка 2-1');
+--insert into rifle_marks (type_id, mark) values (3, 'Марка 3-1');
 
-create table rifle (
+create table rifle_models (
+  id int not null primary key auto_increment,
+  mark_id int not null comment 'Марка пушка',
+  model varchar(100) not null comment 'Модел пушка',
+  constraint fk_rifleet_modles_mark foreign key (mark_id) references rifle_marks(id)
+) comment 'Модели пушкаи';
+--insert into rifle_models (mark_id, model) values (1, 'Модел 1-1');
+--insert into rifle_models (mark_id, model) values (1, 'Модел 1-2');
+--insert into rifle_models (mark_id, model) values (1, 'Модел 1-3');
+--insert into rifle_models (mark_id, model) values (2, 'Модел 2-1');
+--insert into rifle_models (mark_id, model) values (3, 'Модел 3-1');
+
+create table rifle_calibers (
+  id int not null primary key auto_increment,
+  model_id varchar(100) not null comment 'Модел пушка',
+  caliber varchar(100) not null comment 'Калибър на пушкаа',
+  constraint fk_rifle_calibers_model foreign key (model_id) references rifle_models(id)
+) comment 'Калибри на пушкаи';
+--insert into rifle_calibers (model_id, caliber) values (1, 'Калибър 1-1');
+--insert into rifle_calibers (model_id, caliber) values (1, 'Калибър 1-2');
+--insert into rifle_calibers (model_id, caliber) values (2, 'Калибър 2-1');
+--insert into rifle_calibers (model_id, caliber) values (2, 'Калибър 2-2');
+--insert into rifle_calibers (model_id, caliber) values (2, 'Калибър 2-3');
+--insert into rifle_calibers (model_id, caliber) values (3, 'Калибър 3-1');
+--insert into rifle_calibers (model_id, caliber) values (4, 'Калибър 4-1');
+--insert into rifle_calibers (model_id, caliber) values (4, 'Калибър 4-2');
+--insert into rifle_calibers (model_id, caliber) values (5, 'Калибър 5-1');
+
+create table rifles (
   id int not null primary key auto_increment,
   user_id int not null comment 'Собственик',
   is_old bool not null comment 'Стара/Нова',
+  type_id int not null comment 'Тип пушка',
   mark_id int not null comment 'Марка',
-  caliber varchar(20) not null comment 'Калибър',
+  model_id int not null comment 'Модел',
+  caliber_id varchar(20) not null comment 'Калибър',
   city_id int not null comment 'Град/Местоположение',
   price real not null comment 'Цена',
+  real_price real not null comment 'Цената в левове',
+  currency_id int not null comment 'Валута',
   description text comment 'Описание',
-  is_active_user bool not null default 1 comment 'Активна от потребителя',
+  is_active_user bool not null default 0 comment 'Активна от потребителя',
   is_active_admin bool not null default 1 comment 'Активна от администратор',
-  constraint fk_rifle_user foreign key (user_id) references users(id),
-  constraint fk_rifle_makr foreign key (makr_id) references rifle_marks(id),
-  constraint fk_rifle_city foreign key (city_id) references cities(id)
-) comment 'Ловни пушки и карабини->Нарезни';
+  created timestamp default CURRENT_TIMESTAMP(),
+  constraint fk_rifles_user foreign key (user_id) references users(id),
+  constraint fk_rifles_makr foreign key (mark_id) references rifle_marks(id),
+  constraint fk_rifles_model foreign key (model_id) references rifle_models(id),
+  constraint fk_rifles_type foreign key (type_id) references rifle_types(id),
+  constraint fk_rifles_city foreign key (city_id) references cities(id),
+  constraint fk_rifles_currency foreign key (currency_id) references currency(id)
+);
 
-create table nozzle_marks (
+create table rifle_images (
   id int not null primary key auto_increment,
-  mark varchar(100) not null comment 'Марка'
-) comment 'Ловни пушки и карабини->Щуцер марки';
-
-create table nozzle (
-  id int not null primary key auto_increment,
-  user_id int not null comment 'Собственик',
-  is_old bool not null comment 'Стара/Нова',
-  mark_id int not null comment 'Марка',
-  caliber_smoothbore varchar(20) not null comment 'Калибър гладкоцевни',
-  caliber_barrel varchar(20) not null comment 'Калибър нарезни',
-  city_id int not null comment 'Град/Местоположение',
-  price real not null comment 'Цена',
-  description text comment 'Описание',
-  is_active_user bool not null default 1 comment 'Активна от потребителя',
-  is_active_admin bool not null default 1 comment 'Активна от администратор',
-  constraint fk_nozzle_user foreign key (user_id) references users(id),
-  constraint fk_nozzle_makr foreign key (makr_id) references nozzle_marks(id),
-  constraint fk_nozzle_city foreign key (city_id) references cities(id)
-) comment 'Ловни пушки и карабини->Щуцер';
-
-create table air_gun_marks (
-  id int not null primary key auto_increment,
-  mark varchar(100) not null comment 'Марка'
-) comment 'Ловни пушки и карабини->Пневматични марки';
-
-create table air_guns (
-  id int not null primary key auto_increment,
-  user_id int not null comment 'Собственик',
-  is_old bool not null comment 'Стара/Нова',
-  mark_id int not null comment 'Марка',
-  caliber varchar(20) not null comment 'Калибър',
-  city_id int not null comment 'Град/Местоположение',
-  price real not null comment 'Цена',
-  description text comment 'Описание',
-  is_active_user bool not null default 1 comment 'Активна от потребителя',
-  is_active_admin bool not null default 1 comment 'Активна от администратор',
-  constraint fk_air_guns_user foreign key (user_id) references users(id),
-  constraint fk_air_guns_makr foreign key (makr_id) references air_gun_marks(id),
-  constraint fk_air_guns_city foreign key (city_id) references cities(id)
-) comment 'Ловни пушки и карабини->Пневматични';
+  rifle_id int not null,
+  image varchar(100),
+  constraint fk_rifle_images_rifle foreign key (rifle_id) references rifles(id)
+);
 
 
 -------------------------------------------------------------------------------------
@@ -469,12 +447,17 @@ create table pistol_images (
 );
 
 ------------------------------------------------------------------------------------------------
-create table ammunition_types (
+create table ammunition_purposes (
+	id int not null primary key auto_increment,
+	purpose varchar(100) not null comment 'Предназначение'
+) comment 'Типове патрони';;
+
+create table ammunition_producers (
   id int not null primary key auto_increment,
-  type varchar(100) not null comment 'Тип патрони'
+  producer varchar(100) not null comment 'Производител'
 ) comment 'Типове патрони';
-insert into ammunition_types values (1, 'За гладкоцевни');
-insert into ammunition_types values (2, 'За нарезни');
+insert into ammunition_types values (1, 'Производител 1');
+insert into ammunition_types values (2, 'Производител 2');
 
 create table ammunition_marks (
   id int not null primary key auto_increment,
