@@ -1,13 +1,13 @@
 	<div class="mainMenuBand"><b>Начало ПИСТОЛЕТИ</b></div>
 	<div class="mainField">
-	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="80"/></div>
+	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/rifles_big.gif" width="80"/></div>
 		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
                 
 		<div class="beginPageLeftField">
 			
             <div class="searchHeaders" style="width:auto;">Бързо търсене в ПИСТОЛЕТИ</div> 
-             <form id="basicSearchForm" name="basicSearchForm" action="{$smarty.const.WWW}pistol/results" method="POST" enctype="multipart/form-data">
+             <form id="basicSearchForm" name="basicSearchForm" action="{$smarty.const.WWW}rifle/results" method="POST" enctype="multipart/form-data">
              
           <div class="simpleSearchField">
              
@@ -16,7 +16,7 @@
                
                 <select id="cat" name="cat">
                 <option>Пистолети</option>
-                <option>Пушки</option>
+                <option selected>Пушки</option>
                 <option>Патрони</option>
                 <option>Оптики</option>
                 <option>Екипировка</option>
@@ -27,7 +27,7 @@
                 </select>
                 </div>
             
-            	<div align="right"><img src="{$smarty.const.WWW}templates/images/pistols_big.gif" width="40" /></div>
+            	<div align="right"><img src="{$smarty.const.WWW}templates/images/rifles_big.gif" width="40" /></div>
             
             <div style="clear:both">&nbsp;</div>
             </div>
@@ -35,17 +35,17 @@
             <div class="beginPageRows">
             <div style="float:left;">Категория: <br />
                
-                <select id="type_id[0]" name="type_id[0]" onchange="javascript: getPistolMarks(0, true);">
+                <select id="type_id[0]" name="type_id[0]" onchange="javascript: getRifleMarks(0, true);">
                 	<option></option>
 					{foreach $types as $type}
-						<option value="{$type->id}" {if $smarty.session.tmp_pistol_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
+						<option value="{$type->id}" {if $smarty.session.tmp_rifle_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
 					{/foreach}
                 </select>
                 </div>
                 
                 <div align="right">Марка: <br />
                
-                <select id="mark_id[0]" name="mark_id[0]" onchange="javascript: getPistolModels(0, true);">
+                <select id="mark_id[0]" name="mark_id[0]" onchange="javascript: getRifleModels(0, true);">
                 </select>
                 </div>
             
@@ -56,7 +56,7 @@
             <div class="beginPageRows">
             <div style="float:left;">Модел: <br />
                
-                <select id="model_id[0]" name="model_id[0]" onchange="javascript: getPistolCalibers(0, true);">
+                <select id="model_id[0]" name="model_id[0]" onchange="javascript: getRifleCalibers(0, true);">
                 </select>
                 </div>
                 
@@ -78,7 +78,7 @@
                 <input type="text" size="10" id="end_price" name="end_price"/>
                 <select id="currency_id" name="currency_id">
 	                {foreach $currencies as $currency}
-	                	<option id="{$currency->id}" {if $smarty.session.tmp_pistol_search.currency_id == $currency->id}selected{/if}>{$currency->currency}</option>
+	                	<option id="{$currency->id}" {if $smarty.session.tmp_rifle_search.currency_id == $currency->id}selected{/if}>{$currency->currency}</option>
 	                {/foreach}
                 </select>
                 </div>
@@ -92,7 +92,7 @@
             </div>
             
             <div class="beginPageRows">
-            <div style="float:left;"><a href="{$smarty.const.WWW}pistol/search" style="color:#685300; text-decoration:underline;">Подробно търсене>></a></div>
+            <div style="float:left;"><a href="{$smarty.const.WWW}rifle/search" style="color:#685300; text-decoration:underline;">Подробно търсене>></a></div>
             	<div align="right" ><input style="width:100px; height:30px; font-family:Verdana, Geneva, sans-serif; font-weight:bold;" type="submit" name="submitForm" id="submitForm" value="ТЪРСИ" /></div>
 			<div style="clear:both">&nbsp;</div>
             
@@ -138,18 +138,18 @@
              </div>
              <!--Край на голямата обява -->
              
-             {foreach $pistols as $pistol}
+             {foreach $rifles as $rifle}
              	<!--Начало на малка обява -->
 	             <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px;">
 	                <a href="#">
 	                    <div align="left" style="float:left;" class="beginPageSmallAdText">
 	                   <!--Лого на дистрибутора ако обявата е от дистрибутор ,ако не логото на сайта -->
 	                    <img src="{$smarty.const.WWW}templates/images/testLogo.jpg" height="10" border="0"/>
-	                    Пистолет , {$pistol->mark->mark} Модел 2, {$pistol->city->city}               
+	                    Пистолет , {$rifle->mark->mark} Модел 2, {$rifle->city->city}               
 	                    </div>
 	                    
 	                    <div class="beginPageSmallAdText" align="right">
-	                    <b>{$pistol->price} {$pistol->currency->currency}</b>
+	                    <b>{$rifle->price} {$rifle->currency->currency}</b>
 	                    </div>
 	                </a>
 	              </div>  

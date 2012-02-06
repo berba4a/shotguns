@@ -382,7 +382,6 @@
 		}
 		
 		public function results() {
-			print_r($_POST);
 			$filter = array('filter' => ' where is_active_user = 1 and is_active_admin = 1 ', 'values' => array());
 			
 			$this->setPistolSearchData();
