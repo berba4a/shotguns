@@ -690,16 +690,21 @@ color:white;
 	 width:1000px;
 	 border-top:1px solid #c5ac49;
 	 margin-top:22px;
+	 border-bottom:1px solid #685300;
+	 margin-bottom:10px;
 	 }
 	 .leftFieldDealer{
 	 float:left;
-	 width:700px;
+	 width:710px;
 	 margin-left:10px;
+	 padding-bottom:10px;
+	 border-right:1px solid #685300;
 	 }
 	 .rightFieldDealer{
 	 float:left;
 	 width:250px;
-	 margin-left:10px;
+	 /*margin-left:10px;*/
+	 padding-bottom:10px;
 	 border-left:1px solid #685300;
 	 }
 	 .topFieldDealerBand{

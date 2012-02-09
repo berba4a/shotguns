@@ -13,9 +13,9 @@
 <body >
 <div class="mainHead">
 <!--Лого на дилъра -->
-	<div style="width:120px; padding-left:5px; padding-top:5px; float:left;"><img src="../../../images/dealers.gif" height="120"/>
+	<div style="width:120px; padding-left:5px; padding-top:5px; float:left;"><img src="../../../images/BLRS.jpg" height="120"/>
 	</div>
-	<div align="center" style="margin-top:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:35px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
+	<div align="right" style="margin-top:20px; margin-right:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:35px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
 <span style="text-transform:capitalize; font-size:20px;">софия</span>
 </div>
 	<div style="clear:both;">&nbsp;</div>
@@ -76,6 +76,75 @@
 		</div>
 	   </div>
 <!-- Край на обявата -->
+<!-- Начало на обявата -->
+       <div class="adRow" style=" width:690px;">
+    	<div class="adRowPic"><a href="#"><img src="../../../images/testlogo.jpg" width="150" border="0" /></a></div> 
+	   <div class="adRowTextField" style=" width:400px;">
+	   	<div class="adHeadLine">ИЖ модел 1 еди кво си еди що си 
+<span class="adPrice"><br />
+150 лева</span></div>
+	   <div class="adText">
+	   Гладкоцевни ,ИЖ, Модел 1, 9мм ,Употребяван<br />
+		Местоположение:Каспичан.<br />
+		Дата на публикация:Днес.<br />
+		Част от описанието ....(не всички подробности а няколко думи)
+		</div>
+		 </div>
+	   <!--Лого на дилъра ако обявата е от дилър 
+	   <div class="adRowLogo"><a href="#"><img src="images/testlogo.jpg" width="50" border="0"/></a></div>-->
+	   <div style="clear:both">&nbsp;</div>
+		<div class="adRowFooter" style=" width:690px;">
+		<div align="left" style="float:left;"><a style="text-decoration:underline;color:#685300;" href="#">Снимки и детайли</a></div>
+		<div align="right" style="padding-right:35px;">Дата на публикуване:12.01.2012</div>
+		</div>
+	   </div>
+<!-- Край на обявата -->
+<!-- Начало на обявата -->
+       <div class="adRow" style=" width:690px;">
+    	<div class="adRowPic"><a href="#"><img src="../../../images/testlogo.jpg" width="150" border="0" /></a></div> 
+	   <div class="adRowTextField" style=" width:400px;">
+	   	<div class="adHeadLine">ИЖ модел 1 еди кво си еди що си 
+<span class="adPrice"><br />
+150 лева</span></div>
+	   <div class="adText">
+	   Гладкоцевни ,ИЖ, Модел 1, 9мм ,Употребяван<br />
+		Местоположение:Каспичан.<br />
+		Дата на публикация:Днес.<br />
+		Част от описанието ....(не всички подробности а няколко думи)
+		</div>
+		 </div>
+	   <!--Лого на дилъра ако обявата е от дилър 
+	   <div class="adRowLogo"><a href="#"><img src="images/testlogo.jpg" width="50" border="0"/></a></div>-->
+	   <div style="clear:both">&nbsp;</div>
+		<div class="adRowFooter" style=" width:690px;">
+		<div align="left" style="float:left;"><a style="text-decoration:underline;color:#685300;" href="#">Снимки и детайли</a></div>
+		<div align="right" style="padding-right:35px;">Дата на публикуване:12.01.2012</div>
+		</div>
+	   </div>
+<!-- Край на обявата -->
+<!-- Начало на обявата -->
+       <div class="adRow" style=" width:690px;">
+    	<div class="adRowPic"><a href="#"><img src="../../../images/testlogo.jpg" width="150" border="0" /></a></div> 
+	   <div class="adRowTextField" style=" width:400px;">
+	   	<div class="adHeadLine">ИЖ модел 1 еди кво си еди що си 
+<span class="adPrice"><br />
+150 лева</span></div>
+	   <div class="adText">
+	   Гладкоцевни ,ИЖ, Модел 1, 9мм ,Употребяван<br />
+		Местоположение:Каспичан.<br />
+		Дата на публикация:Днес.<br />
+		Част от описанието ....(не всички подробности а няколко думи)
+		</div>
+		 </div>
+	   <!--Лого на дилъра ако обявата е от дилър 
+	   <div class="adRowLogo"><a href="#"><img src="images/testlogo.jpg" width="50" border="0"/></a></div>-->
+	   <div style="clear:both">&nbsp;</div>
+		<div class="adRowFooter" style=" width:690px;">
+		<div align="left" style="float:left;"><a style="text-decoration:underline;color:#685300;" href="#">Снимки и детайли</a></div>
+		<div align="right" style="padding-right:35px;">Дата на публикуване:12.01.2012</div>
+		</div>
+	   </div>
+<!-- Край на обявата -->
 <div class="searchResultHeader" style=" width:690px;">1-20 от общо 150 резултата</div>
 		<div class="searchPagesField" style=" width:690px;" style="border-top:2px solid #685300;">
 		<div class="searchPages" >страница 1 от 8</div>
@@ -96,7 +165,7 @@
 		</div>
 	</div>
 	
-	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:263px; margin-left:5px;">За контакти</div>
+	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:262px; margin-left:5px;">За контакти</div>
 	<div class="feedBackFormD">
 	
 	<fieldset style="margin-bottom:10px;">
@@ -106,7 +175,7 @@
 	Skype:<span style="font-weight:normal;">Hunter<br /></span>
 	Адрес:<span style="font-weight:normal;">Хасково,Бул.Съединение 45<br /></span>
 	e-mail:<span style="font-weight:normal;">hunter@hunter.com<br /></span>
-	website:<a href="#" class="coloredLinks"><span style="font-weight:normal;">http://hunter.com</a></span>
+	website:<a href="#" class="coloredLinks"><span style="font-weight:normal;">http://hunter.com</span></a>
 	</div>
 	</fieldset>
 	
@@ -170,7 +239,11 @@
 	  </div>
 	</div>
 </div>
-	<div style="clear:both">&nbsp;</div>
+	<div style="clear:both;margin-bottom:-20px;">&nbsp;</div>
+	</div>
+	<div align="right" style="color:#685300; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; margin-right:40px; padding-bottom:10px;">
+	Powered by<a href="#">
+	<img src="../../../images/testlogo.jpg" height="30"  border="0"/></a>
 	</div>
 	</div>
 	</body>

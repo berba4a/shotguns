@@ -13,9 +13,9 @@
 <body>
 <div class="mainHead">
 <!--Лого на дилъра -->
-	<div style="width:120px; padding-left:5px; padding-top:5px; float:left;"><img src="../../../images/dealers.gif" height="120"/>
+	<div style="width:120px; padding-left:5px; padding-top:5px; float:left;"><img src="../../../images/BLRS.jpg" height="120"/>
 	</div>
-	<div align="center" style="margin-top:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:35px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
+	<div align="right" style="margin-top:20px; margin-right:20px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:35px; text-transform:uppercase; font-weight:bold;">Магазин "ловен Свят"<br />
 <span style="text-transform:capitalize; font-size:20px;">софия</span>
 </div>
 	<div style="clear:both;">&nbsp;</div>
@@ -91,9 +91,9 @@
 		<div align="right" style="padding-right:35px;">Дата на публикуване:12.01.2012</div>
 		</div>
 		<div class="adRowFooter" style="width:690px; margin-top:20px;">
-		<div align="left" style="float:left;"><a style="text-decoration:underline;color:#685300;" href="#">Редактирай</a></div>
-		<div align="center" style="float:left; margin-left:250px;"><input type="checkbox" id="is_active" name="is_active" />Активна</div>
-		<div align="right" style="padding-right:35px; float:right;"><a href="#" class="coloredLinks">Изтрии</a></div>
+		<div align="left" style="float:left;"><a class="coloredLinks" style="font-size:16px; font-weight:bold;" href="#">Редактирай</a></div>
+		<div align="center" style="float:left; margin-left:220px;"><input type="checkbox" id="is_active" name="is_active" checked="checked" />Активна</div>
+		<div align="right" style="padding-right:35px; float:right;"><a href="#" class="coloredLinks" style="font-size:16px; font-weight:bold;">Изтрии</a></div>
 		</div>
 		<div style="clear:both">&nbsp;</div>
 	   </div>
@@ -118,7 +118,7 @@
 		</div>
 	</div>
 	
-	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:263px; margin-left:5px;">За контакти</div>
+	<div class="rightFieldDealer"><div class="topFieldDealerBand"  style="width:262px; margin-left:5px;">За контакти</div>
 	<div class="feedBackFormD">
 	
 	<fieldset style="margin-bottom:10px;">
@@ -192,7 +192,12 @@
 	  </div>
 	</div>
 </div>
-	<div style="clear:both">&nbsp;</div>
+	<div style="clear:both;margin-bottom:-20px;">&nbsp;</div>
+	</div>
+	<div align="right" style="color:#685300; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px; margin-right:40px; padding-bottom:10px;">
+	Powered by<a href="#">
+	<img src="../../../images/testlogo.jpg" height="30"  border="0"/></a>
+	</div>
 	</div>
 	</div>
 	</body>
