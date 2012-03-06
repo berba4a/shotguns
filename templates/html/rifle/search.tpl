@@ -259,8 +259,8 @@
 						<li><input type="checkbox"  name="is_old[]" value="1" {if in_array(1, $smarty.session.tmp_rifle_search.is_old)}checked{/if} />Употребявани</li>
 					</ul>
 					</div>
-           	<div style="margin-top:250px;">
-				<div  class="searchMenu">
+          
+				<div  class="searchMenu" style="margin-top:50px; height:auto;">
 					<div class="searchHeaders">Снимки:</div>
 							<ul style="height:auto; margin-top:5px;">
 								<li><input type="radio" id="has_image" name="has_image" value="1" {if $smarty.session.tmp_rifle_search.has_image}checked{/if} />Със снимки</li>
@@ -271,7 +271,7 @@
 			
 						
 			
-           <div  class="searchMenu">
+           <div  class="searchMenu" style="margin-top:50px; height:auto;">
 				<div class="searchHeaders">Давност:</div>
 					<ul class="searchMenu" style="height:30px; margin:5px;">
 						<li>
@@ -286,7 +286,7 @@
 					</ul>
 			</div>
             
-           <div  class="searchMenu">
+           <div  class="searchMenu" style="margin-top:50px; height:auto;">
 				<div class="searchHeaders" style="">Сортиране по:</div>
 					<ul style="height:auto;margin-top:5px;align:right;">
 						<li>
@@ -300,7 +300,7 @@
             </ul>
             </div>
            
-             </div>
+            
             <div style="clear:both">&nbsp;</div>
             
 <div align="center" style="margin-top:60px;"><input type="reset" id="clearForm" style="height:50px;font-family:Verdana, Arial, Helvetica, sans-serif;" name="clearForm" value="Изчистване на полетата"/>
