@@ -37,6 +37,17 @@
 	{/if}
 </li>
 
+	<!--Добавяне на новия параметър "Tип"(успоредки,надецевки и т.н.) -->
+
+	<li><span class="redStar">*</span>Тип:<br />
+    <select class="aField" id="modification_id" name="modification_id" onchange="javascript: ">
+	</select>
+	<!--
+	{if !empty($mark_id_error)}
+		<br><span class="error_message">{$mark_id_error}</span>
+	{/if} -->
+   </li>
+
     <li><span class="redStar">*</span>Марка:<br />
     <select class="aField" id="mark_id" name="mark_id" onchange="javascript: getRifleModels();">
 	</select>
