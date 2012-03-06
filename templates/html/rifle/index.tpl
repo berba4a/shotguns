@@ -1,12 +1,12 @@
-	<div class="mainMenuBand"><b>Начало ПИСТОЛЕТИ</b></div>
+	<div class="mainMenuBand"><b>Начало ПУШКИ</b></div>
 	<div class="mainField">
 	<div class="addLogo" ><img src="{$smarty.const.WWW}templates/images/rifles_big.gif" width="80"/></div>
-		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПИСТОЛЕТИ .</b></div>
+		<div class="addingWelcomeText">Добре дошли в заглавната страница на раздел <b>ПУШКИ .</b></div>
 				<div style="clear:both;">&nbsp;</div>
                 
 		<div class="beginPageLeftField">
 			
-            <div class="searchHeaders" style="width:auto;">Бързо търсене в ПИСТОЛЕТИ</div> 
+            <div class="searchHeaders" style="width:auto;">Бързо търсене в ПУШКИ</div> 
              <form id="basicSearchForm" name="basicSearchForm" action="{$smarty.const.WWW}rifle/results" method="POST" enctype="multipart/form-data">
              
           <div class="simpleSearchField">
@@ -31,15 +31,30 @@
             
             <div style="clear:both">&nbsp;</div>
             </div>
-            
             <div class="beginPageRows">
-            <div style="float:left;">Категория: <br />
+            <div align="left">Категория: <br />
                
                 <select id="type_id[0]" name="type_id[0]" onchange="javascript: getRifleMarks(0, true);">
                 	<option></option>
 					{foreach $types as $type}
 						<option value="{$type->id}" {if $smarty.session.tmp_rifle_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
 					{/foreach}
+                </select>
+                </div>
+				</div>
+            <div class="beginPageRows">
+            <div style="float:left;">Тип: <br />
+               
+                <select id="modification_id[0]" name="modification_id[0]" onchange="javascript:">
+                	<option>Успоредка</option>
+					<option>Надцевка</option>
+					<option>Едноцевка</option>
+					<option>Помпа</option>
+					
+					<!--
+					{foreach $types as $type}
+						<option value="{$type->id}" {if $smarty.session.tmp_rifle_search.type_id.0 == $type->id}selected{/if}>{$type->type}</option>
+					{/foreach}-->
                 </select>
                 </div>
                 
@@ -115,7 +130,7 @@
         
         <!--RightField begin -->
         <div class="beginPageRightField">
-        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПИСТОЛЕТИ</div>
+        	 <div class="searchHeaders" style="width:auto;">Последни обяви в категория ПУШКИ</div>
             
              <!--Начало на голямата обява -->
              <div class="beginPageRows" style="border-bottom:1px solid #c5ac49; padding-bottom:5px; height:112px;">
@@ -126,7 +141,7 @@
              
                  <div class="beginPageBigAdText" align="right" id="bgnPageBigAdTaxt" name="bgnPageBigAdTaxt">
                   <a href="#">
-                    Пистолет Макаров<br />
+                    Пушка ИЖ Успоредка<br />
 					Модел 1<br />
                     <font color="red"><b> 150 Лева </b></font><br />
                     Каспичан<br />

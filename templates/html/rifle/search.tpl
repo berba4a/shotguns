@@ -67,6 +67,52 @@
 				</li>
 			</ul>
             </div>
+			
+			
+			 <div  class="searchMenu"> <div class="searchHeaders">Тип:</div>
+			<ul>
+			
+			
+		<!--		{foreach $marks as $mark}
+					<li><input type="checkbox" name="mark_id[]" value="{$mark->id}" {if in_array($mark->id, $smarty.session.tmp_rifle_search.mark_id)}checked{/if} />{$mark->mark}</li>
+				{/foreach}
+				
+				-->
+				<li>1.<br />
+					<select id="modification_id[0]" name="modification_id[0]" onchange="javascript:">
+						<option></option>
+{*
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
+*}
+					</select>
+				</li>
+				<li>2.<br />
+					<select id="modification_id[1]" name="modification_id[1]" onchange="javascript: ">
+						<option></option>
+{*
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
+*}
+					</select>
+				</li>
+				<li>3.<br />
+					<select id="modification_id[2]" name="modification_id[2]" onchange="javascript:">
+						<option></option>
+{*
+						{foreach $marks as $mark}
+							<option value="{$mark->id}">{$mark->mark}</option>
+						{/foreach}
+*}
+					</select>
+				</li>
+			</ul>
+            </div>
+			
+			
+			
             <div  class="searchMenu"> <div class="searchHeaders">Марка:</div>
 			<ul>
 			
@@ -212,17 +258,16 @@
 						<li><input type="checkbox"  name="is_old[]" value="0" {if in_array(0, $smarty.session.tmp_rifle_search.is_old)}checked{/if}/>Нови</li>
 						<li><input type="checkbox"  name="is_old[]" value="1" {if in_array(1, $smarty.session.tmp_rifle_search.is_old)}checked{/if} />Употребявани</li>
 					</ul>
-					
-           	<div style="clear:both">&nbsp;</div>
-			
-				<div  class="searchMenu" style="margin-left:0px; margin-top:15px;">
+					</div>
+           	<div style="margin-top:250px;">
+				<div  class="searchMenu">
 					<div class="searchHeaders">Снимки:</div>
 							<ul style="height:auto; margin-top:5px;">
 								<li><input type="radio" id="has_image" name="has_image" value="1" {if $smarty.session.tmp_rifle_search.has_image}checked{/if} />Със снимки</li>
 								<li><input type="radio" id="has_image" name="has_image" value="0" {if !$smarty.session.tmp_rifle_search.has_image}checked{/if}/>Всички</li>
 							</ul>
 				</div>
-			</div>
+			
 			
 						
 			
@@ -239,9 +284,9 @@
 					</select>
 					</li>
 					</ul>
-
-            <div style="clear:both">&nbsp;</div>
-           <div  class="searchMenu" style="margin-left:0px;">
+			</div>
+            
+           <div  class="searchMenu">
 				<div class="searchHeaders" style="">Сортиране по:</div>
 					<ul style="height:auto;margin-top:5px;align:right;">
 						<li>
@@ -254,8 +299,8 @@
 			</li>
             </ul>
             </div>
-            </div>
-             
+           
+             </div>
             <div style="clear:both">&nbsp;</div>
             
 <div align="center" style="margin-top:60px;"><input type="reset" id="clearForm" style="height:50px;font-family:Verdana, Arial, Helvetica, sans-serif;" name="clearForm" value="Изчистване на полетата"/>

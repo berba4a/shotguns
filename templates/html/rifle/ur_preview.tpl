@@ -21,8 +21,8 @@
 <div  class="descrHeaders">
 		<ul>
 			<li>Цена:<span style="color:red;font-size:16px;font-weight:bold;">{$rifle->price} {$rifle->currency->currency}</span></li>
-			<li>Категория:<span>Пистолети</span></li>
-
+			<li>Категория:<span>Гладкоцевни</span></li>
+			<li>Тип:<span>Успоредка</span></li>
 			<li>Марка:<span>{$rifle->mark->mark}</span></li>
 			<li>Модел:<span>{$rifle->model->model}</span></li>
 			<li>Калибър:<span>{$rifle->caliber->caliber}</span></li>
